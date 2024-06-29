@@ -7,7 +7,6 @@ interface ModelMessageProps {
 }
 
 const ModelMessage: React.FC<ModelMessageProps> = ({ message, onToggleMarkBad }) => {
-  console.log(message);
   const [copied, setCopied] = useState(false);
 
   const playAudio = async () => {
