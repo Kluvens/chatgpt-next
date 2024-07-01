@@ -76,9 +76,9 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({ messages, updateMessage, to
             </span>
             {/* Profile */}
             <div className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-gray-200 focus-visible:bg-gray-200 focus-visible:outline-0" id="radix-:rb4:" aria-haspopup="menu" aria-expanded="false" data-state="closed">
-              <div className="flex items-center justify-center overflow-hidden rounded-full">
+              <div className="flex items-center justify-center overflow-hidden">
                 <DropdownMenu>
-                  <DropdownMenuTrigger>
+                  <DropdownMenuTrigger className='focus-visible:outline-0'>
                     <Avatar className="w-8 h-8">
                       <AvatarImage
                         src="https://lh3.googleusercontent.com/a/AEdFTp7GohtCTuOxye4y1c9F_BD4P6svNv7398pMSiLS=s96-c"

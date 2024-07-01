@@ -3,6 +3,7 @@ import Sidebar from '../../components/Sidebar';
 import ChatMessages from '../../components/ChatMessages';
 import ChatInput from '../../components/ChatInput';
 import { Message } from '../../components/ChatMessages';
+import QuestionButton from '@/components/QuestionButton';
 
 const Home: React.FC = () => {
   const [messages, setMessages] = useState([
@@ -28,9 +29,10 @@ const Home: React.FC = () => {
     <div className="flex h-screen">
       <Sidebar />
       <div className="flex flex-col flex-1">
-        <ChatMessages messages={messages} updateMessage={updateMessage} toggleMarkBad={toggleMarkBad} />
-        <ChatInput addMessage={addMessage} />
+          <ChatMessages messages={messages} updateMessage={updateMessage} toggleMarkBad={toggleMarkBad} />
+          <ChatInput addMessage={addMessage} />
       </div>
+      <QuestionButton />
     </div>
   );
 };
