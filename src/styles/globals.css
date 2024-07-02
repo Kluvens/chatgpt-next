@@ -74,3 +74,15 @@
       @apply bg-background text-foreground;
     }
   }
+
+  @layer components {
+    .token-text-secondary {
+      @apply text-gray-500;
+    }
+    .token-text-primary {
+      @apply text-gray-900;
+    }
+    .token-surface-secondary {
+      @apply text-gray-200;
+    }
+  }

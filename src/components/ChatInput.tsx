@@ -1,11 +1,12 @@
 import { useState, ChangeEvent, useRef, useEffect } from "react";
-import { Message } from "./ChatMessages";
+import { Chat } from "@/types";
+import { FileUploadIcon } from "./icons/Icons";
 
 interface ChatInputProps {
-  addMessage: (message: Message) => void;
+  addChat: (message: string) => void;
 }
 
-const ChatInput: React.FC<ChatInputProps> = ({ addMessage }) => {
+const ChatInput: React.FC<ChatInputProps> = ({ addChat }) => {
   const [message, setMessage] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -49,13 +50,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ addMessage }) => {
 
   const handleSendMessage = async () => {
     if (message.trim()) {
-      addMessage({
-        id: '12vbn',
-        sender: 'user',
-        isBad: false,
-        text: message,
-        audioUrl: '',
-      });
+      addChat(message.trim());
       setMessage('');
 
       // addMessage({
@@ -63,33 +58,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ addMessage }) => {
       //   sender: 'other',
       //   isBad: false,
       //   text: message,
-      // });
-
-      try {
-        const response = await fetch('/api/openai', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ message }),
-        });
-
-        const data = await response.json();
-        if (data.chatContent) {
-          // Add the model's response
-          addMessage({
-            id: 'yesmodel',
-            sender: 'other',
-            isBad: false,
-            text: data.chatContent,
-            audioUrl: data.audioUrl,
-          });
-        } else {
-          console.error('Error fetching OpenAI response:', data.error);
-        }
-      } catch (error) {
-        console.error('Error fetching OpenAI response:', error);
-      }
+      // }); 
     }
   };
 
@@ -117,9 +86,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ addMessage }) => {
                     <div className="flex flex-col">
                       <input ref={fileInputRef} onChange={handleFileChange} multiple type="file" tabIndex={-1} className="hidden" style={{ display: 'none' }} />
                       <button onClick={handleButtonClick} className="flex items-center justify-center text-gray-900 h-8 w-8 dark:text-white rounded-full focus-visible:outline-black dark:focus-visible:outline-white mb-1 ml-2" aria-disabled="false">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path fill="currentColor" fillRule="evenodd" d="M9 7a5 5 0 0 1 10 0v8a7 7 0 1 1-14 0V9a1 1 0 0 1 2 0v6a5 5 0 0 0 10 0V7a3 3 0 1 0-6 0v8a1 1 0 1 0 2 0V9a1 1 0 1 1 2 0v6a3 3 0 1 1-6 0z" clipRule="evenodd"></path>
-                        </svg>
+                        <FileUploadIcon />
                       </button>
                     </div>
                     {/* Text Input */}

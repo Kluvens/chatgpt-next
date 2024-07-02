@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
-import { Message } from './ChatMessages';
+import React, { memo, useState } from 'react';
 
 interface UserMessageProps {
-  message: Message;
+  message: string;
   onUpdate: (newText: string) => void;
 }
 
 const UserMessage: React.FC<UserMessageProps> = ({ message, onUpdate }) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [editedMessage, setEditedMessage] = useState(message.text);
+  const [editedMessage, setEditedMessage] = useState(message);
 
   const handleEditClick = () => {
     setIsEditing(true);
@@ -16,7 +15,7 @@ const UserMessage: React.FC<UserMessageProps> = ({ message, onUpdate }) => {
 
   const handleCancelClick = () => {
     setIsEditing(false);
-    setEditedMessage(message.text);
+    setEditedMessage(message);
   };
 
   const handleSendClick = () => {
@@ -68,7 +67,7 @@ const UserMessage: React.FC<UserMessageProps> = ({ message, onUpdate }) => {
                 >
                   <div className="flex w-full flex-col gap-1 empty:hidden items-end rtl:items-start">
                     <div className="relative max-w-[70%] rounded-3xl bg-[#f4f4f4] px-5 py-2.5 dark:bg-token-main-surface-secondary">
-                      <div>{message.text}</div>
+                      <div>{message}</div>
                       <div className="absolute bottom-0 right-full top-0 -mr-3.5 hidden pr-5 pt-1 group-hover/conversation-turn:block">
                         <span className="" data-state="closed">
                           <button className="flex h-9 w-9 items-center justify-center rounded-full token-text-secondary transition hover:bg-token-main-surface-tertiary" onClick={handleEditClick}>
@@ -102,4 +101,4 @@ const UserMessage: React.FC<UserMessageProps> = ({ message, onUpdate }) => {
   );
 };
 
-export default UserMessage;
+export default memo(UserMessage);

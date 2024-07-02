@@ -16,7 +16,7 @@ const ShareChat = () => {
     <Dialog>
       <DialogTrigger asChild>
         <button
-          className="flex items-center justify-center h-10 rounded-lg px-2 text-gray-500 focus-visible:outline-0 hover:bg-gray-200 focus-visible:bg-gray-200"
+          className="flex items-center justify-center h-10 rounded-lg px-2 token-text-secondary focus-visible:outline-0 hover:bg-gray-200 focus-visible:bg-gray-200"
         >
           <ShareUpIcon />
         </button>

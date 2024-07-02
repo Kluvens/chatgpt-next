@@ -63,7 +63,7 @@ const Sidebar = () => {
                   </button>
                 </span>
                 <span className="" data-state="closed">
-                  <button className="h-10 rounded-lg px-2 text-gray-500 focus-visible:outline-0 hover:bg-gray-200 focus-visible:bg-gray-200">
+                  <button className="h-10 rounded-lg px-2 token-text-secondary focus-visible:outline-0 hover:bg-gray-200 focus-visible:bg-gray-200">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"

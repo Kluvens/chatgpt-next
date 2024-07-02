@@ -1,27 +1,37 @@
-import React, { useState } from 'react';
-import { Message } from './ChatMessages';
+import { Response } from '@/types';
+import React, { memo, useState } from 'react';
+import LoadingMessage from './LoadingMessage';
 
 interface ModelMessageProps {
-  message: Message;
+  response: Response;
   onToggleMarkBad: () => void;
+  regenerate: () => void;
 }
 
-const ModelMessage: React.FC<ModelMessageProps> = ({ message, onToggleMarkBad }) => {
+const ModelMessage: React.FC<ModelMessageProps> = ({ response, onToggleMarkBad, regenerate }) => {
   const [copied, setCopied] = useState(false);
 
   const playAudio = async () => {
-    const audio = new Audio(message.audioUrl);
+    const audio = new Audio(response.audioUrl);
       audio.play();
   };
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(message.text).then(() => {
+    navigator.clipboard.writeText(response.response!).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 3000);
     }).catch((err) => {
       console.error('Failed to copy text: ', err);
     });
   };
+
+  const handleRegenerateClick = () => {
+    regenerate();
+  }
+
+  if (response.response === null) {
+    return <LoadingMessage />;
+  }
 
   return (
     <div className="group/conversation-turn w-full text-token-text-primary" dir="auto" data-testid="conversation-turn-3" data-scroll-anchor="false">
@@ -43,7 +53,7 @@ const ModelMessage: React.FC<ModelMessageProps> = ({ message, onToggleMarkBad })
                 <div data-message-author-role="assistant" data-message-id="567f11bc-63fd-4db4-b3d7-ab608d1777da" dir="auto" className="min-h-[20px] text-message flex flex-col items-start whitespace-pre-wrap break-words [.text-message+&amp;]:mt-5 w-full items-end overflow-x-auto gap-2">
                   <div className="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]">
                     <div className="markdown prose w-full break-words dark:prose-invert light">
-                      <p>{message.text}</p>
+                      <p>{response.response}</p>
                     </div>
                   </div>
                 </div>
@@ -76,7 +86,7 @@ const ModelMessage: React.FC<ModelMessageProps> = ({ message, onToggleMarkBad })
                       </button>
                     </span>
                     <span className="" data-state="closed">
-                      <button className="rounded-lg token-text-secondary hover:bg-gray-200">
+                      <button className="rounded-lg token-text-secondary hover:bg-gray-200" onClick={handleRegenerateClick}>
                         <span className="flex h-[30px] w-[30px] items-center justify-center">
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" className="icon-md-heavy">
                             <path fill="currentColor" d="M3.07 10.876C3.623 6.436 7.41 3 12 3a9.15 9.15 0 0 1 6.012 2.254V4a1 1 0 1 1 2 0v4a1 1 0 0 1-1 1H15a1 1 0 1 1 0-2h1.957A7.15 7.15 0 0 0 12 5a7 7 0 0 0-6.946 6.124 1 1 0 1 1-1.984-.248m16.992 1.132a1 1 0 0 1 .868 1.116C20.377 17.564 16.59 21 12 21a9.15 9.15 0 0 1-6-2.244V20a1 1 0 1 1-2 0v-4a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2H7.043A7.15 7.15 0 0 0 12 19a7 7 0 0 0 6.946-6.124 1 1 0 0 1 1.116-.868"></path>
@@ -87,7 +97,7 @@ const ModelMessage: React.FC<ModelMessageProps> = ({ message, onToggleMarkBad })
                     <span className="" data-state="closed">
                       <button className="rounded-lg token-text-secondary hover:bg-gray-200" onClick={onToggleMarkBad}>
                         <span className="flex h-[30px] w-[30px] items-center justify-center">
-                          {message.isBad ? (
+                          {response.isResponseBad ? (
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" className="icon-md-heavy">
                               <path fill="currentColor" d="M11.408 21.496a.99.99 0 0 1-1.06.485c-1.91-.384-3.073-2.342-2.5-4.212L8.697 15H6.986c-2.627 0-4.534-2.507-3.843-5.052l1.358-5A3.986 3.986 0 0 1 8.344 2h5.689a1.996 1.996 0 0 1 1.988 2v11h-.338a1 1 0 0 0-.865.504zM18.012 15A2.994 2.994 0 0 0 21 12V5c0-1.657-1.338-3-2.988-3h-.533c.34.588.533 1.271.533 2z"></path>
                           </svg>
@@ -110,4 +120,4 @@ const ModelMessage: React.FC<ModelMessageProps> = ({ message, onToggleMarkBad })
   );
 };
 
-export default ModelMessage;
+export default memo(ModelMessage);
