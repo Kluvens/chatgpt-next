@@ -1,4 +1,5 @@
 import React, { memo, useState } from 'react';
+import { EditIcon } from './icons/Icons';
 
 interface UserMessageProps {
   message: string;
@@ -28,7 +29,7 @@ const UserMessage: React.FC<UserMessageProps> = ({ message, onUpdate }) => {
   };
 
   return (
-    <div className="w-full text-gray-950" dir="auto" data-scroll-anchor="false">
+    <div className="w-full token-text-primary" dir="auto" data-scroll-anchor="false">
       <div className="py-5 px-3 text-base md:px-4 m-auto md:px-5 lg:px-1 xl:px-5">
         <div className="mx-auto flex flex-1 gap-3 text-base gap-4 md:gap-5 lg:gap-6 md:max-w-3xl">
           <div className="group/conversation-turn relative flex w-full min-w-0 flex-col">
@@ -71,21 +72,7 @@ const UserMessage: React.FC<UserMessageProps> = ({ message, onUpdate }) => {
                       <div className="absolute bottom-0 right-full top-0 -mr-3.5 hidden pr-5 pt-1 group-hover/conversation-turn:block">
                         <span className="" data-state="closed">
                           <button className="flex h-9 w-9 items-center justify-center rounded-full token-text-secondary transition hover:bg-token-main-surface-tertiary" onClick={handleEditClick}>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="24"
-                              height="24"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              className="icon-md"
-                            >
-                              <path
-                                fill="currentColor"
-                                fillRule="evenodd"
-                                d="M13.293 4.293a4.536 4.536 0 1 1 6.414 6.414l-1 1-7.094 7.094A5 5 0 0 1 8.9 20.197l-4.736.79a1 1 0 0 1-1.15-1.151l.789-4.736a5 5 0 0 1 1.396-2.713zM13 7.414l-6.386 6.387a3 3 0 0 0-.838 1.628l-.56 3.355 3.355-.56a3 3 0 0 0 1.628-.837L16.586 11zm5 2.172L14.414 6l.293-.293a2.536 2.536 0 0 1 3.586 3.586z"
-                                clipRule="evenodd"
-                              ></path>
-                            </svg>
+                            <EditIcon />
                           </button>
                         </span>
                       </div>

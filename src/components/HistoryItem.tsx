@@ -13,7 +13,7 @@ const HistoryItem: React.FC<HistoryItemProps> = ({ message }) => {
         </a>
         <div className="absolute bottom-0 top-0 items-center gap-1.5 right-1 flex opacity-0 group-hover:opacity-100 transition-opacity">
           <span>
-            <button className="flex items-center justify-center transition token-text-secondary hover:text-gray-950">
+            <button className="flex items-center justify-center transition token-text-secondary hover:token-text-primary">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

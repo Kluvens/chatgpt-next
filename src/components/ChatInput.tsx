@@ -85,7 +85,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ addChat }) => {
                     {/* Upload File */}
                     <div className="flex flex-col">
                       <input ref={fileInputRef} onChange={handleFileChange} multiple type="file" tabIndex={-1} className="hidden" style={{ display: 'none' }} />
-                      <button onClick={handleButtonClick} className="flex items-center justify-center text-gray-900 h-8 w-8 dark:text-white rounded-full focus-visible:outline-black dark:focus-visible:outline-white mb-1 ml-2" aria-disabled="false">
+                      <button onClick={handleButtonClick} className="flex items-center justify-center token-text-primary h-8 w-8 dark:text-white rounded-full focus-visible:outline-black dark:focus-visible:outline-white mb-1 ml-2" aria-disabled="false">
                         <FileUploadIcon />
                       </button>
                     </div>
