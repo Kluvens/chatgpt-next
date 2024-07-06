@@ -1,3 +1,5 @@
+export * from "./settings";
+
 export interface Chat {
   id: string;
   message: string;

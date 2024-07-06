@@ -3,16 +3,16 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { PlanIcon, AppsIcon, CustomizeIcon, SettingsIcon, LogoutIcon } from "./icons/Icons";
+import Settings from "./Settings";
 
 const AvatarDropDown = () => {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className='h-10 w-10 flex items-center justify-center rounded-full focus-visible:outline-0 focus-visible:bg-gray-200 hover:bg-gray-200'>
+      <DropdownMenuTrigger className="h-10 w-10 flex items-center justify-center rounded-full focus-visible:outline-0 focus-visible:bg-gray-200 hover:bg-gray-200">
         <Avatar className="w-8 h-8">
           <AvatarImage
             src="https://lh3.googleusercontent.com/a/AEdFTp7GohtCTuOxye4y1c9F_BD4P6svNv7398pMSiLS=s96-c"
@@ -23,32 +23,32 @@ const AvatarDropDown = () => {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-80 rounded-3xl mr-3">
-        <DropdownMenuItem className='flex items-center cursor-pointer hover:by-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2'>
+        <DropdownMenuItem className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2">
           <div className="flex items-center justify-center token-text-secondary h-5 w-5">
             <PlanIcon />
           </div>
           My plan
         </DropdownMenuItem>
-        <DropdownMenuItem className='flex items-center cursor-pointer hover:by-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2'>
+        <DropdownMenuItem className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2">
           <div className="flex items-center justify-center token-text-secondary h-5 w-5">
             <AppsIcon />
           </div>
           My GPTs
         </DropdownMenuItem>
-        <DropdownMenuItem className='flex items-center cursor-pointer hover:by-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2'>
+        <DropdownMenuItem className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2">
           <div className="flex items-center justify-center token-text-secondary h-5 w-5">
             <CustomizeIcon />
           </div>
           Customize ChatGPT
         </DropdownMenuItem>
-        <DropdownMenuItem className='flex items-center cursor-pointer hover:by-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2'>
-          <div className="flex items-center justify-center token-text-secondary h-5 w-5">
-            <SettingsIcon />
-          </div>
-          Settings
+        <DropdownMenuItem
+          className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-md p-3 m-1.5"
+          onSelect={(e) => e.preventDefault()}
+        >
+          <Settings />
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className='flex items-center cursor-pointer hover:by-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2'>
+        <DropdownMenuItem className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2">
           <div className="flex items-center justify-center token-text-secondary h-5 w-5">
             <LogoutIcon />
           </div>
@@ -56,7 +56,7 @@ const AvatarDropDown = () => {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
-}
+  );
+};
 
 export default AvatarDropDown;

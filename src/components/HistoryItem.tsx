@@ -7,9 +7,12 @@ interface HistoryItemProps {
 const HistoryItem: React.FC<HistoryItemProps> = ({ message }) => {
   return (
     <li className="relative z-[15] group">
-      <div className="relative rounded-lg active:opacity-90 group-hover:bg-gray-200">
+      <div className="relative rounded-lg active:opacity-90 group-hover:bg-[#ececec]">
         <a href="#" className="flex items-center gap-2 p-2">
-          <div className="relative grow overflow-hidden whitespace-nowrap">{message}</div>
+          <div className="relative grow overflow-hidden whitespace-nowrap">
+            {message}
+            <div className="absolute bottom-0 top-0 right-0 bg-gradient-to-l from-[#f9f9f9] to-transparent w-8 group-hover:from-[#ececec] group-hover:w-20 group-hover:from-[30%] rtl:left-0 rtl:bg-gradient-to-r rtl:right-auto"></div>
+          </div>
         </a>
         <div className="absolute bottom-0 top-0 items-center gap-1.5 right-1 flex opacity-0 group-hover:opacity-100 transition-opacity">
           <span>
