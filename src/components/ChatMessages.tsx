@@ -5,7 +5,6 @@ import AvatarDropDown from './AvatarDropDown';
 import { Chat } from '@/types';
 import { NewChatIcon, CollapseIcon  } from './icons/Icons';
 import ShareChat from './ShareChat';
-import Settings from './Settings';
 
 interface ChatMessagesProps {
   chats: Chat[];
@@ -18,7 +17,6 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({ chats, updateMessage, toggl
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    console.log(chats);
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
@@ -37,7 +35,6 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({ chats, updateMessage, toggl
               <div role='button' tabIndex={0} className="flex items-center justify-center h-10 rounded-lg px-2 token-text-secondary focus-visible:outline-0 hover:bg-gray-200 focus-visible:bg-gray-200">
                 <NewChatIcon />
               </div>
-              <Settings />
             </div>
             <div role="button" id="radix-:rb1:" aria-haspopup="menu" aria-expanded="false" data-state="closed" className="group flex cursor-pointer items-center gap-1 rounded-xl py-2 px-3 text-lg font-semibold hover:bg-gray-200 radix-state-open:bg-token-main-surface-secondary token-text-secondary rounded-lg py-1.5 overflow-hidden whitespace-nowrap">
               <div className="flex gap-2 token-text-secondary">ChatGPT

@@ -60,12 +60,7 @@ const UserMessage: React.FC<UserMessageProps> = ({ message, onUpdate }) => {
                   </div>
                 </div>
               ) : (
-                <div
-                  data-message-author-role="user"
-                  data-message-id="aaa2dc6b-d4b8-47b4-8d6c-77177020c04a"
-                  dir="auto"
-                  className="min-h-[20px] text-message flex flex-col items-start whitespace-pre-wrap break-words [.text-message+&]:mt-5 w-full items-end overflow-x-auto gap-2"
-                >
+                <div className="min-h-[20px] text-message flex flex-col items-start whitespace-pre-wrap break-words [.text-message+&]:mt-5 w-full items-end overflow-x-auto gap-2">
                   <div className="flex w-full flex-col gap-1 empty:hidden items-end rtl:items-start">
                     <div className="relative max-w-[70%] rounded-3xl bg-[#f4f4f4] px-5 py-2.5 dark:bg-token-main-surface-secondary">
                       <div>{message}</div>

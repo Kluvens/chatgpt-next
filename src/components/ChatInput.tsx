@@ -14,27 +14,20 @@ const ChatInput: React.FC<ChatInputProps> = ({ addChat }) => {
   const adjustTextareaHeight = () => {
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto';
-      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+      const scrollHeight = textareaRef.current.scrollHeight;
+      if (scrollHeight <= 200) {
+        textareaRef.current.style.height = `${scrollHeight}px`;
+        textareaRef.current.style.overflowY = 'hidden';
+      } else {
+        textareaRef.current.style.height = '200px';
+        textareaRef.current.style.overflowY = 'scroll';
+      }
     }
   };
 
   useEffect(() => {
     adjustTextareaHeight();
   }, [message]);
-
-  useEffect(() => {
-    const resizeObserver = new ResizeObserver(() => {
-      adjustTextareaHeight();
-    });
-
-    if (textareaRef.current) {
-      resizeObserver.observe(textareaRef.current);
-    }
-
-    return () => {
-      resizeObserver.disconnect();
-    };
-  }, []);
 
   const handleButtonClick = () => {
     fileInputRef.current?.click();
@@ -97,7 +90,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ addChat }) => {
                         dir="auto"
                         rows={1}
                         placeholder="Message ChatGPT"
-                        className="resize-none bg-transparent token-text-primary focus:outline-none overflow-y-hidden"
+                        className="resize-none bg-transparent token-text-primary focus:outline-none"
                         value={message}
                         onChange={handleInputChange}
                         onKeyDown={handleKeyDown}

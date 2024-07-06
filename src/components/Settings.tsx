@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch"
 import {
   SettingsIcon,
   GeneralIcon,
@@ -88,9 +89,7 @@ const Settings = () => {
                 <div className="border-b border-token-border-light pb-3 last-of-type:border-b-0">
                   <div className="flex items-center justify-between">
                     <div>Always show code when using data analyst</div>
-                    <button type="button" role="switch" aria-checked="false" data-state="unchecked" value="on" aria-label="Always show code when using data analyst" className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-token-text-secondary focus-visible:ring-offset-2 focus-visible:radix-state-checked:ring-black focus-visible:dark:ring-token-main-surface-primary focus-visible:dark:radix-state-checked:ring-green-600 cursor-pointer bg-gray-200 radix-state-checked:bg-black dark:border dark:border-token-border-medium dark:bg-transparent relative shrink-0 rounded-full dark:radix-state-checked:border-green-600 dark:radix-state-checked:bg-green-600 h-[20px] w-[32px]">
-                      <span data-state="unchecked" className="flex items-center justify-center rounded-full transition-transform duration-100 will-change-transform ltr:translate-x-0.5 rtl:-translate-x-0.5 bg-white h-[16px] w-[16px] ltr:radix-state-checked:translate-x-[14px] rtl:radix-state-checked:translate-x-[-14px]"></span>
-                    </button>
+                    <Switch />
                   </div>
                 </div>
                 <div className="border-b border-token-border-light pb-3 last-of-type:border-b-0">
@@ -109,17 +108,17 @@ const Settings = () => {
                 <div className="border-b border-token-border-light pb-3 last-of-type:border-b-0">
                   <div className="flex items-center justify-between">
                     <div>Archived chats</div>
-                    <button className="btn relative btn-secondary shrink-0">
+                    <Button variant="secondary" className="rounded-full">
                       <div className="flex items-center justify-center">Manage</div>
-                    </button>
+                    </Button>
                   </div>
                 </div>
                 <div className="border-b border-token-border-light pb-3 last-of-type:border-b-0">
                   <div className="flex items-center justify-between">
                     <div>Archive all chats</div>
-                    <button className="btn relative btn-secondary shrink-0">
+                    <Button variant="secondary" className="rounded-full">
                       <div className="flex items-center justify-center">Archive all</div>
-                    </button>
+                    </Button>
                   </div>
                 </div>
                 <div className="border-b border-token-border-light pb-3 last-of-type:border-b-0">
