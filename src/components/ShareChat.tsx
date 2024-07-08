@@ -39,8 +39,7 @@ const ShareChat = () => {
               className="border border-gray-300 rounded-full px-6 py-3 pr-20"
             />
           </div>
-          <Button type="submit" size="sm" className="absolute right-8 px-3 rounded-full">
-            <span className="sr-only">Copy</span>
+          <Button type="submit" size="sm" className="flex items-center justify-center text-md absolute right-8 px-3 rounded-full">
             Copy
           </Button>
         </div>

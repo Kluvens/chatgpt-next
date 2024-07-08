@@ -4,7 +4,7 @@ import ChatMessages from '../../components/ChatMessages';
 import ChatInput from '../../components/ChatInput';
 import QuestionButton from '@/components/QuestionButton';
 import { Chat } from '@/types';
-import axios from 'axios';
+import { motion } from 'framer-motion';
 
 const Home: React.FC = () => {
   const [chats, setChats] = useState<Chat[]>([
@@ -28,7 +28,9 @@ Markdown supports tables as well:
 
 ### Horizontal Rule
     `, audioUrl: '', isResponseBad: false } },
-  ])
+  ]);
+
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -50,25 +52,6 @@ Markdown supports tables as well:
     } catch (error) {
       console.error(error);
     }
-    // try {
-    //   const response = await fetch('/api/openai', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({ message }),
-    //   });
-
-    //   const data = await response.json();
-    //   if (data.chatContent) {
-    //     newChat.response = data.chatContent;
-    //     setChats([...chats, newChat]);
-    //   } else {
-    //     console.error('Error fetching OpenAI response:', data.error);
-    //   }
-    // } catch (error) {
-    //   console.error('Error fetching OpenAI response:', error);
-    // }
   }
 
   const updateMessage = (id: string, newMessage: string) => {
@@ -81,7 +64,6 @@ Markdown supports tables as well:
     setChats(updatedChats);
 
     try {
-      // await axios.delete(``);
       if (chat?.message) {
         addChat(chat?.message);
       } else {
@@ -96,17 +78,49 @@ Markdown supports tables as well:
     setChats(chats.map(chat => chat.id === id ? { ...chat, response: { ...chat.response, isResponseBad: !chat.response.isResponseBad } } : chat))
   }
 
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
+
+  const containerVariants = {
+    close: {
+      width: "0rem",
+      transition: {
+        type: "spring",
+        damping: 15,
+        duration: 1,
+      },
+    },
+    open: {
+      width: "260px",
+      transition: {
+        type: "spring",
+        damping: 15,
+        duration: 1,
+      },
+    },
+  };
+
   return (
     <div className="flex h-screen">
-      <Sidebar />
+      <motion.div
+        initial={false}
+        animate={isSidebarOpen ? "open" : "close"}
+        variants={containerVariants}
+        layout
+        className="hidden md:flex flex-shrink-0 bg-gray-50 overflow-x-hidden">
+        <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+      </motion.div>
       <div className="flex flex-col flex-1">
-          <ChatMessages 
-            chats={chats} 
-            updateMessage={updateMessage} 
-            toggleMarkBad={toggleMarkBad}
-            regenerateResponse={regenerateResponse}
-          />
-          <ChatInput addChat={addChat} />
+      <ChatMessages 
+          chats={chats} 
+          updateMessage={updateMessage} 
+          toggleMarkBad={toggleMarkBad}
+          regenerateResponse={regenerateResponse}
+          isSidebarOpen={isSidebarOpen}
+          toggleSidebar={toggleSidebar}
+        />
+        <ChatInput addChat={addChat} />
       </div>
       <QuestionButton />
     </div>

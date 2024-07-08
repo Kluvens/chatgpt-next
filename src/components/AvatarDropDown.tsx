@@ -22,7 +22,7 @@ const AvatarDropDown = () => {
           <AvatarFallback>User</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-80 rounded-3xl mr-3">
+      <DropdownMenuContent className="w-80 rounded-3xl">
         <DropdownMenuItem className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2">
           <div className="flex items-center justify-center token-text-secondary h-5 w-5">
             <PlanIcon />
@@ -41,12 +41,8 @@ const AvatarDropDown = () => {
           </div>
           Customize ChatGPT
         </DropdownMenuItem>
-        <DropdownMenuItem
-          className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-md p-3 m-1.5"
-          onSelect={(e) => e.preventDefault()}
-        >
+        
           <Settings />
-        </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2">
           <div className="flex items-center justify-center token-text-secondary h-5 w-5">

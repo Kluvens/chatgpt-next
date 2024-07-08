@@ -22,17 +22,22 @@ import {
   ConnectedIcon,
   SecurityIcon
 } from "./icons/Icons";
+import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 
 const Settings = () => {
   return (
+    
     <Dialog>
       <DialogTrigger asChild>
-        <div className="flex items-center gap-2 w-full">
-          <div className="flex items-center justify-center token-text-secondary h-5 w-5">
+        <DropdownMenuItem
+          className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2"
+          onSelect={(e) => e.preventDefault()}
+        >
+          <div className="flex items-center gap-2 w-full">
             <SettingsIcon />
+            Settings
           </div>
-          Settings
-        </div>
+        </DropdownMenuItem>
       </DialogTrigger>
       <DialogContent className="rounded-3xl">
         <DialogHeader>
