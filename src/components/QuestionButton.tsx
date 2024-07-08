@@ -6,6 +6,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ShortCutsIcon, ShareRightIcon, CopyIcon } from './icons/Icons';
+import Shortcuts from './Question/Shortcuts';
 
 const QuestionButton = () => {
   const router = useRouter();
@@ -45,12 +46,7 @@ const QuestionButton = () => {
             </div>
             Terms & policies
           </DropdownMenuItem>
-          <DropdownMenuItem className='flex items-center cursor-pointer hover:by-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2' disabled>
-            <div className="flex items-center justify-center token-text-secondary h-5 w-5">
-              <ShortCutsIcon />
-            </div>
-            Keyboard shortcuts
-          </DropdownMenuItem>
+          <Shortcuts />
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
