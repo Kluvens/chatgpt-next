@@ -67,7 +67,7 @@ const UserMessage: React.FC<UserMessageProps> = ({ message, onUpdate }) => {
                       <div>{message}</div>
                       <div className="absolute bottom-0 right-full top-0 -mr-3.5 hidden pr-5 pt-1 group-hover/conversation-turn:block">
                         <span className="" data-state="closed">
-                          <button className="flex h-9 w-9 items-center justify-center rounded-full token-text-secondary transition hover:bg-token-main-surface-tertiary" onClick={handleEditClick}>
+                          <button className="flex h-9 w-9 items-center justify-center rounded-full token-text-secondary transition hover:token-surface-secondary" onClick={handleEditClick}>
                             <EditIcon />
                           </button>
                         </span>
