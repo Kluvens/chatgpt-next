@@ -1,5 +1,6 @@
 import React, { memo, useState } from 'react';
 import { EditIcon } from './icons/Icons';
+import { Button } from "@/components/ui/button";
 
 interface UserMessageProps {
   message: string;
@@ -35,12 +36,12 @@ const UserMessage: React.FC<UserMessageProps> = ({ message, onUpdate }) => {
           <div className="group/conversation-turn relative flex w-full min-w-0 flex-col">
             <div className="flex flex-grow flex-col max-w-full">
               {isEditing ? (
-                <div className="flex-col gap-1 md:gap-3">
+                <div className="flex-col gap-1 md:gap-3 rounded-3xl token-surface-secondary">
                   <div className="flex flex-grow flex-col max-w-full">
-                    <div className="rounded-3xl bg-token-main-surface-tertiary px-3 py-2 juice:py-3">
+                    <div className="bg-token-main-surface-tertiary juice:py-3">
                       <div className="grid">
                         <textarea
-                          className="col-start-1 col-end-2 row-start-1 row-end-2 resize-none overflow-hidden m-0 resize-none border-0 bg-transparent p-0 focus:ring-0 focus-visible:ring-0 juice:w-full juice:p-2"
+                          className="rounded-3xl min-h-36 col-start-1 col-end-2 row-start-1 row-end-2 resize-none overflow-hidden m-0 border-0 bg-transparent p-6 focus:outline-none"
                           value={editedMessage}
                           onChange={handleInputChange}
                         ></textarea>
@@ -48,13 +49,13 @@ const UserMessage: React.FC<UserMessageProps> = ({ message, onUpdate }) => {
                           {editedMessage}
                         </span>
                       </div>
-                      <div className="flex justify-end gap-2">
-                        <button className="btn relative btn-secondary" onClick={handleCancelClick}>
+                      <div className="flex justify-end absolute bottom-5 right-4 gap-2">
+                        <Button variant={'secondary'} className="rounded-full" onClick={handleCancelClick}>
                           <div className="flex items-center justify-center">Cancel</div>
-                        </button>
-                        <button className="btn relative btn-primary" onClick={handleSendClick}>
+                        </Button>
+                        <Button variant={'default'} className="rounded-full" onClick={handleSendClick}>
                           <div className="flex items-center justify-center">Send</div>
-                        </button>
+                        </Button>
                       </div>
                     </div>
                   </div>

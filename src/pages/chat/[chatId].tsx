@@ -30,7 +30,7 @@ Markdown supports tables as well:
     `, audioUrl: '', isResponseBad: false } },
   ]);
 
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [isSidebarOpen, setSidebarOpen] = useState(true);
 
   const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -87,7 +87,6 @@ Markdown supports tables as well:
       width: "0rem",
       transition: {
         type: "spring",
-        damping: 15,
         duration: 1,
       },
     },
@@ -95,7 +94,6 @@ Markdown supports tables as well:
       width: "260px",
       transition: {
         type: "spring",
-        damping: 15,
         duration: 1,
       },
     },
@@ -111,8 +109,8 @@ Markdown supports tables as well:
         className="hidden md:flex flex-shrink-0 bg-gray-50 overflow-x-hidden">
         <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       </motion.div>
-      <div className="flex flex-col flex-1">
-      <ChatMessages 
+      <div className="flex flex-col flex-1 px-1 pt-1">
+        <ChatMessages 
           chats={chats} 
           updateMessage={updateMessage} 
           toggleMarkBad={toggleMarkBad}

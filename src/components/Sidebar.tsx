@@ -44,26 +44,26 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
 
   return (
     <div className="h-full w-full">
-      <div className="flex h-full min-h-0 flex-col">
+      <div className="flex h-full min-h-0 pt-3 flex-col">
         <div className="relative h-full w-full flex-1 items-start border-white/20">
           <nav className="flex h-full w-full flex-col px-3 pb-3.5">
             <div className="flex justify-between flex h-14 items-center">
               <span className="" data-state="closed">
                 <button
-                  className="h-10 rounded-lg px-2 token-text-secondary focus-visible:outline-0 hover:bg-gray-200 focus-visible:bg-gray-200"
+                  className="h-10 rounded-lg px-2 token-text-secondary focus-visible:outline-0 hover:token-surface-secondary focus-visible:token-surface-secondary"
                   onClick={toggleSidebar}
                 >
                   <CollapseIcon />
                 </button>
               </span>
               <span className="" data-state="closed">
-                <button className="h-10 rounded-lg px-2 token-text-secondary focus-visible:outline-0 hover:bg-gray-200 focus-visible:bg-gray-200">
+                <button className="h-10 rounded-lg px-2 token-text-secondary focus-visible:outline-0 hover:token-surface-secondary focus-visible:token-surface-secondary">
                   <NewChatIcon />
                 </button>
               </span>
             </div>
 
-            <div className="flex-col flex-1 transition-opacity duration-500 -mr-2 pr-2 overflow-y-auto">
+            <div className="flex-col flex-1 -mr-2 pr-2">
               <div></div>
 
               {/* Chat History */}
@@ -71,12 +71,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
                 <div>
                   {/* Chat History Today */}
                   <div className="relative mt-5">
-                    <div>
-                      <span className="flex h-9 items-center">
-                        <h3 className="pb-2 pt-3 px-2 text-sm font-semibold text-ellipsis overflow-hidden break-all token-text-secondary">
-                          Today
-                        </h3>
-                      </span>
+                    <div className="flex h-9 items-center">
+                      <h3 className="pb-2 pt-3 px-2 text-sm font-semibold token-text-secondary">
+                        Today
+                      </h3>
                     </div>
                     <ol className="token-text-primary">
                       {chatHistory.today.map((message, index) => (
@@ -89,7 +87,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
                   <div className="relative mt-5">
                     <div>
                       <span className="flex h-9 items-center">
-                        <h3 className="pb-2 pt-3 px-2 text-sm font-semibold text-ellipsis overflow-hidden break-all token-text-secondary">
+                        <h3 className="pb-2 pt-3 px-2 text-sm font-semibold token-text-secondary">
                           Yesterday
                         </h3>
                       </span>

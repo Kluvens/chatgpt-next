@@ -26,15 +26,16 @@ import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 
 const Settings = () => {
   return (
-    
     <Dialog>
       <DialogTrigger asChild>
         <DropdownMenuItem
           className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2"
           onSelect={(e) => e.preventDefault()}
         >
-          <div className="flex items-center gap-2 w-full">
-            <SettingsIcon />
+          <div className="flex items-center gap-2 w-full token-text-primary">
+            <div className='token-text-secondary'>
+              <SettingsIcon />
+            </div>
             Settings
           </div>
         </DropdownMenuItem>

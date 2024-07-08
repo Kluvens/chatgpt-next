@@ -4,7 +4,7 @@ import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import LoadingMessage from './LoadingMessage';
-import { ChatGptIcon } from './icons/Icons';
+import { ChatGptIcon, MessageCopyIcon, MessageTickIcon } from './icons/Icons';
 import markdownToHtml from '../lib/markdownToHtml';
 import { Response } from '@/types';
 interface ModelMessageProps {
@@ -47,7 +47,7 @@ const ModelMessage: React.FC<ModelMessageProps> = ({ response, onToggleMarkBad, 
   }
 
   return (
-    <div className="group/conversation-turn w-full text-token-text-primary" dir="auto" data-testid="conversation-turn-3" data-scroll-anchor="false">
+    <div className="group/conversation-turn w-full token-text-primary" dir="auto" data-testid="conversation-turn-3" data-scroll-anchor="false">
       <div className="py-5 px-3 text-base md:px-4 m-auto md:px-5 lg:px-1 xl:px-5">
         <div className="mx-auto flex flex-1 gap-3 text-base gap-4 md:gap-5 lg:gap-6 md:max-w-3xl lg:max-w-[40rem] xl:max-w-[48rem]">
           <div className="flex-shrink-0 flex flex-col relative items-end">
@@ -77,7 +77,7 @@ const ModelMessage: React.FC<ModelMessageProps> = ({ response, onToggleMarkBad, 
                 <div className="items-center justify-start rounded-xl p-1 z-10 -mt-1 bg-token-main-surface-primary md:absolute md:border md:border-token-border-light">
                   <div className="flex items-center">
                     <span className="" data-state="closed">
-                      <button className="rounded-lg token-text-secondary hover:bg-gray-200" onClick={playAudio}>
+                      <button className="rounded-lg token-text-secondary hover:token-surface-secondary" onClick={playAudio}>
                         <span className="flex h-[30px] w-[30px] items-center justify-center">
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" className="icon-md-heavy">
                               <path fill="currentColor" fillRule="evenodd" d="M11 4.91a.5.5 0 0 0-.838-.369L6.676 7.737A1 1 0 0 1 6 8H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2a1 1 0 0 1 .676.263l3.486 3.196A.5.5 0 0 0 11 19.09zM8.81 3.067C10.415 1.597 13 2.735 13 4.91v14.18c0 2.175-2.586 3.313-4.19 1.843L5.612 18H4a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h1.611zm11.507 3.29a1 1 0 0 1 1.355.401A10.96 10.96 0 0 1 23 12c0 1.85-.458 3.597-1.268 5.13a1 1 0 1 1-1.768-.934A8.96 8.96 0 0 0 21 12a8.96 8.96 0 0 0-1.085-4.287 1 1 0 0 1 .402-1.356M15.799 7.9a1 1 0 0 1 1.4.2 6.48 6.48 0 0 1 1.3 3.9c0 1.313-.39 2.537-1.06 3.56a1 1 0 0 1-1.673-1.096A4.47 4.47 0 0 0 16.5 12a4.47 4.47 0 0 0-.9-2.7 1 1 0 0 1 .2-1.4" clipRule="evenodd"></path>
@@ -86,22 +86,18 @@ const ModelMessage: React.FC<ModelMessageProps> = ({ response, onToggleMarkBad, 
                       </button>
                     </span>
                     <span className="" data-state="closed">
-                      <button className="rounded-lg token-text-secondary hover:bg-gray-200" onClick={copyToClipboard}>
+                      <button className="rounded-lg token-text-secondary hover:token-surface-secondary" onClick={copyToClipboard}>
                         <span className="flex h-[30px] w-[30px] items-center justify-center">
                           {copied ? (
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" className="icon-md-heavy">
-                              <path fill="currentColor" fillRule="evenodd" d="M9 12.707l-2.293-2.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l7-7a1 1 0 00-1.414-1.414L9 12.707z" clipRule="evenodd"></path>
-                            </svg>
+                            <MessageTickIcon />
                           ) : (
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" className="icon-md-heavy">
-                              <path fill="currentColor" fillRule="evenodd" d="M7 5a3 3 0 013-3h9a3 3 0 013 3v9a3 3 0 01-3 3h-2v2a3 3 0 01-3 3H5a3 3 0 01-3-3v-9a3 3 0 013-3h2zm2 2h5a3 3 0 013 3v5h2a1 1 0 001-1V5a1 1 0 00-1-1h-9a1 1 0 00-1 1zM5 9a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1v-9a1 1 0 00-1-1z" clipRule="evenodd"></path>
-                            </svg>
+                            <MessageCopyIcon />
                           )}
                         </span>
                       </button>
                     </span>
                     <span className="" data-state="closed">
-                      <button className="rounded-lg token-text-secondary hover:bg-gray-200" onClick={handleRegenerateClick}>
+                      <button className="rounded-lg token-text-secondary hover:token-surface-secondary" onClick={handleRegenerateClick}>
                         <span className="flex h-[30px] w-[30px] items-center justify-center">
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" className="icon-md-heavy">
                             <path fill="currentColor" d="M3.07 10.876C3.623 6.436 7.41 3 12 3a9.15 9.15 0 0 1 6.012 2.254V4a1 1 0 1 1 2 0v4a1 1 0 0 1-1 1H15a1 1 0 1 1 0-2h1.957A7.15 7.15 0 0 0 12 5a7 7 0 0 0-6.946 6.124 1 1 0 1 1-1.984-.248m16.992 1.132a1 1 0 0 1 .868 1.116C20.377 17.564 16.59 21 12 21a9.15 9.15 0 0 1-6-2.244V20a1 1 0 1 1-2 0v-4a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2H7.043A7.15 7.15 0 0 0 12 19a7 7 0 0 0 6.946-6.124 1 1 0 0 1 1.116-.868"></path>
@@ -110,7 +106,7 @@ const ModelMessage: React.FC<ModelMessageProps> = ({ response, onToggleMarkBad, 
                       </button>
                     </span>
                     <span className="" data-state="closed">
-                      <button className="rounded-lg token-text-secondary hover:bg-gray-200" onClick={onToggleMarkBad}>
+                      <button className="rounded-lg token-text-secondary hover:token-surface-secondary" onClick={onToggleMarkBad}>
                         <span className="flex h-[30px] w-[30px] items-center justify-center">
                           {response.isResponseBad ? (
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" className="icon-md-heavy">

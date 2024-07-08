@@ -83,6 +83,6 @@
       @apply text-gray-900;
     }
     .token-surface-secondary {
-      @apply text-gray-200;
+      @apply bg-gray-200;
     }
   }
