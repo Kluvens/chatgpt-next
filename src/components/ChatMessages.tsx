@@ -5,7 +5,8 @@ import AvatarDropDown from './AvatarDropDown';
 import { Chat } from '@/types';
 import { NewChatIcon, CollapseIcon  } from './icons/Icons';
 import ShareChat from './ShareChat';
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import ModelSelection from './ModelSelection';
 
 interface ChatMessagesProps {
   chats: Chat[];
@@ -42,14 +43,7 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({ chats, updateMessage, toggl
               </motion.div>
             )}
             
-            <div role="button" id="radix-:rb1:" aria-haspopup="menu" aria-expanded="false" data-state="closed" className="group flex cursor-pointer items-center gap-1 rounded-xl py-2 px-3 text-lg font-semibold hover:token-surface-secondary radix-state-open:bg-token-main-surface-secondary token-text-secondary rounded-lg py-1.5 overflow-hidden whitespace-nowrap">
-              <div className="flex gap-2 token-text-secondary">ChatGPT
-                <span className="token-text-secondary">4o</span>
-              </div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" className="icon-md text-token-text-tertiary">
-                <path fill="currentColor" fillRule="evenodd" d="M5.293 9.293a1 1 0 0 1 1.414 0L12 14.586l5.293-5.293a1 1 0 1 1 1.414 1.414l-6 6a1 1 0 0 1-1.414 0l-6-6a1 1 0 0 1 0-1.414" clipRule="evenodd"></path>
-              </svg>
-            </div>
+            <ModelSelection />
           </div>
           <div className="flex gap-2 pr-1">
             {/* Share link */}
