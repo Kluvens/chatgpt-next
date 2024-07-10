@@ -11,8 +11,20 @@ import {
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button";
 import { ShareUpIcon } from "./icons/Icons";
+import { useState } from "react";
 
 const ShareChat = () => {
+  const [copied, setCopied] = useState(false);
+  
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText("https://ui.shadcn.com/docs/installation").then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 3000);  
+    }).catch((err) => {
+      console.error('Failed to copy text: ', err);
+    });
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -39,8 +51,8 @@ const ShareChat = () => {
               className="border border-gray-300 rounded-full px-6 py-3 pr-20"
             />
           </div>
-          <Button type="submit" size="sm" className="flex items-center justify-center text-md absolute right-8 px-3 rounded-full">
-            Copy
+          <Button type="submit" size="sm" onClick={copyToClipboard} className="flex items-center justify-center text-md absolute right-8 px-3 rounded-full">
+            { copied ? "Copied!" : "Copy" }
           </Button>
         </div>
       </DialogContent>

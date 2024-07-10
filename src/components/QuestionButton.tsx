@@ -62,7 +62,7 @@ const QuestionButton = () => {
             </div>
             Help & FAQ
           </DropdownMenuItem>
-          <DropdownMenuItem className='flex items-center cursor-pointer hover:by-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2' disabled>
+          <DropdownMenuItem className='flex items-center cursor-pointer hover:by-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2' onClick={() => handleNavigate('/release')}>
             <div className="flex items-center justify-center token-text-secondary h-5 w-5">
               <ShareRightIcon />
             </div>
