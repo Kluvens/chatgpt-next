@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Sidebar from '../components/Sidebar';
 import ChatHome from '../components/ChatHome';
-import ChatInput from '../components/ChatInput';
+import { motion } from 'framer-motion';
+import ChatInput from '@/components/ChatInput';
 
 const Home: React.FC = () => {
   const [messages, setMessages] = useState([
@@ -10,14 +11,43 @@ const Home: React.FC = () => {
     { id: 'gasf', sender: 'user', text: 'Hello' },
     { id: '12g', sender: 'other', text: 'Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello' }
   ]);
+  const [isSidebarOpen, setSidebarOpen] = useState(true);
 
   const addMessage = (text: string) => {
     setMessages([...messages, { id: '12n', sender: 'user', text }]);
   };
 
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
+
+  const containerVariants = {
+    close: {
+      width: "0rem",
+      transition: {
+        type: "spring",
+        duration: 1,
+      },
+    },
+    open: {
+      width: "260px",
+      transition: {
+        type: "spring",
+        duration: 1,
+      },
+    },
+  };
+
   return (
     <div className="flex h-screen">
-      <Sidebar />
+      <motion.div
+        initial={false}
+        animate={isSidebarOpen ? "open" : "close"}
+        variants={containerVariants}
+        layout
+        className="hidden md:flex flex-shrink-0 bg-gray-50 overflow-x-hidden">
+        <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+      </motion.div>
       <div className="flex flex-col flex-1">
         <ChatHome />
         {/* <ChatInput addMessage={addMessage} /> */}

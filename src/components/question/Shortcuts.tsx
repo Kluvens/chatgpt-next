@@ -41,14 +41,14 @@ const Shortcuts = () => {
           Keyboard shortcuts
         </DropdownMenuItem>
       </DialogTrigger>
-      <DialogContent className="rounded-3xl p-0">
+      <DialogContent className="rounded-3xl p-0 max-w-[900px]">
         <DialogHeader>
           <div className="px-4 pb-4 pt-5 sm:p-6 flex items-center justify-between border-b border-black/10 dark:border-white/10">
-            <DialogTitle className="text-lg font-semibold leading-6 token-text-primary">
+            <DialogTitle className="text-xl font-semibold leading-6 token-text-primary">
               Keyboard shortcuts
             </DialogTitle>
             <DialogClose asChild>
-              <button className="flex h-8 w-8 items-center justify-center rounded-full bg-transparent hover:bg-token-main-surface-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-token-text-quaternary focus-visible:ring-offset-1 focus-visible:ring-offset-transparent dark:hover:bg-token-main-surface-tertiary sm:mt-0">
+              <button className="flex h-8 w-8 items-center justify-center rounded-full bg-transparent hover:token-surface-secondary focus-visible:outline-none dark:hover:bg-token-main-surface-tertiary sm:mt-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -70,10 +70,10 @@ const Shortcuts = () => {
         </DialogHeader>
         <div className="flex-grow overflow-y-auto p-4 sm:p-6">
           <div className="grid grid-flow-row gap-x-9 sm:grid-cols-1 md:grid-cols-2">
-            <div className="flex flex-col overflow-hidden">
+            <div className="flex flex-col overflow-hidden text-md">
               <div className="flex items-center justify-between overflow-hidden token-text-primary">
                 <ShortcutTitle title="Open new chat" />
-                <div className="ml-3 flex flex-row gap-2">
+                <div className="ml-3 flex flex-row gap-2 token-text-secondary">
                   <ShortcutBox shortcut="Ctrl" />
                   <ShortcutBox shortcut="Shift" />
                   <ShortcutBox shortcut="o" />
