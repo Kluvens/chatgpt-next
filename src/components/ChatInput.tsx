@@ -1,6 +1,6 @@
 import { useState, ChangeEvent, useRef, useEffect } from "react";
 import { Chat } from "@/types";
-import { FileUploadIcon } from "./icons/Icons";
+import { FileUploadIcon, SendMessageIcon } from "./icons/Icons";
 
 interface ChatInputProps {
   addChat: (message: string) => void;
@@ -97,9 +97,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ addChat }) => {
                     </div>
                     {/* Send Button */}
                     <button onClick={handleSendMessage} className="mb-1 mr-2 flex h-8 w-8 items-center justify-center rounded-full bg-black text-white transition-colors hover:opacity-70 focus-visible:outline-none focus-visible:outline-black disabled:bg-[#D7D7D7] disabled:text-[#f4f4f4] disabled:hover:opacity-100 dark:bg-white dark:text-black dark:focus-visible:outline-white disabled:dark:bg-token-text-quaternary dark:disabled:text-token-main-surface-secondary" disabled={!message.trim()}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32" className="icon-2xl">
-                        <path fill="currentColor" fillRule="evenodd" d="M15.192 8.906a1.143 1.143 0 0 1 1.616 0l5.143 5.143a1.143 1.143 0 0 1-1.616 1.616l-3.192-3.192v9.813a1.143 1.143 0 0 1-2.286 0v-9.813l-3.192 3.192a1.143 1.143 0 1 1-1.616-1.616z" clipRule="evenodd"></path>
-                      </svg>
+                      <SendMessageIcon />
                     </button>
                   </div>
                 </div>

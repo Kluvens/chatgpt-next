@@ -76,7 +76,7 @@ const ModelMessage: React.FC<ModelMessageProps> = ({ response, onToggleMarkBad, 
               <div className="absolute mt-1 flex gap-3 hidden group-hover/conversation-turn:flex z-10">
                 <div className="items-center justify-start rounded-xl p-1 z-10 -mt-1 bg-token-main-surface-primary md:absolute md:border md:border-token-border-light">
                   <div className="flex items-center">
-                    <span className="" data-state="closed">
+                    <span className="">
                       <button className="rounded-lg token-text-secondary hover:token-surface-secondary" onClick={playAudio}>
                         <span className="flex h-[30px] w-[30px] items-center justify-center">
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" className="icon-md-heavy">
@@ -85,7 +85,7 @@ const ModelMessage: React.FC<ModelMessageProps> = ({ response, onToggleMarkBad, 
                         </span>
                       </button>
                     </span>
-                    <span className="" data-state="closed">
+                    <span className="">
                       <button className="rounded-lg token-text-secondary hover:token-surface-secondary" onClick={copyToClipboard}>
                         <span className="flex h-[30px] w-[30px] items-center justify-center">
                           {copied ? (
@@ -96,7 +96,7 @@ const ModelMessage: React.FC<ModelMessageProps> = ({ response, onToggleMarkBad, 
                         </span>
                       </button>
                     </span>
-                    <span className="" data-state="closed">
+                    <span className="">
                       <button className="rounded-lg token-text-secondary hover:token-surface-secondary" onClick={handleRegenerateClick}>
                         <span className="flex h-[30px] w-[30px] items-center justify-center">
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" className="icon-md-heavy">
@@ -105,7 +105,7 @@ const ModelMessage: React.FC<ModelMessageProps> = ({ response, onToggleMarkBad, 
                         </span>
                       </button>
                     </span>
-                    <span className="" data-state="closed">
+                    <span className="">
                       <button className="rounded-lg token-text-secondary hover:token-surface-secondary" onClick={onToggleMarkBad}>
                         <span className="flex h-[30px] w-[30px] items-center justify-center">
                           {response.isResponseBad ? (

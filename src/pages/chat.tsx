@@ -23,7 +23,7 @@ const Home: React.FC = () => {
 
   const containerVariants = {
     close: {
-      width: "0rem",
+      width: "0px",
       transition: {
         type: "spring",
         duration: 1,

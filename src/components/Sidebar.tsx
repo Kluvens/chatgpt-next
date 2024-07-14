@@ -48,7 +48,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
         <div className="relative h-full w-full flex-1 items-start border-white/20">
           <nav className="flex h-full w-full flex-col px-3 pb-3.5">
             <div className="flex justify-between flex h-14 items-center">
-              <span className="" data-state="closed">
+              <span className="">
                 <button
                   className="h-10 rounded-lg px-2 token-text-secondary focus-visible:outline-0 hover:token-surface-secondary focus-visible:token-surface-secondary"
                   onClick={toggleSidebar}
@@ -56,7 +56,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
                   <CollapseIcon />
                 </button>
               </span>
-              <span className="" data-state="closed">
+              <span className="">
                 <button className="h-10 rounded-lg px-2 token-text-secondary focus-visible:outline-0 hover:token-surface-secondary focus-visible:token-surface-secondary">
                   <NewChatIcon />
                 </button>

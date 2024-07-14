@@ -38,25 +38,23 @@ const UserMessage: React.FC<UserMessageProps> = ({ message, onUpdate }) => {
               {isEditing ? (
                 <div className="flex-col gap-1 md:gap-3 rounded-3xl token-surface-secondary">
                   <div className="flex flex-grow flex-col max-w-full">
-                    <div className="bg-token-main-surface-tertiary juice:py-3">
-                      <div className="grid">
-                        <textarea
-                          className="rounded-3xl min-h-36 col-start-1 col-end-2 row-start-1 row-end-2 resize-none overflow-hidden m-0 border-0 bg-transparent p-6 focus:outline-none"
-                          value={editedMessage}
-                          onChange={handleInputChange}
-                        ></textarea>
-                        <span className="invisible col-start-1 col-end-2 row-start-1 row-end-2 whitespace-pre-wrap p-2">
-                          {editedMessage}
-                        </span>
-                      </div>
-                      <div className="flex justify-end absolute bottom-5 right-4 gap-2">
-                        <Button variant={'secondary'} className="rounded-full" onClick={handleCancelClick}>
-                          <div className="flex items-center justify-center">Cancel</div>
-                        </Button>
-                        <Button variant={'default'} className="rounded-full" onClick={handleSendClick}>
-                          <div className="flex items-center justify-center">Send</div>
-                        </Button>
-                      </div>
+                    <div className="grid">
+                      <textarea
+                        className="rounded-3xl min-h-36 col-start-1 col-end-2 row-start-1 row-end-2 resize-none overflow-hidden m-0 border-0 bg-transparent p-6 focus:outline-none"
+                        value={editedMessage}
+                        onChange={handleInputChange}
+                      ></textarea>
+                      <span className="invisible col-start-1 col-end-2 row-start-1 row-end-2 whitespace-pre-wrap p-2">
+                        {editedMessage}
+                      </span>
+                    </div>
+                    <div className="flex justify-end absolute bottom-5 right-4 gap-2">
+                      <Button variant={'secondary'} className="rounded-full" onClick={handleCancelClick}>
+                        <div className="flex items-center justify-center">Cancel</div>
+                      </Button>
+                      <Button variant={'default'} className="rounded-full" onClick={handleSendClick}>
+                        <div className="flex items-center justify-center">Send</div>
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -66,7 +64,7 @@ const UserMessage: React.FC<UserMessageProps> = ({ message, onUpdate }) => {
                     <div className="relative max-w-[70%] rounded-3xl bg-[#f4f4f4] px-5 py-2.5 dark:bg-token-main-surface-secondary">
                       <div>{message}</div>
                       <div className="absolute bottom-0 right-full top-0 -mr-3.5 hidden pr-5 pt-1 group-hover/conversation-turn:block">
-                        <span className="" data-state="closed">
+                        <span className="">
                           <button className="flex h-9 w-9 items-center justify-center rounded-full token-text-secondary transition hover:token-surface-secondary" onClick={handleEditClick}>
                             <EditIcon />
                           </button>

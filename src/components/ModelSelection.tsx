@@ -24,8 +24,8 @@ const ModelSelection = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className='focus-visible:outline-none'>
-        <div className="group flex cursor-pointer items-center gap-1 rounded-xl py-2 px-3 font-semibold hover:token-surface-secondary token-text-secondary overflow-hidden whitespace-nowrap">
+      <DropdownMenuTrigger className='rounded-xl focus-visible:outline-none focus-visible:token-surface-secondary hover:token-surface-secondary token-text-secondary'>
+        <div className="group flex cursor-pointer items-center gap-1 py-2 px-3 font-semibold overflow-hidden whitespace-nowrap">
           <div className="flex gap-2 token-text-secondary text-xl">
             ChatGPT
             <span className="token-text-secondary">{selectedModel}</span>
