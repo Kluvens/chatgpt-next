@@ -7,7 +7,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ModelSelectionDownArrow, ModelSelectionTick, Gpt3Icon, Gpt4Icon, Gpt4oIcon } from './icons/Icons';
+import { DownArrow, ModelSelectionTick, Gpt3Icon, Gpt4Icon, Gpt4oIcon } from './icons/Icons';
 
 const ModelSelection = () => {
   const [selectedModel, setSelectedModel] = useState('4o');
@@ -30,7 +30,7 @@ const ModelSelection = () => {
             ChatGPT
             <span className="token-text-secondary">{selectedModel}</span>
           </div>
-          <ModelSelectionDownArrow />
+          <DownArrow />
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" className="rounded-3xl w-96 py-2">

@@ -7,9 +7,21 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { PlanIcon, AppsIcon, CustomizeIcon, SettingsIcon, LogoutIcon } from "./icons/Icons";
-import Settings from "./Settings";
+import Settings from "./settings/Settings";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import CustomiseGpts from "./CustomiseGpts";
 
 const AvatarDropDown = () => {
+  const handleClick = (e: any) => {
+    e.preventDefault();
+    // Additional actions
+    console.log('DialogTrigger clicked!');
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="h-10 w-10 flex items-center justify-center rounded-full focus-visible:outline-0 focus-visible:token-surface-secondary hover:token-surface-secondary">
@@ -23,27 +35,34 @@ const AvatarDropDown = () => {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-80 rounded-3xl mr-4">
-        <DropdownMenuItem className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2" disabled>
+        <DropdownMenuItem className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-sm p-3 m-1.5 gap-2" disabled>
           <div className="flex items-center justify-center token-text-secondary h-5 w-5">
             <PlanIcon />
           </div>
           My plan
         </DropdownMenuItem>
-        <DropdownMenuItem className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2" disabled>
+        <DropdownMenuItem className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-sm p-3 m-1.5 gap-2" disabled>
           <div className="flex items-center justify-center token-text-secondary h-5 w-5">
             <AppsIcon />
           </div>
           My GPTs
         </DropdownMenuItem>
-        <DropdownMenuItem className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2" disabled>
-          <div className="flex items-center justify-center token-text-secondary h-5 w-5">
-            <CustomizeIcon />
-          </div>
-          Customize ChatGPT
+        <DropdownMenuItem className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-sm p-3 m-1.5 gap-2" onSelect={(e) => e.preventDefault()}>
+          <Dialog>
+            <DialogTrigger className="flex items-center gap-2">
+              <div className="flex items-center justify-center token-text-secondary h-5 w-5">
+                <CustomizeIcon />
+              </div>
+              Customize ChatGPT
+            </DialogTrigger>
+            <DialogContent>
+              <CustomiseGpts />
+            </DialogContent>
+          </Dialog>
         </DropdownMenuItem>
         <Settings />
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2" disabled>
+        <DropdownMenuItem className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-sm p-3 m-1.5 gap-2" disabled>
           <div className="flex items-center justify-center token-text-secondary h-5 w-5">
             <LogoutIcon />
           </div>
