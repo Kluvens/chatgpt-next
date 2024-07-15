@@ -23,7 +23,7 @@ const QuestionButton = () => {
     <div className="hidden md:fixed group bottom-3 end-3 z-10 gap-1 bottom-2 end-2 md:flex lg:bottom-3 lg:end-3">
       <DropdownMenu>
         <DropdownMenuTrigger className="focus-visible:outline-0">
-          <div className="flex h-6 w-6 items-center justify-center rounded-full border border-token-border-light text-xs text-token-text-secondary" id="radix-:r3:" aria-haspopup="menu" aria-expanded="false">?</div>
+          <div className="flex h-6 w-6 items-center justify-center rounded-full border border-token-border-light text-xs token-text-secondary" id="radix-:r3:" aria-haspopup="menu" aria-expanded="false">?</div>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-80 rounded-3xl mr-4">
           <DropdownMenuItem className='flex items-center cursor-pointer hover:by-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2' onClick={(e) => {

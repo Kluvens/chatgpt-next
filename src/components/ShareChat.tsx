@@ -12,6 +12,7 @@ import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button";
 import { ShareUpIcon } from "./icons/Icons";
 import { useState } from "react";
+import { Label } from "./ui/label";
 
 const ShareChat = () => {
   const [copied, setCopied] = useState(false);
@@ -42,9 +43,7 @@ const ShareChat = () => {
         </DialogHeader>
         <div className="flex items-center space-x-2">
           <div className="grid flex-1 gap-2">
-            <label htmlFor="link" className="sr-only">
-              Link
-            </label>
+            <Label htmlFor="link" className="sr-only">Link</Label>
             <input
               id="link"
               defaultValue="https://ui.shadcn.com/docs/installation"

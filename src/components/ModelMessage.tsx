@@ -52,7 +52,7 @@ const ModelMessage: React.FC<ModelMessageProps> = ({ response, onToggleMarkBad, 
         <div className="mx-auto flex flex-1 gap-3 text-base gap-4 md:gap-5 lg:gap-6 md:max-w-3xl lg:max-w-[40rem] xl:max-w-[48rem]">
           <div className="flex-shrink-0 flex flex-col relative items-end">
             <div className="gizmo-bot-avatar flex h-6 w-6 items-center justify-center overflow-hidden rounded-full h-8 w-8">
-              <div className="relative p-1 rounded-sm flex items-center justify-center bg-token-main-surface-primary text-token-text-primary h-8 w-8">
+              <div className="relative p-1 rounded-sm flex items-center justify-center bg-token-main-surface-primary token-text-primary h-8 w-8">
                 <ChatGptIcon />
               </div>
             </div>

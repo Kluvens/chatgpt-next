@@ -82,6 +82,9 @@
   .token-text-primary {
     @apply text-gray-900;
   }
+  .token-surface-primary {
+    @apply bg-white;
+  }
   .token-surface-secondary {
     @apply bg-gray-200;
   }

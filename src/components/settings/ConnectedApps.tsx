@@ -2,13 +2,13 @@ import { Button } from "@/components/ui/button";
 
 const ConnectedApps = () => {
   return (
-    <div data-state="active" data-orientation="vertical" role="tabpanel" className="max-h-[calc(100vh-150px)] w-full overflow-y-auto">
-   <div className="flex flex-col gap-3 px-4 pb-1 text-sm token-text-primary sm:px-6 sm:pb-2 md:ps-0 md:pt-5">
+    <div className="w-full overflow-y-auto">
+   <div className="flex flex-col gap-3 px-4 pb-1 text-sm token-text-primary sm:px-6 sm:pb-2 md:ps-0">
       <div className="flex flex-col">
-         <div className="border-b border-token-border-light pb-3 last-of-type:border-b-0">
+         <div className="border-b pb-3 last-of-type:border-b-0">
             <div className="my-2">Connect apps to access their information in ChatGPT.</div>
          </div>
-         <div className="border-b border-token-border-light pb-3 last-of-type:border-b-0">
+         <div className="border-b pb-3 last-of-type:border-b-0">
             <div className="flex flex-col gap-2 pb-1 pt-3">
                <div className="flex flex-row items-center gap-2">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" className="icon-lg">
@@ -27,7 +27,7 @@ const ConnectedApps = () => {
                <p className="token-text-secondary">Upload Google Docs, Sheets, Slides and other files.</p>
             </div>
          </div>
-         <div className="border-b border-token-border-light pb-3 last-of-type:border-b-0">
+         <div className="border-b pb-3 last-of-type:border-b-0">
             <div className="flex flex-col gap-2 pb-1 pt-3">
                <div className="flex flex-row items-center gap-2">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20" className="icon-lg">
@@ -44,7 +44,7 @@ const ConnectedApps = () => {
                <p className="token-text-secondary">Upload Microsoft Word, Excel, PowerPoint and other files.</p>
             </div>
          </div>
-         <div className="border-b border-token-border-light pb-3 last-of-type:border-b-0">
+         <div className="border-b pb-3 last-of-type:border-b-0">
             <div className="flex flex-col gap-2 pb-1 pt-3">
                <div className="flex flex-row items-center gap-2">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20" className="icon-lg">

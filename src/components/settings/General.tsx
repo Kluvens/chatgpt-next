@@ -1,22 +1,25 @@
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 
 const General = () => {
   return (
     <div className='w-full overflow-y-auto'>
       <div className='flex flex-col gap-3 px-4 pb-1 text-sm token-text-primary sm:px-6 sm:pb-2 md:ps-0'>
         <div className="border-b pb-3">
-          <div className="flex items-center justify-between">
-            <div>Theme</div>
-            <button type="button" className="token-text-primary border border-transparent inline-flex h-9 items-center justify-center gap-1 rounded-lg bg-white px-3 text-sm leading-none outline-none cursor-pointer hover:token-surface-secondary">
-              <span>System</span>
-              <span aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" className="icon-sm">
-                  <path fill="currentColor" fillRule="evenodd" d="M5.293 9.293a1 1 0 0 1 1.414 0L12 14.586l5.293-5.293a1 1 0 1 1 1.414 1.414l-6 6a1 1 0 0 1-1.414 0l-6-6a1 1 0 0 1 0-1.414" clipRule="evenodd"></path>
-                </svg>
-              </span>
-            </button>
-          </div>
+        <div className="flex items-center justify-between pt-1">
+          <div>Theme</div>
+          <Select defaultValue="system">
+            <SelectTrigger className="w-auto focus-visible:outline-none">
+              <SelectValue placeholder="Select a theme" />
+            </SelectTrigger>
+            <SelectContent className="rounded-xl token-text-primary p-1">
+              <SelectItem value="system" className="gap-2 cursor-pointer">System</SelectItem>
+              <SelectItem value="light" className="gap-2 cursor-pointer">Light</SelectItem>
+              <SelectItem value="dark" className="gap-2 cursor-pointer">Dark</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
         </div>
         <div className="border-b pb-3">
           <div className="flex items-center justify-between">
@@ -27,14 +30,18 @@ const General = () => {
         <div className="border-b pb-3">
           <div className="flex items-center justify-between">
             <div>Language</div>
-            <button type="button" className="token-text-primary border border-transparent inline-flex h-9 items-center justify-center gap-1 rounded-lg bg-white px-3 text-sm leading-none outline-none cursor-pointer hover:token-surface-secondary">
-              <span>Auto-detect</span>
-              <span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" className="icon-sm">
-                  <path fill="currentColor" fillRule="evenodd" d="M5.293 9.293a1 1 0 0 1 1.414 0L12 14.586l5.293-5.293a1 1 0 1 1 1.414 1.414l-6 6a1 1 0 0 1-1.414 0l-6-6a1 1 0 0 1 0-1.414" clipRule="evenodd"></path>
-                </svg>
-              </span>
-            </button>
+            <Select defaultValue="auto">
+              <SelectTrigger className="w-auto focus-visible:outline-none">
+                <SelectValue placeholder="Select a language" />
+              </SelectTrigger>
+              <SelectContent className="rounded-xl token-text-primary p-1">
+                <SelectItem value="auto" className="gap-2 cursor-pointer">Auto-detect</SelectItem>
+                <SelectItem value="english" className="gap-2 cursor-pointer">English</SelectItem>
+                <SelectItem value="french" className="gap-2 cursor-pointer">French</SelectItem>
+                <SelectItem value="japanese" className="gap-2 cursor-pointer">Japanese</SelectItem>
+                <SelectItem value="chinese" className="gap-2 cursor-pointer">Chinese</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
         </div>
         <div className="border-b pb-3">

@@ -1,7 +1,9 @@
+import { Button } from "../ui/button";
+
 const DataControl = () => {
   return (
-    <div data-state="active" data-orientation="vertical" role="tabpanel" className="max-h-[calc(100vh-150px)] w-full overflow-y-auto">
-   <div className="flex flex-col gap-3 px-4 pb-1 text-sm token-text-primary sm:px-6 sm:pb-2 md:ps-0 md:pt-5">
+    <div className="max-h-[calc(100vh-150px)] w-full overflow-y-auto">
+   <div className="flex flex-col gap-3 px-4 pb-1 text-sm token-text-primary sm:px-6 sm:pb-2 md:ps-0">
       <div className="border-b border-token-border-light pb-3 last-of-type:border-b-0">
          <button className="w-full">
             <div className="flex items-center justify-between">
@@ -20,9 +22,9 @@ const DataControl = () => {
             <div>
                <div>Shared links</div>
             </div>
-            <button className="btn relative btn-secondary shrink-0">
+            <Button variant={"outline"} className="relative rounded-full border shrink-0">
                <div className="flex items-center justify-center">Manage</div>
-            </button>
+            </Button>
          </div>
       </div>
       <div className="border-b border-token-border-light pb-3 last-of-type:border-b-0">
@@ -30,9 +32,9 @@ const DataControl = () => {
             <div>
                <div>Export data</div>
             </div>
-            <button className="btn relative btn-secondary shrink-0">
+            <Button variant={"outline"} className="relative rounded-full border shrink-0">
                <div className="flex items-center justify-center">Export</div>
-            </button>
+            </Button>
          </div>
       </div>
       <div className="border-b border-token-border-light pb-3 last-of-type:border-b-0">
@@ -40,9 +42,9 @@ const DataControl = () => {
             <div>
                <div>Delete account</div>
             </div>
-            <button className="btn relative btn-danger shrink-0">
+            <Button variant={"destructive"} className="relative rounded-full border shrink-0">
                <div className="flex items-center justify-center">Delete</div>
-            </button>
+            </Button>
          </div>
       </div>
    </div>

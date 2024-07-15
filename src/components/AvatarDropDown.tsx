@@ -14,6 +14,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import CustomiseGpts from "./CustomiseGpts";
+import MyPlan from "./plan/MyPlan";
+import Link from "next/link";
 
 const AvatarDropDown = () => {
   const handleClick = (e: any) => {
@@ -35,12 +37,7 @@ const AvatarDropDown = () => {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-80 rounded-3xl mr-4">
-        <DropdownMenuItem className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-sm p-3 m-1.5 gap-2" disabled>
-          <div className="flex items-center justify-center token-text-secondary h-5 w-5">
-            <PlanIcon />
-          </div>
-          My plan
-        </DropdownMenuItem>
+        <MyPlan/>
         <DropdownMenuItem className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-sm p-3 m-1.5 gap-2" disabled>
           <div className="flex items-center justify-center token-text-secondary h-5 w-5">
             <AppsIcon />
@@ -48,26 +45,19 @@ const AvatarDropDown = () => {
           My GPTs
         </DropdownMenuItem>
         <DropdownMenuItem className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-sm p-3 m-1.5 gap-2" onSelect={(e) => e.preventDefault()}>
-          <Dialog>
-            <DialogTrigger className="flex items-center gap-2">
-              <div className="flex items-center justify-center token-text-secondary h-5 w-5">
-                <CustomizeIcon />
-              </div>
-              Customize ChatGPT
-            </DialogTrigger>
-            <DialogContent>
-              <CustomiseGpts />
-            </DialogContent>
-          </Dialog>
+            <CustomiseGpts />
         </DropdownMenuItem>
         <Settings />
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-sm p-3 m-1.5 gap-2" disabled>
+        <Link href={"/"}>
+        <DropdownMenuItem className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-sm p-3 m-1.5 gap-2">
           <div className="flex items-center justify-center token-text-secondary h-5 w-5">
             <LogoutIcon />
           </div>
           Log out
         </DropdownMenuItem>
+        </Link>
+        
       </DropdownMenuContent>
     </DropdownMenu>
   );

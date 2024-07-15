@@ -22,6 +22,7 @@ import {
   ConnectedIcon,
   SecurityIcon,
   ShortCutsIcon,
+  CrossIcon,
 } from "../icons/Icons";
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import ShortcutBox from './ShortcutBox';
@@ -49,21 +50,7 @@ const Shortcuts = () => {
             </DialogTitle>
             <DialogClose asChild>
               <button className="flex h-8 w-8 items-center justify-center rounded-full bg-transparent hover:token-surface-secondary focus-visible:outline-none dark:hover:bg-token-main-surface-tertiary sm:mt-0">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  className="icon-md"
-                >
-                  <path
-                    fill="currentColor"
-                    fillRule="evenodd"
-                    d="M5.636 5.636a1 1 0 0 1 1.414 0l4.95 4.95 4.95-4.95a1 1 0 0 1 1.414 1.414L13.414 12l4.95 4.95a1 1 0 0 1-1.414 1.414L12 13.414l-4.95 4.95a1 1 0 0 1-1.414-1.414l4.95-4.95-4.95-4.95a1 1 0 0 1 0-1.414"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
+                <CrossIcon />
               </button>
             </DialogClose>
           </div>
