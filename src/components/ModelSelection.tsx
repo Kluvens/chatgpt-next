@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,24 +7,42 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { DownArrow, ModelSelectionTick, Gpt3Icon, Gpt4Icon, Gpt4oIcon } from './icons/Icons';
+import {
+  DownArrow,
+  ModelSelectionTick,
+  Gpt3Icon,
+  Gpt4Icon,
+  Gpt4oIcon,
+} from "./icons/Icons";
 
 const ModelSelection = () => {
-  const [selectedModel, setSelectedModel] = useState('4o');
+  const [selectedModel, setSelectedModel] = useState("4o");
 
   const handleModelSelect = (model: string) => {
     setSelectedModel(model);
   };
 
   const models = [
-    { name: '4o', description: 'Newest and most advanced model', icon: (<Gpt4oIcon/>) },
-    { name: '4', description: 'Advanced model for complex tasks', icon: (<Gpt4Icon/>) },
-    { name: '3.5', description: 'Great for everyday tasks', icon: (<Gpt3Icon/>) },
+    {
+      name: "4o",
+      description: "Newest and most advanced model",
+      icon: <Gpt4oIcon />,
+    },
+    {
+      name: "4",
+      description: "Advanced model for complex tasks",
+      icon: <Gpt4Icon />,
+    },
+    {
+      name: "3.5",
+      description: "Great for everyday tasks",
+      icon: <Gpt3Icon />,
+    },
   ];
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className='rounded-xl focus-visible:outline-none focus-visible:token-surface-secondary hover:token-surface-secondary token-text-secondary'>
+      <DropdownMenuTrigger className="rounded-xl focus-visible:outline-none focus-visible:token-surface-secondary hover:token-surface-secondary token-text-secondary">
         <div className="group flex cursor-pointer items-center gap-1 py-2 px-3 font-semibold overflow-hidden whitespace-nowrap">
           <div className="flex gap-2 token-text-secondary text-xl">
             ChatGPT
@@ -47,7 +65,7 @@ const ModelSelection = () => {
           >
             <div className="flex grow items-center justify-between gap-2">
               <div className="flex items-center gap-3">
-                <div className='flex items-center token-surface-secondary rounded-full p-1.5'>
+                <div className="flex items-center token-surface-secondary rounded-full p-1.5">
                   {model.icon}
                 </div>
                 <div className="flex flex-col gap-1">

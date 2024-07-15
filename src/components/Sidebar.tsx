@@ -1,6 +1,6 @@
-import React from 'react';
-import HistoryItem from './HistoryItem';
-import { CollapseIcon, NewChatIcon } from './icons/Icons';
+import React from "react";
+import HistoryItem from "./HistoryItem";
+import { CollapseIcon, NewChatIcon } from "./icons/Icons";
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -10,35 +10,35 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
   const chatHistory = {
     today: [
-      'Interact Next js with the backend',
-      'This is second for today',
-      'This is third for today',
+      "Interact Next js with the backend",
+      "This is second for today",
+      "This is third for today",
     ],
     yesterday: [
-      'This is first for yesterday',
-      'This is second for yesterday',
-      'This is third for yesterday',
-      'This is fourth for yesterday',
-      'This is first for yesterday',
-      'This is second for yesterday',
-      'This is third for yesterday',
-      'This is fourth for yesterday',
-      'This is first for yesterday',
-      'This is second for yesterday',
-      'This is third for yesterday',
-      'This is fourth for yesterday',
-      'This is first for yesterday',
-      'This is second for yesterday',
-      'This is third for yesterday',
-      'This is fourth for yesterday',
-      'This is first for yesterday',
-      'This is second for yesterday',
-      'This is third for yesterday',
-      'This is fourth for yesterday',
-      'This is first for yesterday',
-      'This is second for yesterday',
-      'This is third for yesterday',
-      'This is fourth for yesterday',
+      "This is first for yesterday",
+      "This is second for yesterday",
+      "This is third for yesterday",
+      "This is fourth for yesterday",
+      "This is first for yesterday",
+      "This is second for yesterday",
+      "This is third for yesterday",
+      "This is fourth for yesterday",
+      "This is first for yesterday",
+      "This is second for yesterday",
+      "This is third for yesterday",
+      "This is fourth for yesterday",
+      "This is first for yesterday",
+      "This is second for yesterday",
+      "This is third for yesterday",
+      "This is fourth for yesterday",
+      "This is first for yesterday",
+      "This is second for yesterday",
+      "This is third for yesterday",
+      "This is fourth for yesterday",
+      "This is first for yesterday",
+      "This is second for yesterday",
+      "This is third for yesterday",
+      "This is fourth for yesterday",
     ],
   };
 

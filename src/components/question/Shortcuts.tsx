@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Dialog,
   DialogClose,
@@ -25,8 +25,8 @@ import {
   CrossIcon,
 } from "../icons/Icons";
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
-import ShortcutBox from './ShortcutBox';
-import ShortcutTitle from './ShortcutTitle';
+import ShortcutBox from "./ShortcutBox";
+import ShortcutTitle from "./ShortcutTitle";
 
 const Shortcuts = () => {
   return (

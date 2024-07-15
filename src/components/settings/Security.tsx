@@ -14,7 +14,10 @@ const Security = () => {
                 recover your account via email.
               </div>
             </div>
-            <Button variant={"outline"} className="rounded-full border shrink-0">
+            <Button
+              variant={"outline"}
+              className="rounded-full border shrink-0"
+            >
               <div className="flex items-center justify-center">Enable</div>
             </Button>
           </div>
@@ -29,7 +32,10 @@ const Security = () => {
                 devices to be logged out.
               </div>
             </div>
-            <Button variant={"outline"} className="rounded-full border shrink-0">
+            <Button
+              variant={"outline"}
+              className="rounded-full border shrink-0"
+            >
               <div className="flex items-center justify-center">
                 <div>Log out all</div>
               </div>

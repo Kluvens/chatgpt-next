@@ -7,20 +7,20 @@ interface ChatInputProps {
 }
 
 const ChatInput: React.FC<ChatInputProps> = ({ addChat }) => {
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const adjustTextareaHeight = () => {
     if (textareaRef.current) {
-      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = "auto";
       const scrollHeight = textareaRef.current.scrollHeight;
       if (scrollHeight <= 200) {
         textareaRef.current.style.height = `${scrollHeight}px`;
-        textareaRef.current.style.overflowY = 'hidden';
+        textareaRef.current.style.overflowY = "hidden";
       } else {
-        textareaRef.current.style.height = '200px';
-        textareaRef.current.style.overflowY = 'scroll';
+        textareaRef.current.style.height = "200px";
+        textareaRef.current.style.overflowY = "scroll";
       }
     }
   };
@@ -38,7 +38,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ addChat }) => {
     e.preventDefault();
     const files = e.target.files;
     if (files) {
-      console.log('Selected files:', files);
+      console.log("Selected files:", files);
       // Process the files as needed
     }
   };
@@ -46,12 +46,12 @@ const ChatInput: React.FC<ChatInputProps> = ({ addChat }) => {
   const handleSendMessage = async () => {
     if (message.trim()) {
       addChat(message.trim());
-      setMessage('');
+      setMessage("");
     }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSendMessage();
     }
@@ -76,8 +76,20 @@ const ChatInput: React.FC<ChatInputProps> = ({ addChat }) => {
                   <div className="flex items-end">
                     {/* Upload File */}
                     <div className="flex flex-col">
-                      <input ref={fileInputRef} onChange={handleFileChange} multiple type="file" tabIndex={-1} className="hidden" style={{ display: 'none' }} />
-                      <button onClick={handleButtonClick} className="flex items-center justify-center token-text-primary h-8 w-8 dark:text-white rounded-full focus-visible:outline-black dark:focus-visible:outline-white mb-1 ml-2" aria-disabled="false">
+                      <input
+                        ref={fileInputRef}
+                        onChange={handleFileChange}
+                        multiple
+                        type="file"
+                        tabIndex={-1}
+                        className="hidden"
+                        style={{ display: "none" }}
+                      />
+                      <button
+                        onClick={handleButtonClick}
+                        className="flex items-center justify-center token-text-primary h-8 w-8 dark:text-white rounded-full focus-visible:outline-black dark:focus-visible:outline-white mb-1 ml-2"
+                        aria-disabled="false"
+                      >
                         <FileUploadIcon />
                       </button>
                     </div>
@@ -96,7 +108,11 @@ const ChatInput: React.FC<ChatInputProps> = ({ addChat }) => {
                       />
                     </div>
                     {/* Send Button */}
-                    <button onClick={handleSendMessage} className="mb-1 mr-2 flex h-8 w-8 items-center justify-center rounded-full bg-black text-white transition-colors hover:opacity-70 focus-visible:outline-none focus-visible:outline-black disabled:bg-[#D7D7D7] disabled:text-[#f4f4f4] disabled:hover:opacity-100 dark:bg-white dark:text-black dark:focus-visible:outline-white disabled:dark:bg-token-text-quaternary dark:disabled:tokensurface-secondary" disabled={!message.trim()}>
+                    <button
+                      onClick={handleSendMessage}
+                      className="mb-1 mr-2 flex h-8 w-8 items-center justify-center rounded-full bg-black text-white transition-colors hover:opacity-70 focus-visible:outline-none focus-visible:outline-black disabled:bg-[#D7D7D7] disabled:text-[#f4f4f4] disabled:hover:opacity-100 dark:bg-white dark:text-black dark:focus-visible:outline-white disabled:dark:bg-token-text-quaternary dark:disabled:tokensurface-secondary"
+                      disabled={!message.trim()}
+                    >
                       <SendMessageIcon />
                     </button>
                   </div>
@@ -113,6 +129,6 @@ const ChatInput: React.FC<ChatInputProps> = ({ addChat }) => {
       </div>
     </div>
   );
-}
+};
 
 export default ChatInput;

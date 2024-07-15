@@ -1,5 +1,5 @@
-import React, { memo, useState } from 'react';
-import { EditIcon } from './icons/Icons';
+import React, { memo, useState } from "react";
+import { EditIcon } from "./icons/Icons";
 import { Button } from "@/components/ui/button";
 
 interface UserMessageProps {
@@ -30,7 +30,11 @@ const UserMessage: React.FC<UserMessageProps> = ({ message, onUpdate }) => {
   };
 
   return (
-    <div className="w-full token-text-primary" dir="auto" data-scroll-anchor="false">
+    <div
+      className="w-full token-text-primary"
+      dir="auto"
+      data-scroll-anchor="false"
+    >
       <div className="py-5 px-3 text-base md:px-4 m-auto md:px-5 lg:px-1 xl:px-5">
         <div className="mx-auto flex flex-1 gap-3 text-base gap-4 md:gap-5 lg:gap-6 md:max-w-3xl">
           <div className="group/conversation-turn relative flex w-full min-w-0 flex-col">
@@ -49,11 +53,23 @@ const UserMessage: React.FC<UserMessageProps> = ({ message, onUpdate }) => {
                       </span>
                     </div>
                     <div className="flex justify-end absolute bottom-5 right-4 gap-2">
-                      <Button variant={'secondary'} className="rounded-full" onClick={handleCancelClick}>
-                        <div className="flex items-center justify-center">Cancel</div>
+                      <Button
+                        variant={"secondary"}
+                        className="rounded-full"
+                        onClick={handleCancelClick}
+                      >
+                        <div className="flex items-center justify-center">
+                          Cancel
+                        </div>
                       </Button>
-                      <Button variant={'default'} className="rounded-full" onClick={handleSendClick}>
-                        <div className="flex items-center justify-center">Send</div>
+                      <Button
+                        variant={"default"}
+                        className="rounded-full"
+                        onClick={handleSendClick}
+                      >
+                        <div className="flex items-center justify-center">
+                          Send
+                        </div>
                       </Button>
                     </div>
                   </div>
@@ -65,7 +81,10 @@ const UserMessage: React.FC<UserMessageProps> = ({ message, onUpdate }) => {
                       <div>{message}</div>
                       <div className="absolute bottom-0 right-full top-0 -mr-3.5 hidden pr-5 pt-1 group-hover/conversation-turn:block">
                         <span className="">
-                          <button className="flex h-9 w-9 items-center justify-center rounded-full token-text-secondary transition hover:token-surface-secondary" onClick={handleEditClick}>
+                          <button
+                            className="flex h-9 w-9 items-center justify-center rounded-full token-text-secondary transition hover:token-surface-secondary"
+                            onClick={handleEditClick}
+                          >
                             <EditIcon />
                           </button>
                         </span>
