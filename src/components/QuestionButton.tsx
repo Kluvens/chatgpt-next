@@ -31,8 +31,6 @@ const QuestionButton = () => {
           <div
             className="flex h-6 w-6 items-center justify-center rounded-full border border-token-border-light text-xs token-text-secondary"
             id="radix-:r3:"
-            aria-haspopup="menu"
-            aria-expanded="false"
           >
             ?
           </div>

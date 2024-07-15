@@ -88,7 +88,6 @@ const ChatInput: React.FC<ChatInputProps> = ({ addChat }) => {
                       <button
                         onClick={handleButtonClick}
                         className="flex items-center justify-center token-text-primary h-8 w-8 dark:text-white rounded-full focus-visible:outline-black dark:focus-visible:outline-white mb-1 ml-2"
-                        aria-disabled="false"
                       >
                         <FileUploadIcon />
                       </button>

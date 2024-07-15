@@ -1,5 +1,12 @@
 import { DownArrow, SpeechRadioPlayIcon } from "../icons/Icons";
 import { Button } from "../ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 const Speech = () => {
   return (
@@ -20,12 +27,28 @@ const Speech = () => {
                   </div>
                 </Button>
                 <div className="h-4 border-l"></div>
-                <button className="token-text-primary border border-transparent inline-flex h-9 items-center justify-center gap-1 rounded-lg bg-white px-3 text-sm dark:transparent dark:bg-transparent leading-none outline-none cursor-pointer hover:token-surface-secondary dark:hover:token-surface-secondary focus-visible:token-surface-secondary radix-state-active:token-text-secondary radix-disabled:cursor-auto radix-disabled:bg-transparent radix-disabled:token-text-tertiary dark:radix-disabled:bg-transparent">
-                  <span>Cove</span>
-                  <span aria-hidden="true">
-                    <DownArrow />
-                  </span>
-                </button>
+                <Select defaultValue="cove">
+                  <SelectTrigger className="w-auto border-none shadow-none outline-none hover:token-surface-secondary focus-visible:outline-none ring-0 focus:ring-0">
+                    <SelectValue placeholder="Select a theme" />
+                  </SelectTrigger>
+                  <SelectContent className="rounded-xl token-text-primary p-1">
+                    <SelectItem value="cove" className="gap-2 cursor-pointer">
+                      Cove
+                    </SelectItem>
+                    <SelectItem value="breeze" className="gap-2 cursor-pointer">
+                      Breeze
+                    </SelectItem>
+                    <SelectItem value="ember" className="gap-2 cursor-pointer">
+                      Ember
+                    </SelectItem>
+                    <SelectItem
+                      value="juniper"
+                      className="gap-2 cursor-pointer"
+                    >
+                      Juniper
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
             </div>
           </div>

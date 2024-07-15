@@ -32,7 +32,10 @@ const ShareChat = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button className="flex items-center justify-center h-10 rounded-lg px-2 token-text-secondary focus-visible:outline-0 hover:token-surface-secondary focus-visible:token-surface-secondary">
+        <button
+          aria-label="Share chat button"
+          className="flex items-center justify-center h-10 rounded-lg px-2 token-text-secondary focus-visible:outline-0 hover:token-surface-secondary focus-visible:token-surface-secondary"
+        >
           <ShareUpIcon />
         </button>
       </DialogTrigger>
