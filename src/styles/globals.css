@@ -92,3 +92,13 @@
     @apply text-gray-400;
   }
 }
+
+@layer utilities {
+  .bg-base {
+    background: #f9f9f9;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
