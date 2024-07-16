@@ -25,8 +25,8 @@ export default function Home() {
                   writing, learning, brainstorming, and more.
                 </p>
               </div>
-              <div className="flex mt-4 min-h-16 justify-between">
-                <div className="flex gap-4 items-start md:items-center md:flex-row2 items-center">
+              <div className="flex mt-8 md:mt-4 min-h-16 justify-between">
+                <div className="flex flex-col gap-4 items-start md:items-center md:flex-row items-center">
                   <Button className="rounded-full px-xs text-nowrap">
                     <Link
                       href="/chat/123"
@@ -90,7 +90,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="w-full grid grid-cols-12 my-16 max-w-[68rem] mx-auto">
+      <div className="w-full grid grid-cols-12 my-16 max-w-[68rem] mx-auto px-5 lg:px-0">
         <div className="col-span-12">
           <div className="w-full h-full grid gap-1 grid-cols-1 md:grid-cols-1 max-w-[68rem] p-0">
             <div
@@ -148,7 +148,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="w-full grid grid-cols-12 my-16 max-w-[68rem] mx-auto">
+      <div className="w-full grid grid-cols-12 my-16 max-w-[68rem] mx-auto px-5 lg:px-0">
         <div className="col-span-12">
           <div className="w-full h-full grid gap-3 grid-cols-1 md:grid-cols-1 max-w-[68rem] mx-auto p-0">
             <div
@@ -253,7 +253,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="w-full grid grid-cols-12 my-16 max-w-[68rem] mx-auto">
+      <div className="w-full grid grid-cols-12 my-16 max-w-[68rem] mx-auto px-5 lg:px-0">
         <div className="col-span-12">
           <div className="w-full h-full grid gap-3 grid-cols-1 md:grid-cols-1 max-w-[68rem] mx-auto p-0">
             <div
@@ -357,7 +357,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="w-full grid grid-cols-12 my-16 max-w-[68rem] mx-auto">
+      <div className="w-full grid grid-cols-12 my-16 max-w-[68rem] mx-auto px-5 lg:px-0">
         <div className="col-span-12">
           <div className="w-full h-full grid gap-3 grid-cols-1 md:grid-cols-1 max-w-[68rem] mx-auto p-0">
             <div
