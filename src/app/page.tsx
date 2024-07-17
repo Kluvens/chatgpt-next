@@ -1,7 +1,12 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { InfiniteMovingCards } from "../components/ui/infinite-moving-cards";
+import { useRef } from "react";
+import VideoPlayer from "@/components/VideoPlayer";
+import { ListItemTickIcon } from "@/components/icons/Icons";
 
 export default function Home() {
   const testimonials = [
@@ -36,6 +41,10 @@ export default function Home() {
     },
   ];
 
+  const videoRefOne = useRef<HTMLVideoElement>(null);
+  const videoRefTwo = useRef<HTMLVideoElement>(null);
+  const videoRefThree = useRef<HTMLVideoElement>(null);
+
   return (
     <div className="flex flex-col justify-center pt-24 bg-base">
       <div className="relative mb-4">
@@ -54,7 +63,7 @@ export default function Home() {
               </div>
               <div className="flex mt-8 md:mt-4 min-h-16 justify-between">
                 <div className="flex flex-col gap-4 items-start md:items-center md:flex-row items-center">
-                  <Button className="rounded-full px-6 text-nowrap">
+                  <Button className="rounded-full px-6 py-2 text-nowrap">
                     <Link
                       href="/chat/123"
                       className="text-nowrap min-h-16 flex items-center justify-center gap-[0.3em] text-md"
@@ -80,7 +89,7 @@ export default function Home() {
                     </Link>
                   </Button>
                   <Link
-                    className="text-btn-secondary-label border-b border-transparent relative group focus-visible:border-gray-50 focus-visible:border-transparent focus-visible:rounded-s py-1 flex items-center justify-center gap-[0.3em] text-cta"
+                    className="text-btn-secondary-label border-b border-transparent relative group focus-visible:border-gray-50 focus-visible:border-transparent focus-visible:rounded-md py-1 flex items-center justify-center gap-[0.3em] text-sm font-normal leading-normal"
                     href="/chatgpt/download/"
                   >
                     Download the app
@@ -478,11 +487,11 @@ export default function Home() {
       </div>
       <div className="max-w-[68rem] mx-auto px-5 lg:px-0 mt-16 md:mt-20">
         <div className="token-surface-primary md:grid md:grid-cols-2 overflow-hidden rounded-md">
-          <div className="px-6 py-12 md:p-l flex flex-col self-center">
+          <div className="px-6 py-12 md:p-16 flex flex-col self-center">
             <h5 className="text-2xl leading-tight font-medium mb-6">
               Type, talk, and use it your way
             </h5>
-            <div className="text-component mb-v mt-v max-w-[68rem] mx-auto px-5 lg:px-0 grid grid-cols-12 text-left !my-0 !flex !px-0 !mx-0 not-prose">
+            <div className="my-6 max-w-[68rem] mx-auto px-5 lg:px-0 grid grid-cols-12 text-left !my-0 !flex !px-0 !mx-0 not-prose">
               <div className="col-span-12 md:col-span-8 md:col-start-3 max-w-none prose opacity-100">
                 <p>
                   <span>
@@ -498,103 +507,16 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="h-full w-full">
-            <div
-              className="w-full mx-auto transition-opacity ease-curve-c duration-normal max-w-media relative"
-              data-caption-height="0"
-              data-caption-open="false"
-            >
-              <div className="relative w-full" style={{ aspectRatio: "1 / 1" }}>
-                <div
-                  tabIndex={0}
-                  className="relative rounded-s flex w-full overflow-hidden h-full group outline-none aspect-1/1"
-                >
-                  <video
-                    playsInline
-                    muted
-                    autoPlay
-                    className="aspect-1/1 md:aspect-1/1 lg:aspect-1/1 min-w-full min-h-full absolute left-0 top-0 w-full h-full object-cover"
-                  >
-                    <source
-                      src="https://cdn.openai.com/chatgpt/use_it_your_way.mp4"
-                      type="video/mp4"
-                    />
-                    Your browser does not support the video tag.
-                  </video>
-                  <div className="top-0 items-center absolute left-0 right-0 p-1 md:p-2 flex justify-between gap-1 text-gray-0 text-caption z-[1] transition-opacity duration-normal">
-                    <div className="justify-start items-center flex flex-row-reverse w-full gap-1">
-                      <button
-                        type="button"
-                        className="flex items-center justify-center disabled:text-gray-40 focus-visible:outline-offset-0 rounded-s w-[24px] h-[24px] hover:bg-btn-secondary-base--hover"
-                        aria-label="Pause video"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          viewBox="0 0 10 12"
-                          fill="none"
-                        >
-                          <rect
-                            width="3"
-                            height="11"
-                            y=".5"
-                            fill="currentColor"
-                            rx="1.5"
-                          ></rect>
-                          <rect
-                            width="3"
-                            height="11"
-                            x="7"
-                            y=".5"
-                            fill="currentColor"
-                            rx="1.5"
-                          ></rect>
-                        </svg>
-                      </button>
-                      <button
-                        type="button"
-                        className="flex items-center justify-center disabled:text-gray-40 focus-visible:outline-offset-0 rounded-s w-[24px] h-[24px] hover:bg-btn-secondary-base--hover"
-                        aria-label="Unmute"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="18"
-                          viewBox="0 0 18 18"
-                          fill="none"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M4.45913 6.36864L4.45569 6.37159C4.43756 6.38712 4.41448 6.39566 4.39061 6.39566H2.34614C1.62817 6.39566 1.04614 6.97769 1.04614 7.69566V10.5004C1.04614 11.2184 1.62817 11.8004 2.34614 11.8004H4.42523C4.44607 11.8004 4.46639 11.807 4.48335 11.8191L7.39872 13.9015C8.25915 14.5161 9.45433 13.901 9.45433 12.8436V11.3638L8.25433 10.1638V12.8436C8.25433 12.925 8.1624 12.9723 8.09621 12.925L5.18084 10.8426C4.96036 10.6851 4.69618 10.6004 4.42523 10.6004H2.34614C2.29091 10.6004 2.24614 10.5557 2.24614 10.5004V7.69566C2.24614 7.64044 2.29091 7.59566 2.34614 7.59566H4.39061C4.70093 7.59566 5.00102 7.48465 5.23664 7.2827L5.31017 7.21967L4.45913 6.36864ZM8.25433 9.10318L9.45433 10.3032V10.3031L8.25433 9.10306V9.10318ZM5.88129 6.73014L5.03026 5.8791L5.03032 5.87905L5.88135 6.73008L5.88129 6.73014ZM15.138 13.2291C17.1925 9.06923 15.9897 5.50585 14.7587 3.65933C14.5748 3.38362 14.2023 3.30911 13.9266 3.49292C13.6509 3.67673 13.5764 4.04926 13.7602 4.32497C14.7739 5.84558 15.814 8.7936 14.2361 12.3272L15.138 13.2291ZM12.7739 10.8651C13.8042 8.85611 12.9484 6.85056 12.3371 6.03547C12.1383 5.77038 11.7622 5.71665 11.4971 5.91547C11.232 6.1143 11.1783 6.49038 11.3771 6.75547C11.8023 7.32242 12.3457 8.6141 11.8617 9.95278L12.7739 10.8651ZM9.45433 7.54546V4.91352C9.45433 3.80286 8.15158 3.20368 7.3083 3.92649L6.51518 4.60631L7.36622 5.45734L8.08925 4.8376C8.11089 4.81905 8.12776 4.81423 8.14051 4.81274C8.15605 4.81092 8.17579 4.81332 8.19612 4.82267C8.21645 4.83202 8.23112 4.84545 8.23985 4.85843C8.24702 4.86908 8.25433 4.88502 8.25433 4.91352V6.34546L9.45433 7.54546Z"
-                            fill="currentColor"
-                          ></path>
-                          <rect
-                            x="1.64612"
-                            y="0.797607"
-                            width="22"
-                            height="1.2"
-                            rx="0.6"
-                            transform="rotate(45 1.64612 0.797607)"
-                            fill="currentColor"
-                          ></rect>
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                  <div className="absolute inset-0 filter blur-[78.5px] bg-[rgba(0,0,0,0.30)] before:absolute before:inset-0 before:bg-[rgba(53,66,99,0.30)] transition-opacity duration-normal bottom-[80%] opacity-0 group-hover:opacity-100 group-focus:opacity-100 group-focus-within:opacity-100"></div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <VideoPlayer src="https://cdn.openai.com/chatgpt/use_it_your_way.mp4" />
         </div>
       </div>
       <div className="max-w-[68rem] mx-auto px-5 lg:px-0 mt-16 md:mt-20">
         <div className="token-surface-primary md:grid md:grid-cols-2 overflow-hidden rounded-md">
-          <div className="px-6 py-12 md:p-l flex flex-col self-center">
+          <div className="px-6 py-12 md:p-16 flex flex-col self-center">
             <h5 className="text-2xl leading-tight font-medium mb-6">
               Browse the web
             </h5>
-            <div className="text-component mb-v mt-v max-w-[68rem] mx-auto px-5 lg:px-0 grid grid-cols-12 text-left !my-0 !flex !px-0 !mx-0 not-prose">
+            <div className="my-6 max-w-[68rem] mx-auto px-5 lg:px-0 grid grid-cols-12 text-left !my-0 !flex !px-0 !mx-0 not-prose">
               <div className="col-span-12 md:col-span-8 md:col-start-3 max-w-none prose opacity-100">
                 <p>
                   <span>
@@ -605,75 +527,16 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="h-full w-full">
-            <div
-              className="w-full mx-auto transition-opacity ease-curve-c duration-normal max-w-media relative"
-              data-caption-height="0"
-              data-caption-open="false"
-            >
-              <div className="relative w-full" style={{ aspectRatio: "1 / 1" }}>
-                <div
-                  tabIndex={0}
-                  className="relative rounded-s flex w-full overflow-hidden h-full group outline-none aspect-1/1"
-                >
-                  <video
-                    playsInline
-                    muted
-                    autoPlay
-                    className="aspect-1/1 md:aspect-1/1 lg:aspect-1/1 min-w-full min-h-full absolute left-0 top-0 w-full h-full object-cover"
-                  >
-                    <source
-                      src="https://cdn.openai.com/chatgpt/browsing.mp4"
-                      type="video/mp4"
-                    />
-                    Your browser does not support the video tag.
-                  </video>
-                  <div className="top-0 items-center absolute left-0 right-0 p-1 md:p-2 flex justify-between gap-1 text-gray-0 text-caption z-[1] transition-opacity duration-normal">
-                    <div className="justify-start items-center flex flex-row-reverse w-full gap-1">
-                      <button
-                        type="button"
-                        className="flex items-center justify-center disabled:text-gray-40 focus-visible:outline-offset-0 rounded-s w-[24px] h-[24px] hover:bg-btn-secondary-base--hover"
-                        aria-label="Pause video"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          viewBox="0 0 10 12"
-                          fill="none"
-                        >
-                          <rect
-                            width="3"
-                            height="11"
-                            y=".5"
-                            fill="currentColor"
-                            rx="1.5"
-                          ></rect>
-                          <rect
-                            width="3"
-                            height="11"
-                            x="7"
-                            y=".5"
-                            fill="currentColor"
-                            rx="1.5"
-                          ></rect>
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                  <div className="absolute inset-0 filter blur-[78.5px] bg-[rgba(0,0,0,0.30)] before:absolute before:inset-0 before:bg-[rgba(53,66,99,0.30)] transition-opacity duration-normal bottom-[80%] opacity-0 group-hover:opacity-100 group-focus:opacity-100 group-focus-within:opacity-100"></div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <VideoPlayer src="https://cdn.openai.com/chatgpt/browsing.mp4" />
         </div>
       </div>
       <div className="max-w-[68rem] mx-auto px-5 lg:px-0 mt-16 md:mt-20">
         <div className="token-surface-primary md:grid md:grid-cols-2 overflow-hidden rounded-md">
-          <div className="px-6 py-12 md:p-l flex flex-col self-center">
+          <div className="px-6 py-12 md:p-16 flex flex-col self-center">
             <h5 className="text-2xl leading-tight font-medium mb-6">
               Analyze data and create charts
             </h5>
-            <div className="text-component mb-v mt-v max-w-[68rem] mx-auto px-5 lg:px-0 grid grid-cols-12 text-left !my-0 !flex !px-0 !mx-0 not-prose">
+            <div className="my-6 max-w-[68rem] mx-auto px-5 lg:px-0 grid grid-cols-12 text-left !my-0 !flex !px-0 !mx-0 not-prose">
               <div className="col-span-12 md:col-span-8 md:col-start-3 max-w-none prose opacity-100">
                 <p>
                   <span>
@@ -684,75 +547,16 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="h-full w-full">
-            <div
-              className="w-full mx-auto transition-opacity ease-curve-c duration-normal max-w-media relative"
-              data-caption-height="0"
-              data-caption-open="false"
-            >
-              <div className="relative w-full" style={{ aspectRatio: "1 / 1" }}>
-                <div
-                  tabIndex={0}
-                  className="relative rounded-s flex w-full overflow-hidden h-full group outline-none aspect-1/1"
-                >
-                  <video
-                    playsInline
-                    muted
-                    autoPlay
-                    className="aspect-1/1 md:aspect-1/1 lg:aspect-1/1 min-w-full min-h-full absolute left-0 top-0 w-full h-full object-cover"
-                  >
-                    <source
-                      src="https://cdn.openai.com/chatgpt/analyze.mp4"
-                      type="video/mp4"
-                    />
-                    Your browser does not support the video tag.
-                  </video>
-                  <div className="top-0 items-center absolute left-0 right-0 p-1 md:p-2 flex justify-between gap-1 text-gray-0 text-caption z-[1] transition-opacity duration-normal">
-                    <div className="justify-start items-center flex flex-row-reverse w-full gap-1">
-                      <button
-                        type="button"
-                        className="flex items-center justify-center disabled:text-gray-40 focus-visible:outline-offset-0 rounded-s w-[24px] h-[24px] hover:bg-btn-secondary-base--hover"
-                        aria-label="Pause video"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          viewBox="0 0 10 12"
-                          fill="none"
-                        >
-                          <rect
-                            width="3"
-                            height="11"
-                            y=".5"
-                            fill="currentColor"
-                            rx="1.5"
-                          ></rect>
-                          <rect
-                            width="3"
-                            height="11"
-                            x="7"
-                            y=".5"
-                            fill="currentColor"
-                            rx="1.5"
-                          ></rect>
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                  <div className="absolute inset-0 filter blur-[78.5px] bg-[rgba(0,0,0,0.30)] before:absolute before:inset-0 before:bg-[rgba(53,66,99,0.30)] transition-opacity duration-normal bottom-[80%] opacity-0 group-hover:opacity-100 group-focus:opacity-100 group-focus-within:opacity-100"></div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <VideoPlayer src="https://cdn.openai.com/chatgpt/analyze.mp4" />
         </div>
       </div>
       <div className="max-w-[68rem] mx-auto px-5 lg:px-0 mt-16 md:mt-20">
         <div className="token-surface-primary md:grid md:grid-cols-2 overflow-hidden rounded-md">
-          <div className="px-6 py-12 md:p-l flex flex-col self-center">
+          <div className="px-6 py-12 md:p-16 flex flex-col self-center">
             <h5 className="text-2xl leading-tight font-medium mb-6">
               Customize ChatGPT for work, daily tasks or inspiration with GPTs
             </h5>
-            <div className="text-component mb-v mt-v max-w-[68rem] mx-auto px-5 lg:px-0 grid grid-cols-12 text-left !my-0 !flex !px-0 !mx-0 not-prose">
+            <div className="my-6 max-w-[68rem] mx-auto px-5 lg:px-0 grid grid-cols-12 text-left !my-0 !flex !px-0 !mx-0 not-prose">
               <div className="col-span-12 md:col-span-8 md:col-start-3 max-w-none prose opacity-100">
                 <p>
                   <b>
@@ -842,11 +646,11 @@ export default function Home() {
       </div>
       <div className="max-w-[68rem] mx-auto px-5 lg:px-0 mt-16 md:mt-20">
         <div className="token-surface-primary md:grid md:grid-cols-2 overflow-hidden rounded-md">
-          <div className="px-6 py-12 md:p-l flex flex-col self-center">
+          <div className="px-6 py-12 md:p-16 flex flex-col self-center">
             <h5 className="text-2xl leading-tight font-medium mb-6">
               Create images
             </h5>
-            <div className="text-component mb-v mt-v max-w-[68rem] mx-auto px-5 lg:px-0 grid grid-cols-12 text-left !my-0 !flex !px-0 !mx-0 not-prose">
+            <div className="my-6 max-w-[68rem] mx-auto px-5 lg:px-0 grid grid-cols-12 text-left !my-0 !flex !px-0 !mx-0 not-prose">
               <div className="col-span-12 md:col-span-8 md:col-start-3 max-w-none prose opacity-100">
                 <p>
                   <span>
@@ -965,7 +769,7 @@ export default function Home() {
                           <div className="overflow-hidden">
                             <div className="flex flex-wrap gap-5xs">
                               <div className="w-[6.25rem]">
-                                <div className="relative h-full w-full overflow-hidden rounded-md aspect-auto bg-transparent transition-[background] ease-curve-d duration-normal [&_img]:mx-0 [&_img]:rounded-s">
+                                <div className="relative h-full w-full overflow-hidden rounded-md aspect-auto bg-transparent transition-[background] ease-curve-d duration-normal [&_img]:mx-0 [&_img]:rounded-sm">
                                   <img
                                     alt="jellyfish birthday card"
                                     loading="lazy"
@@ -1023,13 +827,13 @@ export default function Home() {
       </div>
       <div className="max-w-[68rem] mx-auto px-5 lg:px-0 mt-16 md:mt-20">
         <div className="token-surface-primary md:grid md:grid-cols-2 overflow-hidden rounded-md">
-          <div className="px-6 py-12 md:p-l flex flex-col self-center">
+          <div className="px-6 py-12 md:p-16 flex flex-col self-center">
             <h6 className="text-2xl leading-tight font-medium mb-6">
               Apple &amp; ChatGPT
             </h6>
-            <div className="text-component mb-v mt-v max-w-[68rem] mx-auto px-5 lg:px-0 grid grid-cols-12 text-left !my-0 !flex !px-0 !mx-0 not-prose">
+            <div className="my-6 max-w-[68rem] mx-auto px-5 lg:px-0 grid grid-cols-12 text-left !my-0 !flex !px-0 !mx-0 not-prose">
               <div className="col-span-12 md:col-span-8 md:col-start-3 max-w-none prose opacity-100">
-                <p>
+                <p className="mb-6">
                   <span>
                     At WWDC in June 2024, we announced a partnership with Apple
                     to{" "}
@@ -1094,16 +898,16 @@ export default function Home() {
         </div>
       </div>
       <div className="max-w-[68rem] mx-auto px-5 lg:px-0 mt-16 md:mt-20">
-        <div className="mb-m max-w-[68rem] mx-auto px-5 lg:px-0 grid grid-cols-12 p-0">
+        <div className="mb-12 max-w-[68rem] mx-auto px-5 lg:px-0 grid grid-cols-12 p-0">
           <div className="md:col-span-8 md:col-start-3 col-span-12">
             <div className="flex flex-col relative items-center text-center">
               <h3 className="text-4xl leading-tight font-normal text-balance">
                 Get started with ChatGPT today
               </h3>
-              <div className="flex mt-s min-h-s justify-between">
+              <div className="flex mt-8 min-h-8 justify-between">
                 <div className="flex flex-col items-start md:items-center md:flex-row gap-6 items-center">
-                  <a
-                    className="transition duration-200 ease-curve-a text-btn-secondary-label border-b border-transparent relative group focus-visible:border-gray-50 focus-visible:border-transparent focus-visible:rounded-s py-5xs flex items-center justify-center gap-[0.3em] text-cta"
+                  <Link
+                    className="transition duration-200 ease-curve-a border-b border-transparent relative group focus-visible:border-gray-50 focus-visible:border-transparent focus-visible:rounded-md py-1 flex items-center justify-center gap-[0.3em] text-sm font-normal leading-normal"
                     href="/chatgpt/pricing/"
                   >
                     View pricing plans
@@ -1124,34 +928,21 @@ export default function Home() {
                       aria-hidden="true"
                       className="transition duration-200 ease-curve-a absolute left-0 bottom-0 right-0 h-[0.1px] w-full mb-1 bg-btn-link-underline--hover opacity-0 group-hover:opacity-100 transition-opacity"
                     ></div>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div className="gap-3 flex justify-center flex-col md:flex-row">
-          <div className="token-surface-primary p-12 inline-flex flex-col items-start rounded-s md:rounded-md gap-8 md:px-8 gap-6 flex-1">
+          <div className="token-surface-primary p-12 inline-flex flex-col items-start rounded-sm md:rounded-md gap-8 md:px-8 gap-6 flex-1">
             <div className="flex flex-col gap-4">
-              <div className="text-h6-mobile md:text-h6-desktop">Free</div>
+              <div className="leading-tight text-xl font-medium">Free</div>
             </div>
             <div>
               <ul>
                 <li className="flex py-3 gap-3 items-start">
-                  <svg
-                    className="shrink-0 relative top-[0.15em]"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="1.5rem"
-                    viewBox="0 0 12 12"
-                    fill="none"
-                  >
-                    <path
-                      fill="currentColor"
-                      fillRule="evenodd"
-                      d="M9.032 2.837a.5.5 0 0 1 .131.695l-3.75 5.5a.5.5 0 0 1-.767.072l-2.25-2.25a.5.5 0 1 1 .708-.708L4.927 7.97l3.41-5.002a.5.5 0 0 1 .695-.131Z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                  <ListItemTickIcon />
                   <p>
                     <span
                       className="text-caption-mobile md:text-caption-desktop"
@@ -1162,20 +953,7 @@ export default function Home() {
                   </p>
                 </li>
                 <li className="flex py-3 gap-3 items-start">
-                  <svg
-                    className="shrink-0 relative top-[0.15em]"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="1.5rem"
-                    viewBox="0 0 12 12"
-                    fill="none"
-                  >
-                    <path
-                      fill="currentColor"
-                      fillRule="evenodd"
-                      d="M9.032 2.837a.5.5 0 0 1 .131.695l-3.75 5.5a.5.5 0 0 1-.767.072l-2.25-2.25a.5.5 0 1 1 .708-.708L4.927 7.97l3.41-5.002a.5.5 0 0 1 .695-.131Z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                  <ListItemTickIcon />
                   <p>
                     <span
                       className="text-caption-mobile md:text-caption-desktop"
@@ -1186,20 +964,7 @@ export default function Home() {
                   </p>
                 </li>
                 <li className="flex py-3 gap-3 items-start">
-                  <svg
-                    className="shrink-0 relative top-[0.15em]"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="1.5rem"
-                    viewBox="0 0 12 12"
-                    fill="none"
-                  >
-                    <path
-                      fill="currentColor"
-                      fillRule="evenodd"
-                      d="M9.032 2.837a.5.5 0 0 1 .131.695l-3.75 5.5a.5.5 0 0 1-.767.072l-2.25-2.25a.5.5 0 1 1 .708-.708L4.927 7.97l3.41-5.002a.5.5 0 0 1 .695-.131Z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                  <ListItemTickIcon />
                   <p>
                     <span
                       className="text-caption-mobile md:text-caption-desktop"
@@ -1210,20 +975,7 @@ export default function Home() {
                   </p>
                 </li>
                 <li className="flex py-3 gap-3 items-start">
-                  <svg
-                    className="shrink-0 relative top-[0.15em]"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="1.5rem"
-                    viewBox="0 0 12 12"
-                    fill="none"
-                  >
-                    <path
-                      fill="currentColor"
-                      fillRule="evenodd"
-                      d="M9.032 2.837a.5.5 0 0 1 .131.695l-3.75 5.5a.5.5 0 0 1-.767.072l-2.25-2.25a.5.5 0 1 1 .708-.708L4.927 7.97l3.41-5.002a.5.5 0 0 1 .695-.131Z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                  <ListItemTickIcon />
                   <p>
                     <span
                       className="text-caption-mobile md:text-caption-desktop"
@@ -1249,10 +1001,10 @@ export default function Home() {
               </li>
             </ul>
             <div className="flex items-center gap-6 mt-auto pt-4">
-              <Button className="rounded-full">
+              <Button className="rounded-full px-6 py-2">
                 <Link
                   href="http://chatgpt.com/"
-                  className="transition duration-200 ease-curve-a rounded-full px-6 text-nowrap min-h-button flex items-center justify-center gap-[0.3em] text-cta"
+                  className="transition duration-200 ease-curve-a rounded-full text-nowrap min-h-button flex items-center justify-center gap-[0.3em] text-sm font-normal leading-normal"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -1276,27 +1028,14 @@ export default function Home() {
               </Button>
             </div>
           </div>
-          <div className="token-surface-primary p-12 inline-flex flex-col items-start rounded-s md:rounded-md gap-8 md:px-8 gap-6 flex-1">
+          <div className="token-surface-primary p-12 inline-flex flex-col items-start rounded-sm md:rounded-md gap-8 md:px-8 gap-6 flex-1">
             <div className="flex flex-col gap-4">
-              <div className="text-h6-mobile md:text-h6-desktop">Plus</div>
+              <div className="leading-tight text-xl font-medium">Plus</div>
             </div>
             <div>
               <ul>
                 <li className="flex py-3 gap-3 items-start">
-                  <svg
-                    className="shrink-0 relative top-[0.15em]"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="1.5rem"
-                    viewBox="0 0 12 12"
-                    fill="none"
-                  >
-                    <path
-                      fill="currentColor"
-                      fillRule="evenodd"
-                      d="M9.032 2.837a.5.5 0 0 1 .131.695l-3.75 5.5a.5.5 0 0 1-.767.072l-2.25-2.25a.5.5 0 1 1 .708-.708L4.927 7.97l3.41-5.002a.5.5 0 0 1 .695-.131Z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                  <ListItemTickIcon />
                   <p>
                     <span
                       className="text-caption-mobile md:text-caption-desktop"
@@ -1307,20 +1046,7 @@ export default function Home() {
                   </p>
                 </li>
                 <li className="flex py-3 gap-3 items-start">
-                  <svg
-                    className="shrink-0 relative top-[0.15em]"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="1.5rem"
-                    viewBox="0 0 12 12"
-                    fill="none"
-                  >
-                    <path
-                      fill="currentColor"
-                      fillRule="evenodd"
-                      d="M9.032 2.837a.5.5 0 0 1 .131.695l-3.75 5.5a.5.5 0 0 1-.767.072l-2.25-2.25a.5.5 0 1 1 .708-.708L4.927 7.97l3.41-5.002a.5.5 0 0 1 .695-.131Z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                  <ListItemTickIcon />
                   <p>
                     <span
                       className="text-caption-mobile md:text-caption-desktop"
@@ -1331,20 +1057,7 @@ export default function Home() {
                   </p>
                 </li>
                 <li className="flex py-3 gap-3 items-start">
-                  <svg
-                    className="shrink-0 relative top-[0.15em]"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="1.5rem"
-                    viewBox="0 0 12 12"
-                    fill="none"
-                  >
-                    <path
-                      fill="currentColor"
-                      fillRule="evenodd"
-                      d="M9.032 2.837a.5.5 0 0 1 .131.695l-3.75 5.5a.5.5 0 0 1-.767.072l-2.25-2.25a.5.5 0 1 1 .708-.708L4.927 7.97l3.41-5.002a.5.5 0 0 1 .695-.131Z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                  <ListItemTickIcon />
                   <p>
                     <span
                       className="text-caption-mobile md:text-caption-desktop"
@@ -1355,20 +1068,7 @@ export default function Home() {
                   </p>
                 </li>
                 <li className="flex py-3 gap-3 items-start">
-                  <svg
-                    className="shrink-0 relative top-[0.15em]"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="1.5rem"
-                    viewBox="0 0 12 12"
-                    fill="none"
-                  >
-                    <path
-                      fill="currentColor"
-                      fillRule="evenodd"
-                      d="M9.032 2.837a.5.5 0 0 1 .131.695l-3.75 5.5a.5.5 0 0 1-.767.072l-2.25-2.25a.5.5 0 1 1 .708-.708L4.927 7.97l3.41-5.002a.5.5 0 0 1 .695-.131Z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                  <ListItemTickIcon />
                   <p>
                     <span
                       className="text-caption-mobile md:text-caption-desktop"
@@ -1380,20 +1080,7 @@ export default function Home() {
                   </p>
                 </li>
                 <li className="flex py-3 gap-3 items-start">
-                  <svg
-                    className="shrink-0 relative top-[0.15em]"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="1.5rem"
-                    viewBox="0 0 12 12"
-                    fill="none"
-                  >
-                    <path
-                      fill="currentColor"
-                      fillRule="evenodd"
-                      d="M9.032 2.837a.5.5 0 0 1 .131.695l-3.75 5.5a.5.5 0 0 1-.767.072l-2.25-2.25a.5.5 0 1 1 .708-.708L4.927 7.97l3.41-5.002a.5.5 0 0 1 .695-.131Z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                  <ListItemTickIcon />
                   <p>
                     <span
                       className="text-caption-mobile md:text-caption-desktop"
@@ -1404,20 +1091,7 @@ export default function Home() {
                   </p>
                 </li>
                 <li className="flex py-3 gap-3 items-start">
-                  <svg
-                    className="shrink-0 relative top-[0.15em]"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="1.5rem"
-                    viewBox="0 0 12 12"
-                    fill="none"
-                  >
-                    <path
-                      fill="currentColor"
-                      fillRule="evenodd"
-                      d="M9.032 2.837a.5.5 0 0 1 .131.695l-3.75 5.5a.5.5 0 0 1-.767.072l-2.25-2.25a.5.5 0 1 1 .708-.708L4.927 7.97l3.41-5.002a.5.5 0 0 1 .695-.131Z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                  <ListItemTickIcon />
                   <p>
                     <span
                       className="text-caption-mobile md:text-caption-desktop"
@@ -1442,10 +1116,10 @@ export default function Home() {
               </li>
             </ul>
             <div className="flex items-center gap-6 mt-auto pt-4">
-              <Button className="rounded-full">
+              <Button className="rounded-full px-6 py-2">
                 <Link
                   href="https://chatgpt.com/#pricing"
-                  className="transition duration-200 ease-curve-a px-6 text-nowrap min-h-button flex items-center justify-center gap-[0.3em] text-cta"
+                  className="transition duration-200 ease-curve-a text-nowrap min-h-button flex items-center justify-center gap-[0.3em] text-sm font-normal leading-normal"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -1468,7 +1142,7 @@ export default function Home() {
                 </Link>
               </Button>
               <a
-                className="transition duration-200 ease-curve-a text-btn-secondary-label border-b border-transparent relative group focus-visible:border-gray-50 focus-visible:border-transparent focus-visible:rounded-s py-5xs flex items-center justify-center gap-[0.3em] text-cta"
+                className="transition duration-200 ease-curve-a text-btn-secondary-label border-b border-transparent relative group focus-visible:border-gray-50 focus-visible:border-transparent focus-visible:rounded-md py-1 flex items-center justify-center gap-[0.3em] text-sm font-normal leading-normal"
                 href="https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus#h_d78bb59065"
               >
                 Limits apply
@@ -1494,6 +1168,43 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <section className="max-w-[68rem] mx-auto px-5 lg:px-0 p-4">
+        <div className="max-w-[68rem] mx-auto px-5 lg:px-0 grid grid-cols-12 gap-2 token-surface-primary py-20 md:py-24 mt-8 md:mt-12 rounded-sm md:rounded-md">
+          <div className="col-span-12 flex flex-col gap-8 md:col-span-8 md:col-start-3">
+            <h2 className="text-center text-2xl md:text-3xl leading-tight text-balance">
+              Join hundreds of millions of users and try ChatGPT today.
+            </h2>
+            <div className="flex items-center justify-center flex-row gap-2 flex-wrap">
+              <Button className="rounded-full px-6 py-2">
+                <Link
+                  href="https://chatgpt.com/"
+                  className="transition duration-200 ease-in-out text-white flex items-center justify-center gap-1"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Try ChatGPT
+                  <svg
+                    width="10"
+                    viewBox="0 0 10 10"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="ml-1"
+                  >
+                    <path
+                      d="M1 9L9 1M9 1H2.5M9 1V7.22222"
+                      stroke="currentColor"
+                      strokeWidth="1.25"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></path>
+                  </svg>
+                  <span className="sr-only">(opens in a new window)</span>
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

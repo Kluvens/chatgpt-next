@@ -756,3 +756,22 @@ export const ToastTickIcon = () => {
     </svg>
   );
 };
+
+export const ListItemTickIcon = () => {
+  return (
+    <svg
+      className="shrink-0 relative top-[0.15em]"
+      xmlns="http://www.w3.org/2000/svg"
+      width="1.5rem"
+      viewBox="0 0 12 12"
+      fill="none"
+    >
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        d="M9.032 2.837a.5.5 0 0 1 .131.695l-3.75 5.5a.5.5 0 0 1-.767.072l-2.25-2.25a.5.5 0 1 1 .708-.708L4.927 7.97l3.41-5.002a.5.5 0 0 1 .695-.131Z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+};
