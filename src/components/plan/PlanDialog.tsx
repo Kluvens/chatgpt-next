@@ -59,9 +59,9 @@ const PlanDialog = () => {
                   >
                     <path
                       fill="currentColor"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M18.063 5.674a1 1 0 0 1 .263 1.39l-7.5 11a1 1 0 0 1-1.533.143l-4.5-4.5a1 1 0 1 1 1.414-1.414l3.647 3.647 6.82-10.003a1 1 0 0 1 1.39-.263"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                   <span>Early access to new features</span>
@@ -79,9 +79,9 @@ const PlanDialog = () => {
                   >
                     <path
                       fill="currentColor"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M18.063 5.674a1 1 0 0 1 .263 1.39l-7.5 11a1 1 0 0 1-1.533.143l-4.5-4.5a1 1 0 1 1 1.414-1.414l3.647 3.647 6.82-10.003a1 1 0 0 1 1.39-.263"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                   <span>Access to GPT-4, GPT‑4o, GPT-3.5</span>
@@ -99,9 +99,9 @@ const PlanDialog = () => {
                   >
                     <path
                       fill="currentColor"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M18.063 5.674a1 1 0 0 1 .263 1.39l-7.5 11a1 1 0 0 1-1.533.143l-4.5-4.5a1 1 0 1 1 1.414-1.414l3.647 3.647 6.82-10.003a1 1 0 0 1 1.39-.263"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                   <span>
@@ -122,9 +122,9 @@ const PlanDialog = () => {
                   >
                     <path
                       fill="currentColor"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M18.063 5.674a1 1 0 0 1 .263 1.39l-7.5 11a1 1 0 0 1-1.533.143l-4.5-4.5a1 1 0 1 1 1.414-1.414l3.647 3.647 6.82-10.003a1 1 0 0 1 1.39-.263"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                   <span>DALL·E image generation</span>
@@ -142,9 +142,9 @@ const PlanDialog = () => {
                   >
                     <path
                       fill="currentColor"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M18.063 5.674a1 1 0 0 1 .263 1.39l-7.5 11a1 1 0 0 1-1.533.143l-4.5-4.5a1 1 0 1 1 1.414-1.414l3.647 3.647 6.82-10.003a1 1 0 0 1 1.39-.263"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                   <span>Create and use custom GPTs</span>
@@ -185,9 +185,9 @@ const PlanDialog = () => {
                   >
                     <path
                       fill="currentColor"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M2.222 20A1.22 1.22 0 0 1 1 18.786c0-2.055.992-3.622 2.424-4.633 1.395-.985 3.185-1.439 4.91-1.439 1.724 0 3.514.454 4.909 1.44 1.431 1.01 2.424 2.577 2.424 4.632 0 .67-.547 1.214-1.223 1.214z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                     <path
                       fill="currentColor"
@@ -233,9 +233,9 @@ const PlanDialog = () => {
                   >
                     <path
                       fill="currentColor"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M18.063 5.674a1 1 0 0 1 .263 1.39l-7.5 11a1 1 0 0 1-1.533.143l-4.5-4.5a1 1 0 1 1 1.414-1.414l3.647 3.647 6.82-10.003a1 1 0 0 1 1.39-.263"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                   <span>
@@ -256,9 +256,9 @@ const PlanDialog = () => {
                   >
                     <path
                       fill="currentColor"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M18.063 5.674a1 1 0 0 1 .263 1.39l-7.5 11a1 1 0 0 1-1.533.143l-4.5-4.5a1 1 0 1 1 1.414-1.414l3.647 3.647 6.82-10.003a1 1 0 0 1 1.39-.263"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                   <span>Create and share GPTs with your workspace</span>
@@ -276,9 +276,9 @@ const PlanDialog = () => {
                   >
                     <path
                       fill="currentColor"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M18.063 5.674a1 1 0 0 1 .263 1.39l-7.5 11a1 1 0 0 1-1.533.143l-4.5-4.5a1 1 0 1 1 1.414-1.414l3.647 3.647 6.82-10.003a1 1 0 0 1 1.39-.263"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                   <span>Admin console for workspace management</span>
@@ -296,9 +296,9 @@ const PlanDialog = () => {
                   >
                     <path
                       fill="currentColor"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M18.063 5.674a1 1 0 0 1 .263 1.39l-7.5 11a1 1 0 0 1-1.533.143l-4.5-4.5a1 1 0 1 1 1.414-1.414l3.647 3.647 6.82-10.003a1 1 0 0 1 1.39-.263"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                   <span>

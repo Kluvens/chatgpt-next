@@ -90,7 +90,7 @@ export const InfiniteMovingCards = ({
             key={idx}
           >
             <Link
-              href="https://chatgpt.com/?q=Write+a+message+that+goes+with+a+kitten+gif+for+a+friend+on+a+rough+day"
+              href={`/message/${encodeURIComponent(item.question)}`}
               className="transition ease-in-out duration-250 text-caption group-hover:underline block"
               target="_blank"
               rel="noreferrer"

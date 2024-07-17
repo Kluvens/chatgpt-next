@@ -31,9 +31,9 @@ const BuilderProfile = () => {
                 >
                   <path
                     fill="currentColor"
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M12.5 3.444a1 1 0 0 0-1 0l-6.253 3.61 6.768 3.807 6.955-3.682zm7.16 5.632L13 12.602v7.666l6.16-3.556a1 1 0 0 0 .5-.867zM11 20.268v-7.683L4.34 8.839v7.006a1 1 0 0 0 .5.867zm-.5-18.557a3 3 0 0 1 3 0l6.66 3.846a3 3 0 0 1 1.5 2.598v7.69a3 3 0 0 1-1.5 2.598L13.5 22.29a3 3 0 0 1-3 0l-6.66-3.846a3 3 0 0 1-1.5-2.598v-7.69a3 3 0 0 1 1.5-2.598z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
               </div>
@@ -55,9 +55,9 @@ const BuilderProfile = () => {
                   >
                     <path
                       fill="currentColor"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M12 4a3 3 0 1 0 0 6 3 3 0 0 0 0-6M7 7a5 5 0 1 1 10 0A5 5 0 0 1 7 7m5 8c-3.656 0-6.5 2.75-6.5 6a1 1 0 1 1-2 0c0-4.482 3.872-8 8.5-8s8.5 3.518 8.5 8a1 1 0 1 1-2 0c0-3.25-2.844-6-6.5-6"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                 </div>
@@ -93,9 +93,9 @@ const BuilderProfile = () => {
                             ></path>
                             <path
                               fill="currentColor"
-                              fill-rule="evenodd"
+                              fillRule="evenodd"
                               d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2M4 12a8 8 0 1 1 16 0 8 8 0 0 1-16 0"
-                              clip-rule="evenodd"
+                              clipRule="evenodd"
                             ></path>
                           </svg>
                         </TooltipTrigger>
@@ -123,9 +123,9 @@ const BuilderProfile = () => {
                   >
                     <path
                       fill="currentColor"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12m9.985-7.997a.3.3 0 0 0-.064.03c-.13.08-.347.291-.596.744-.241.438-.473 1.028-.674 1.756-.336 1.22-.567 2.759-.632 4.467h3.962c-.065-1.708-.296-3.247-.632-4.467-.201-.728-.433-1.318-.674-1.756-.25-.453-.466-.665-.596-.743a.3.3 0 0 0-.064-.031L12 4q-.003 0-.015.003M8.018 11c.066-1.867.316-3.588.705-5 .15-.544.325-1.054.522-1.513A8.01 8.01 0 0 0 4.062 11zm-3.956 2h3.956c.077 2.174.404 4.156.912 5.68q.144.435.315.833A8.01 8.01 0 0 1 4.062 13m5.957 0c.076 1.997.378 3.757.808 5.048.252.756.53 1.296.79 1.626.128.162.232.248.302.29q.049.03.066.033L12 20l.015-.003a.3.3 0 0 0 .066-.032c.07-.043.174-.13.301-.291.26-.33.539-.87.79-1.626.43-1.29.732-3.05.809-5.048zm5.963 0c-.077 2.174-.404 4.156-.912 5.68q-.144.435-.315.833A8.01 8.01 0 0 0 19.938 13zm3.956-2a8.01 8.01 0 0 0-5.183-6.513c.197.46.371.969.522 1.514.389 1.41.639 3.132.705 4.999z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                   <div>
@@ -143,9 +143,9 @@ const BuilderProfile = () => {
                           >
                             <path
                               fill="currentColor"
-                              fill-rule="evenodd"
+                              fillRule="evenodd"
                               d="M4.293 8.293a1 1 0 0 1 1.414 0L12 14.586l6.293-6.293a1 1 0 1 1 1.414 1.414l-7 7a1 1 0 0 1-1.414 0l-7-7a1 1 0 0 1 0-1.414"
-                              clip-rule="evenodd"
+                              clipRule="evenodd"
                             ></path>
                           </svg>
                         </span>
@@ -244,9 +244,9 @@ const BuilderProfile = () => {
                   >
                     <path
                       fill="currentColor"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M2 7a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3zm2.268-.682 7.155 5.05a1 1 0 0 0 1.154 0l7.155-5.05A1 1 0 0 0 19 6H5a1 1 0 0 0-.732.318M20 8.577l-6.27 4.426a3 3 0 0 1-3.46 0L4 8.577V17a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                   <span>yangjiapeng6888@gmail.com</span>

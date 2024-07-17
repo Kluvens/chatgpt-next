@@ -30,7 +30,7 @@ export default function Home() {
                 <div className="flex flex-col gap-4 items-start md:items-center md:flex-row items-center">
                   <Button className="rounded-full px-6 py-2 text-nowrap">
                     <Link
-                      href="/chat/123"
+                      href="/chat"
                       className="text-nowrap min-h-16 flex items-center justify-center gap-[0.3em] text-md"
                       target="_blank"
                       rel="noreferrer"
@@ -45,7 +45,7 @@ export default function Home() {
                         <path
                           d="M1 9L9 1M9 1H2.5M9 1V7.22222"
                           stroke="currentColor"
-                          stroke-width="1.25"
+                          strokeWidth="1.25"
                           stroke-linecap="round"
                           stroke-linejoin="round"
                         ></path>
@@ -55,7 +55,7 @@ export default function Home() {
                   </Button>
                   <Link
                     className="text-btn-secondary-label border-b border-transparent relative group focus-visible:border-gray-50 focus-visible:border-transparent focus-visible:rounded-md py-1 flex items-center justify-center gap-[0.3em] text-sm font-normal leading-normal"
-                    href="/chatgpt/download/"
+                    href="/download/"
                   >
                     Download the app
                     <svg
@@ -65,8 +65,8 @@ export default function Home() {
                       fill="none"
                     >
                       <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
                         d="M0.292892 0.292894C0.683416 -0.0976306 1.31658 -0.0976315 1.70711 0.292892L7.00002 5.58579L12.2929 0.292894C12.6834 -0.0976306 13.3166 -0.0976315 13.7071 0.292892C14.0976 0.683416 14.0976 1.31658 13.7071 1.70711L7.70713 7.70711C7.51959 7.89464 7.26524 8 7.00002 8C6.7348 8 6.48045 7.89464 6.29291 7.70711L0.292894 1.70711C-0.0976306 1.31658 -0.0976315 0.683419 0.292892 0.292894Z"
                         fill="currentColor"
                       ></path>
@@ -809,7 +809,8 @@ export default function Home() {
                 <p>
                   <Link
                     className="transition ease-curve-a duration-250 underline-offset-[0.125rem] underline decoration-gray-40 dark:decoration-gray-60 hover:decoration-copy-primary"
-                    href="/index/openai-and-apple-announce-partnership/"
+                    href="https://openai.com/index/openai-and-apple-announce-partnership/"
+                    target="_blank"
                   >
                     <span>Learn more</span>
                   </Link>
@@ -871,7 +872,7 @@ export default function Home() {
                 <div className="flex flex-col items-start md:items-center md:flex-row gap-6 items-center">
                   <Link
                     className="transition duration-200 ease-curve-a border-b border-transparent relative group focus-visible:border-gray-50 focus-visible:border-transparent focus-visible:rounded-md py-1 flex items-center justify-center gap-[0.3em] text-sm font-normal leading-normal"
-                    href="/chatgpt/pricing/"
+                    href="/pricing/"
                   >
                     View pricing plans
                     <svg
@@ -966,7 +967,7 @@ export default function Home() {
             <div className="flex items-center gap-6 mt-auto pt-4">
               <Button className="rounded-full px-6 py-2">
                 <Link
-                  href="http://chatgpt.com/"
+                  href="/chat"
                   className="transition duration-200 ease-curve-a rounded-full text-nowrap min-h-button flex items-center justify-center gap-[0.3em] text-sm font-normal leading-normal"
                   target="_blank"
                   rel="noreferrer"
@@ -1081,7 +1082,7 @@ export default function Home() {
             <div className="flex items-center gap-6 mt-auto pt-4">
               <Button className="rounded-full px-6 py-2">
                 <Link
-                  href="https://chatgpt.com/#pricing"
+                  href="/chat"
                   className="transition duration-200 ease-curve-a text-nowrap min-h-button flex items-center justify-center gap-[0.3em] text-sm font-normal leading-normal"
                   target="_blank"
                   rel="noreferrer"
@@ -1140,7 +1141,7 @@ export default function Home() {
             <div className="flex items-center justify-center flex-row gap-2 flex-wrap">
               <Button className="rounded-full px-6 py-2">
                 <Link
-                  href="https://chatgpt.com/"
+                  href="/chat"
                   className="transition duration-200 ease-in-out text-white flex items-center justify-center gap-1"
                   target="_blank"
                   rel="noreferrer"

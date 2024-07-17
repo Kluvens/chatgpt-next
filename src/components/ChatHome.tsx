@@ -60,14 +60,14 @@ const ChatHome = () => {
                   <path
                     stroke="currentColor"
                     stroke-linecap="round"
-                    stroke-width="2"
+                    strokeWidth="2"
                     d="M3 6h7M3 10h4"
                   ></path>
                   <path
                     stroke="currentColor"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeWth="2"
                     d="M13.428 17.572 20.5 10.5a2.828 2.828 0 1 0-4-4l-7.072 7.072a2 2 0 0 0-.547 1.022L8 19l4.406-.881a2 2 0 0 0 1.022-.547"
                   ></path>
                 </svg>
@@ -91,13 +91,13 @@ const ChatHome = () => {
                     stroke="currentColor"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeWidth="2"
                     d="m9.65 13.026-3.287 1.19A2 2 0 0 1 3.8 13.027l-.342-.934.597-1.275L1.75 7.419l2.348-.85 2.564 1.484a2 2 0 0 0 1.689.15l8.512-3.083c.291-.106.603-.142.912-.107l2.833.325a1.842 1.842 0 0 1 .422 3.565l-5.276 1.911m.598-1.275L13 14.5l-2.817 1.02-.343-3.622"
                   ></path>
                   <path
                     stroke="currentColor"
                     stroke-linecap="round"
-                    stroke-width="2"
+                    strokeWidth="2"
                     d="M3 19h18"
                   ></path>
                 </svg>
@@ -119,14 +119,14 @@ const ChatHome = () => {
                     stroke="currentColor"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeWidth="2"
                     d="M4 18V7h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2"
                   ></path>
                   <path
                     stroke="currentColor"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeWidth="2"
                     d="M9 10V6a3 3 0 0 1 3-3v0a3 3 0 0 1 3 3v4"
                   ></path>
                 </svg>

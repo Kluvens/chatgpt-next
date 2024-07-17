@@ -2,6 +2,7 @@ import { SessionProvider } from "next-auth/react";
 import "../styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ChatProvider } from "../contexts/ChatContext";
 
 export default function App({
   Component,
@@ -9,9 +10,11 @@ export default function App({
 }) {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
-      <Analytics />
-      <SpeedInsights />
+      <ChatProvider>
+        <Component {...pageProps} />
+        <Analytics />
+        <SpeedInsights />
+      </ChatProvider>
     </SessionProvider>
   );
 }

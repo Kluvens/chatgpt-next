@@ -1,12 +1,15 @@
 import { useState, ChangeEvent, useRef, useEffect } from "react";
 import { Chat } from "@/types";
 import { FileUploadIcon, SendMessageIcon } from "./icons/Icons";
+import ChatMessages from "./ChatMessages";
+import { addChat } from "@/utils/chatUtils";
 
 interface ChatInputProps {
-  addChat: (message: string) => void;
+  setChats: Function;
+  chats: Chat[];
 }
 
-const ChatInput: React.FC<ChatInputProps> = ({ addChat }) => {
+const ChatInput: React.FC<ChatInputProps> = ({ setChats, chats }) => {
   const [message, setMessage] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -45,7 +48,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ addChat }) => {
 
   const handleSendMessage = async () => {
     if (message.trim()) {
-      addChat(message.trim());
+      addChat(message.trim(), setChats, chats);
       setMessage("");
     }
   };

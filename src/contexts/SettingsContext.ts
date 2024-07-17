@@ -16,7 +16,7 @@
 // const SettingsContext = createContext<SettingsContextType | undefined>(undefined);
 
 // interface SettingsProviderProps {
-//   children: ReactNode;
+//   childre`n: ReactNode;
 // }
 
 // export const SettingsProvider: React.FC<SettingsProviderProps> = ({ children }) => {
