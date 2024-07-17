@@ -7,44 +7,9 @@ import { InfiniteMovingCards } from "../components/ui/infinite-moving-cards";
 import { useRef } from "react";
 import VideoPlayer from "@/components/VideoPlayer";
 import { ListItemTickIcon } from "@/components/icons/Icons";
+import { ListOne } from "@/assets/MovingList";
 
 export default function Home() {
-  const testimonials = [
-    {
-      quote:
-        "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair.",
-      name: "Charles Dickens",
-      title: "A Tale of Two Cities",
-    },
-    {
-      quote:
-        "To be, or not to be, that is the question: Whether 'tis nobler in the mind to suffer The slings and arrows of outrageous fortune, Or to take Arms against a Sea of troubles, And by opposing end them: to die, to sleep.",
-      name: "William Shakespeare",
-      title: "Hamlet",
-    },
-    {
-      quote: "All that we see or seem is but a dream within a dream.",
-      name: "Edgar Allan Poe",
-      title: "A Dream Within a Dream",
-    },
-    {
-      quote:
-        "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.",
-      name: "Jane Austen",
-      title: "Pride and Prejudice",
-    },
-    {
-      quote:
-        "Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.",
-      name: "Herman Melville",
-      title: "Moby-Dick",
-    },
-  ];
-
-  const videoRefOne = useRef<HTMLVideoElement>(null);
-  const videoRefTwo = useRef<HTMLVideoElement>(null);
-  const videoRefThree = useRef<HTMLVideoElement>(null);
-
   return (
     <div className="flex flex-col justify-center pt-24 bg-base">
       <div className="relative mb-4">
@@ -114,12 +79,10 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="h-[40rem] rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
-        <InfiniteMovingCards
-          items={testimonials}
-          direction="right"
-          speed="slow"
-        />
+      <div className="h-[30rem] rounded-md flex flex-col antialiased bg-base dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+        <InfiniteMovingCards items={ListOne} direction="right" speed="slow" />
+        <InfiniteMovingCards items={ListOne} direction="left" speed="slow" />
+        <InfiniteMovingCards items={ListOne} direction="right" speed="slow" />
       </div>
       <div className="max-w-[68rem] mx-auto grid grid-cols-12 mt-16 md:mt-20">
         <div className="md:col-span-8 md:col-start-3 col-span-12">
