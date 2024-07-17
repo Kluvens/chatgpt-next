@@ -4,8 +4,8 @@ import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import LoadingMessage from "./LoadingMessage";
-import { ChatGptIcon, MessageCopyIcon, MessageTickIcon } from "./icons/Icons";
-import markdownToHtml from "../lib/markdownToHtml";
+import { ChatGptIcon, MessageCopyIcon, MessageTickIcon } from "../icons/Icons";
+import markdownToHtml from "../../lib/markdownToHtml";
 import { Response } from "@/types";
 interface ModelMessageProps {
   response: Response;

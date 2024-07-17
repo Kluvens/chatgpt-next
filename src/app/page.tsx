@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { InfiniteMovingCards } from "../components/ui/infinite-moving-cards";
 import { useRef } from "react";
-import VideoPlayer from "@/components/VideoPlayer";
+import VideoPlayer from "@/components/common/VideoPlayer";
 import { ListItemTickIcon } from "@/components/icons/Icons";
 import { ListOne, ListThree, ListTwo } from "@/assets/MovingList";
 

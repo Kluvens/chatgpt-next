@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Sidebar from "../../components/Sidebar";
-import ChatMessages from "../../components/ChatMessages";
-import ChatInput from "../../components/ChatInput";
-import QuestionButton from "@/components/QuestionButton";
-import { Chat } from "@/types";
+import Sidebar from "@/components/layout/Sidebar";
+import ChatMessages from "../../components/chat/ChatMessages";
+import ChatInput from "../../components/chat/ChatInput";
+import QuestionButton from "@/components/question/QuestionButton";
 import { motion } from "framer-motion";
 import { addChat } from "@/utils/chatUtils";
 import { useChat } from "@/contexts/ChatContext";

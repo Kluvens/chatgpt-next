@@ -1,6 +1,6 @@
-import { useState, ChangeEvent, useRef, useEffect } from "react";
+import React, { useState, ChangeEvent, useRef, useEffect } from "react";
 import { Chat } from "@/types";
-import { FileUploadIcon, SendMessageIcon } from "./icons/Icons";
+import { FileUploadIcon, SendMessageIcon } from "../icons/Icons";
 import ChatMessages from "./ChatMessages";
 import { addChat } from "@/utils/chatUtils";
 
@@ -89,6 +89,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ setChats, chats }) => {
                         style={{ display: "none" }}
                       />
                       <button
+                        aria-label="Upload File"
                         onClick={handleButtonClick}
                         className="flex items-center justify-center token-text-primary h-8 w-8 dark:text-white rounded-full focus-visible:outline-black dark:focus-visible:outline-white mb-1 ml-2"
                       >
@@ -111,6 +112,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ setChats, chats }) => {
                     </div>
                     {/* Send Button */}
                     <button
+                      aria-label="Send Message"
                       onClick={handleSendMessage}
                       className="mb-1 mr-2 flex h-8 w-8 items-center justify-center rounded-full bg-black text-white transition-colors hover:opacity-70 focus-visible:outline-none focus-visible:outline-black disabled:bg-[#D7D7D7] disabled:text-[#f4f4f4] disabled:hover:opacity-100 dark:bg-white dark:text-black dark:focus-visible:outline-white disabled:dark:bg-token-text-quaternary dark:disabled:tokensurface-secondary"
                       disabled={!message.trim()}
@@ -133,4 +135,4 @@ const ChatInput: React.FC<ChatInputProps> = ({ setChats, chats }) => {
   );
 };
 
-export default ChatInput;
+export default React.memo(ChatInput);

@@ -6,10 +6,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { AppsIcon, LogoutIcon } from "./icons/Icons";
-import Settings from "./settings/Settings";
+import { AppsIcon, LogoutIcon } from "../icons/Icons";
+import Settings from "../settings/Settings";
 import CustomiseGpts from "./CustomiseGpts";
-import MyPlan from "./plan/MyPlan";
+import MyPlan from "../plan/MyPlan";
 import Link from "next/link";
 
 const AvatarDropDown = () => {

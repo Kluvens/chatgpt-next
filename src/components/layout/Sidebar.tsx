@@ -1,6 +1,6 @@
 import React from "react";
-import HistoryItem from "./HistoryItem";
-import { CollapseIcon, NewChatIcon } from "./icons/Icons";
+import HistoryItem from "../common/HistoryItem";
+import { CollapseIcon, NewChatIcon } from "../icons/Icons";
 
 interface SidebarProps {
   isSidebarOpen: boolean;

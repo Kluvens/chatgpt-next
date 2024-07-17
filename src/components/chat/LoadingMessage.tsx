@@ -1,5 +1,5 @@
 import { Skeleton } from "@/components/ui/skeleton";
-import { ChatGptIcon } from "./icons/Icons";
+import { ChatGptIcon } from "../icons/Icons";
 
 const LoadingMessage = () => {
   return (

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import Sidebar from "../components/Sidebar";
-import ChatHome from "../components/ChatHome";
+import Sidebar from "../components/layout/Sidebar";
+import ChatHome from "../components/chat/ChatHome";
 import { motion } from "framer-motion";
-import ChatInput from "@/components/ChatInput";
+import ChatInput from "@/components/chat/ChatInput";
+import { useChat } from "@/contexts/ChatContext";
 
 const Home: React.FC = () => {
   const [messages, setMessages] = useState([
@@ -23,14 +24,10 @@ const Home: React.FC = () => {
       text: "Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello",
     },
   ]);
-  const [isSidebarOpen, setSidebarOpen] = useState(true);
+  const { isSidebarOpen, toggleSidebar } = useChat();
 
   const addMessage = (text: string) => {
     setMessages([...messages, { id: "12n", sender: "user", text }]);
-  };
-
-  const toggleSidebar = () => {
-    setSidebarOpen(!isSidebarOpen);
   };
 
   const containerVariants = {

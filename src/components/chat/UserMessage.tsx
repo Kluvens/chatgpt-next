@@ -1,5 +1,5 @@
 import React, { memo, useState } from "react";
-import { EditIcon } from "./icons/Icons";
+import { EditIcon } from "../icons/Icons";
 import { Button } from "@/components/ui/button";
 
 interface UserMessageProps {

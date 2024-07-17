@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 import { addChat } from "@/utils/chatUtils";
 import { useChat } from "@/contexts/ChatContext";
 import { motion } from "framer-motion";
-import Sidebar from "@/components/Sidebar";
-import ChatMessages from "@/components/ChatMessages";
-import ChatInput from "@/components/ChatInput";
-import QuestionButton from "@/components/QuestionButton";
+import Sidebar from "@/components/layout/Sidebar";
+import ChatMessages from "@/components/chat/ChatMessages";
+import ChatInput from "@/components/chat/ChatInput";
+import QuestionButton from "@/components/question/QuestionButton";
 
 const ChatMessagePage = () => {
   const router = useRouter();

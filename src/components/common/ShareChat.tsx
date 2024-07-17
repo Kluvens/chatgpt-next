@@ -10,9 +10,9 @@ import {
 } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
-import { ShareUpIcon } from "./icons/Icons";
+import { ShareUpIcon } from "../icons/Icons";
 import { useState } from "react";
-import { Label } from "./ui/label";
+import { Label } from "../ui/label";
 
 const ShareChat = () => {
   const [copied, setCopied] = useState(false);

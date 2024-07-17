@@ -13,7 +13,7 @@ import {
   Gpt3Icon,
   Gpt4Icon,
   Gpt4oIcon,
-} from "./icons/Icons";
+} from "../icons/Icons";
 
 const ModelSelection = () => {
   const [selectedModel, setSelectedModel] = useState("4o");

@@ -10,8 +10,8 @@ import {
   ShareRightIcon,
   CopyIcon,
   ToastTickIcon,
-} from "./icons/Icons";
-import Shortcuts from "./question/Shortcuts";
+} from "../icons/Icons";
+import Shortcuts from "./Shortcuts";
 import { useToast } from "@/components/ui/use-toast";
 import { Toaster } from "@/components/ui/toaster";
 

@@ -16,10 +16,10 @@ import {
   DialogTitle,
   DialogTrigger,
   DialogFooter,
-} from "./ui/dialog";
-import { CrossIcon, CustomizeIcon } from "./icons/Icons";
-import { Button } from "./ui/button";
-import { DropdownMenuItem } from "./ui/dropdown-menu";
+} from "../ui/dialog";
+import { CrossIcon, CustomizeIcon } from "../icons/Icons";
+import { Button } from "../ui/button";
+import { DropdownMenuItem } from "../ui/dropdown-menu";
 
 const CustomiseGpts = () => {
   return (
