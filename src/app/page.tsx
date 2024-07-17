@@ -7,7 +7,7 @@ import { InfiniteMovingCards } from "../components/ui/infinite-moving-cards";
 import { useRef } from "react";
 import VideoPlayer from "@/components/VideoPlayer";
 import { ListItemTickIcon } from "@/components/icons/Icons";
-import { ListOne } from "@/assets/MovingList";
+import { ListOne, ListThree, ListTwo } from "@/assets/MovingList";
 
 export default function Home() {
   return (
@@ -81,8 +81,8 @@ export default function Home() {
       </div>
       <div className="h-[30rem] rounded-md flex flex-col antialiased bg-base dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
         <InfiniteMovingCards items={ListOne} direction="right" speed="slow" />
-        <InfiniteMovingCards items={ListOne} direction="left" speed="slow" />
-        <InfiniteMovingCards items={ListOne} direction="right" speed="slow" />
+        <InfiniteMovingCards items={ListTwo} direction="left" speed="slow" />
+        <InfiniteMovingCards items={ListThree} direction="right" speed="slow" />
       </div>
       <div className="max-w-[68rem] mx-auto grid grid-cols-12 mt-16 md:mt-20">
         <div className="md:col-span-8 md:col-start-3 col-span-12">
