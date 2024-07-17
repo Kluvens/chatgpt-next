@@ -67,7 +67,7 @@ const ChatHome = () => {
                     stroke="currentColor"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    strokeWth="2"
+                    strokeWidth="2"
                     d="M13.428 17.572 20.5 10.5a2.828 2.828 0 1 0-4-4l-7.072 7.072a2 2 0 0 0-.547 1.022L8 19l4.406-.881a2 2 0 0 0 1.022-.547"
                   ></path>
                 </svg>
