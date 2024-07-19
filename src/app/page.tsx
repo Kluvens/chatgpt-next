@@ -8,6 +8,7 @@ import { useRef } from "react";
 import VideoPlayer from "@/components/common/VideoPlayer";
 import { ListItemTickIcon } from "@/components/icons/Icons";
 import { ListOne, ListThree, ListTwo } from "@/assets/MovingList";
+import HomeSectionHeader from "@/components/common/HomeSectionHeader";
 
 export default function Home() {
   return (
@@ -16,7 +17,9 @@ export default function Home() {
         <div className="px-5 mx-auto max-w-[68rem] grid grid-cols-12 mt-8">
           <div className="md:col-span-12 col-span-12">
             <div className="flex flex-col relative items-center text-center">
-              <p className="text-base leading-6 font-normal mb-3">ChatGPT</p>
+              <p className="text-base leading-6 font-normal mb-3">
+                ChatGPT-NEXT
+              </p>
               <h1 className="text-5xl leading-tight font-normal text-balance">
                 Get answers. Find inspiration. Be more productive.
               </h1>
@@ -63,6 +66,7 @@ export default function Home() {
                       width="0.5625rem"
                       viewBox="0 0 14 8"
                       fill="none"
+                      className="transform -rotate-90"
                     >
                       <path
                         fillRule="evenodd"
@@ -71,7 +75,7 @@ export default function Home() {
                         fill="currentColor"
                       ></path>
                     </svg>
-                    <div className="absolute left-0 bottom-0 right-0 h-[0.1px] w-full mb-1 bg-btn-link-underline--hover opacity-0 group-hover:opacity-100 transition-opacity "></div>
+                    <div className="absolute left-0 bottom-0 right-0 h-[1.5px] w-0 bg-gray-900 group-hover:w-full transition-all duration-500 ease-in-out"></div>
                   </Link>
                 </div>
               </div>
@@ -84,15 +88,7 @@ export default function Home() {
         <InfiniteMovingCards items={ListTwo} direction="left" speed="slow" />
         <InfiniteMovingCards items={ListThree} direction="right" speed="slow" />
       </div>
-      <div className="max-w-[68rem] mx-auto grid grid-cols-12 mt-16 md:mt-20">
-        <div className="md:col-span-8 md:col-start-3 col-span-12">
-          <div className="flex flex-col relative items-center text-center">
-            <h3 className="text-4xl leading-tight font-normal-tight font-normal text-balance">
-              Writes, brainstorms, edits, and explores ideas with you
-            </h3>
-          </div>
-        </div>
-      </div>
+      <HomeSectionHeader text="Writes, brainstorms, edits, and explores ideas with you" />
       <div className="w-full grid grid-cols-12 my-16 max-w-[68rem] mx-auto px-5 lg:px-0">
         <div className="col-span-12">
           <div className="w-full h-full grid gap-1 grid-cols-1 md:grid-cols-1 max-w-[68rem] p-0">
@@ -138,15 +134,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="max-w-[68rem] mx-auto grid grid-cols-12 mt-16 md:mt-20">
-        <div className="md:col-span-8 md:col-start-3 col-span-12">
-          <div className="flex flex-col relative items-center text-center">
-            <h3 className="text-4xl leading-tight font-normal-tight font-normal text-balance">
-              Summarize meetings. Find new insights. Increase productivity.
-            </h3>
-          </div>
-        </div>
-      </div>
+      <HomeSectionHeader text="Summarize meetings. Find new insights. Increase productivity." />
       <div className="w-full grid grid-cols-12 my-16 max-w-[68rem] mx-auto px-5 lg:px-0">
         <div className="col-span-12">
           <div className="w-full h-full grid gap-3 grid-cols-1 md:grid-cols-1 max-w-[68rem] mx-auto p-0">
@@ -238,16 +226,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="max-w-[68rem] mx-auto grid grid-cols-12 mt-16 md:mt-20">
-        <div className="md:col-span-8 md:col-start-3 col-span-12">
-          <div className="flex flex-col relative items-center text-center">
-            <h3 className="text-4xl leading-tight font-normal-tight font-normal text-balance">
-              Generate and debug code. Automate repetitive tasks. Learn new
-              APIs.
-            </h3>
-          </div>
-        </div>
-      </div>
+      <HomeSectionHeader text="Generate and debug code. Automate repetitive tasks. Learn new APIs." />
       <div className="w-full grid grid-cols-12 my-16 max-w-[68rem] mx-auto px-5 lg:px-0">
         <div className="col-span-12">
           <div className="w-full h-full grid gap-3 grid-cols-1 md:grid-cols-1 max-w-[68rem] mx-auto p-0">
@@ -339,15 +318,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="max-w-[68rem] mx-auto grid grid-cols-12 mt-16 md:mt-20">
-        <div className="md:col-span-8 md:col-start-3 col-span-12">
-          <div className="flex flex-col relative items-center text-center">
-            <h3 className="text-4xl leading-tight font-normal-tight font-normal text-balance">
-              Learn something new. Dive into a hobby. Answer complex questions.
-            </h3>
-          </div>
-        </div>
-      </div>
+      <HomeSectionHeader text="Learn something new. Dive into a hobby. Answer complex questions." />
       <div className="w-full grid grid-cols-12 my-16 max-w-[68rem] mx-auto px-5 lg:px-0">
         <div className="col-span-12">
           <div className="w-full h-full grid gap-3 grid-cols-1 md:grid-cols-1 max-w-[68rem] mx-auto p-0">
@@ -439,15 +410,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="max-w-[68rem] mx-auto px-5 lg:px-0 grid grid-cols-12 mt-16 md:mt-20">
-        <div className="md:col-span-8 md:col-start-3 col-span-12">
-          <div className="flex flex-col relative items-center text-center">
-            <h3 className="text-4xl leading-tight font-normal text-balance">
-              Explore more features in ChatGPT
-            </h3>
-          </div>
-        </div>
-      </div>
+      <HomeSectionHeader text="Explore more features in ChatGPT-NEXT" />
       <div className="max-w-[68rem] mx-auto px-5 lg:px-0 mt-16 md:mt-20">
         <div className="token-surface-primary md:grid md:grid-cols-2 overflow-hidden rounded-md">
           <div className="px-6 py-12 md:p-16 flex flex-col self-center">
@@ -1105,8 +1068,8 @@ export default function Home() {
                   <span className="sr-only">(opens in a new window)</span>
                 </Link>
               </Button>
-              <a
-                className="transition duration-200 ease-curve-a text-btn-secondary-label border-b border-transparent relative group focus-visible:border-gray-50 focus-visible:border-transparent focus-visible:rounded-md py-1 flex items-center justify-center gap-[0.3em] text-sm font-normal leading-normal"
+              <Link
+                className="border-b border-transparent relative group focus-visible:border-gray-50 focus-visible:border-transparent focus-visible:rounded-md py-1 flex items-center justify-center gap-[0.3em] text-sm font-normal leading-normal"
                 href="https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus#h_d78bb59065"
               >
                 Limits apply
@@ -1115,6 +1078,7 @@ export default function Home() {
                   width="0.5625rem"
                   viewBox="0 0 14 8"
                   fill="none"
+                  className="transform -rotate-90"
                 >
                   <path
                     fillRule="evenodd"
@@ -1123,11 +1087,8 @@ export default function Home() {
                     fill="currentColor"
                   />
                 </svg>
-                <div
-                  aria-hidden="true"
-                  className="transition duration-200 ease-curve-a absolute left-0 bottom-0 right-0 h-[0.1px] w-full mb-1 bg-btn-link-underline--hover opacity-0 group-hover:opacity-100 transition-opacity"
-                ></div>
-              </a>
+                <div className="absolute left-0 bottom-0 right-0 h-[1.5px] w-0 bg-gray-900 group-hover:w-full transition-all duration-500 ease-in-out"></div>
+              </Link>
             </div>
           </div>
         </div>
@@ -1142,7 +1103,7 @@ export default function Home() {
               <Button className="rounded-full px-6 py-2">
                 <Link
                   href="/chat"
-                  className="transition duration-200 ease-in-out text-white flex items-center justify-center gap-1"
+                  className="text-white flex items-center justify-center gap-1"
                   target="_blank"
                   rel="noreferrer"
                 >

@@ -101,4 +101,8 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  .ease-curve-a {
+    transition-timing-function: linear;
+  }
 }

@@ -1,4 +1,4 @@
-This is a clone of [ChatGPT](https://chatgpt.com/) from [OpenAI](https://openai.com/chatgpt/) in [Next.js](https://nextjs.org/) bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a clone of [ChatGPT](https://chatgpt.com/) from [OpenAI](https://openai.com/chatgpt/), built with [Next.js](https://nextjs.org/) and bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
