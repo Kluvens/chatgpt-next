@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Sidebar from "../components/layout/Sidebar";
-import ChatHome from "../components/chat/ChatHome";
+import Sidebar from "@/components/layout/Sidebar";
+import ChatHome from "@/components/chat/ChatHome";
 import { motion } from "framer-motion";
 import ChatInput from "@/components/chat/ChatInput";
 import { useChat } from "@/contexts/ChatContext";

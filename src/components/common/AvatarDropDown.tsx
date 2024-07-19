@@ -11,6 +11,7 @@ import Settings from "../settings/Settings";
 import CustomiseGpts from "./CustomiseGpts";
 import MyPlan from "../plan/MyPlan";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 
 const AvatarDropDown = () => {
   return (
@@ -39,14 +40,17 @@ const AvatarDropDown = () => {
         <CustomiseGpts />
         <Settings />
         <DropdownMenuSeparator />
-        <Link href="/">
-          <DropdownMenuItem className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-sm p-3 m-1.5 gap-2">
-            <div className="flex items-center justify-center token-text-secondary h-5 w-5">
-              <LogoutIcon />
-            </div>
-            Log out
-          </DropdownMenuItem>
-        </Link>
+        <DropdownMenuItem
+          className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-sm p-3 m-1.5 gap-2"
+          onClick={() =>
+            signOut({ callbackUrl: process.env.NEXT_PUBLIC_NEXTAUTH_URL })
+          }
+        >
+          <div className="flex items-center justify-center token-text-secondary h-5 w-5">
+            <LogoutIcon />
+          </div>
+          Log out
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

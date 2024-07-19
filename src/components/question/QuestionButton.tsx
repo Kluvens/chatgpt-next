@@ -14,9 +14,11 @@ import {
 import Shortcuts from "./Shortcuts";
 import { useToast } from "@/components/ui/use-toast";
 import { Toaster } from "@/components/ui/toaster";
+import { useSession } from "next-auth/react";
 
 const QuestionButton = () => {
   const { toast } = useToast();
+  const { data: session } = useSession();
 
   const router = useRouter();
 
@@ -36,27 +38,30 @@ const QuestionButton = () => {
           </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-80 rounded-3xl mr-4">
-          <DropdownMenuItem
-            className="flex items-center cursor-pointer hover:by-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2"
-            onClick={(e) => {
-              e.preventDefault();
-              toast({
-                description: (
-                  <div className="mt-1 flex-shrink-0 flex-grow-0 flex items-center">
-                    <ToastTickIcon />
-                    <span className="ml-2">
-                      Copied your User ID to clipboard
-                    </span>
-                  </div>
-                ),
-              });
-            }}
-          >
-            <div className="flex items-center justify-center token-text-secondary h-5 w-5">
-              <CopyIcon />
-            </div>
-            email@example.com
-          </DropdownMenuItem>
+          {session && (
+            <DropdownMenuItem
+              className="flex items-center cursor-pointer hover:by-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2"
+              onClick={(e) => {
+                e.preventDefault();
+                toast({
+                  description: (
+                    <div className="mt-1 flex-shrink-0 flex-grow-0 flex items-center">
+                      <ToastTickIcon />
+                      <span className="ml-2">
+                        Copied your User ID to clipboard
+                      </span>
+                    </div>
+                  ),
+                });
+              }}
+            >
+              <div className="flex items-center justify-center token-text-secondary h-5 w-5">
+                <CopyIcon />
+              </div>
+              {session?.user?.email}
+            </DropdownMenuItem>
+          )}
+
           <DropdownMenuItem
             className="flex items-center cursor-pointer hover:by-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2"
             onClick={() => handleNavigate("/qa")}
