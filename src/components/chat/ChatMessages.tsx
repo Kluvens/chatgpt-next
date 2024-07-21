@@ -1,11 +1,11 @@
-import React, { useRef, useEffect } from "react";
-import UserMessage from "./UserMessage";
-import ModelMessage from "./ModelMessage";
-import { Chat } from "@/types";
+import { Message } from "@/types";
+import React, { useEffect, useRef } from "react";
 import Header from "../layout/Header";
+import ModelMessage from "./ModelMessage";
+import UserMessage from "./UserMessage";
 
 interface ChatMessagesProps {
-  chats: Chat[];
+  messages: Message[];
   updateMessage: (id: string, newText: string) => void;
   toggleMarkBad: (id: string) => void;
   regenerateResponse: (id: string) => void;
@@ -14,7 +14,7 @@ interface ChatMessagesProps {
 }
 
 const ChatMessages: React.FC<ChatMessagesProps> = ({
-  chats,
+  messages,
   updateMessage,
   toggleMarkBad,
   regenerateResponse,
@@ -27,7 +27,7 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [chats.length]);
+  }, [messages.length]);
 
   return (
     <div className="flex-1 overflow-y-auto overflow-x-hidden h-full w-full relative">
@@ -35,17 +35,17 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({
         {/* Model Selection */}
         <Header isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
-        {chats.map((chat) => {
+        {messages.map((message) => {
           return (
-            <div key={chat.id}>
+            <div key={message.id}>
               <UserMessage
-                message={chat.message}
-                onUpdate={(newText) => updateMessage(chat.id, newText)}
+                request={message.request}
+                onUpdate={(newText) => updateMessage(message.id, newText)}
               />
               <ModelMessage
-                response={chat.response}
-                onToggleMarkBad={() => toggleMarkBad(chat.id)}
-                regenerate={() => regenerateResponse(chat.id)}
+                response={message.response}
+                onToggleMarkBad={() => toggleMarkBad(message.id)}
+                regenerate={() => regenerateResponse(message.id)}
               />
             </div>
           );

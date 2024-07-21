@@ -1,17 +1,17 @@
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { addChat } from "@/utils/chatUtils";
-import { useChat } from "@/contexts/ChatContext";
-import { motion } from "framer-motion";
-import Sidebar from "@/components/layout/Sidebar";
-import ChatMessages from "@/components/chat/ChatMessages";
 import ChatInput from "@/components/chat/ChatInput";
+import ChatMessages from "@/components/chat/ChatMessages";
+import Sidebar from "@/components/layout/Sidebar";
 import QuestionButton from "@/components/question/QuestionButton";
+import { useChat } from "@/contexts/ChatContext";
+import { addMessage } from "@/utils/chatUtils";
+import { motion } from "framer-motion";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const ChatMessagePage = () => {
   const router = useRouter();
-  const { message } = router.query;
-  const { chats, setChats, isSidebarOpen, toggleSidebar } = useChat();
+  const { request } = router.query;
+  const { messages, setMessages, isSidebarOpen, toggleSidebar } = useChat();
 
   const containerVariants = {
     close: {
@@ -31,13 +31,13 @@ const ChatMessagePage = () => {
   };
 
   useEffect(() => {
-    if (message) {
-      const decodedMessage = decodeURIComponent(message as string);
-      addChat(decodedMessage, setChats, chats).then((newChatId) => {
+    if (request) {
+      const decodedMessage = decodeURIComponent(request as string);
+      addMessage(decodedMessage, setMessages, messages).then((newChatId) => {
         router.replace(`/chat/${newChatId}`);
       });
     }
-  }, [message]);
+  }, [request]);
 
   return (
     <div className="flex h-screen">
@@ -52,14 +52,14 @@ const ChatMessagePage = () => {
       </motion.div>
       <div className="flex flex-col flex-1 px-1 pt-1">
         <ChatMessages
-          chats={chats}
+          messages={messages}
           updateMessage={() => {}}
           toggleMarkBad={() => {}}
           regenerateResponse={() => {}}
           isSidebarOpen={isSidebarOpen}
           toggleSidebar={toggleSidebar}
         />
-        <ChatInput setChats={setChats} chats={chats} />
+        <ChatInput />
       </div>
       <QuestionButton />
     </div>

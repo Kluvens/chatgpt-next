@@ -7,7 +7,7 @@ interface SidebarProps {
   toggleSidebar: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
+const Sidebar: React.FC<SidebarProps> = ({ toggleSidebar }) => {
   const chatHistory = {
     today: [
       "Interact Next js with the backend",

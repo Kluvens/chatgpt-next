@@ -1,18 +1,13 @@
-import React, { useState, ChangeEvent, useRef, useEffect } from "react";
-import { Chat } from "@/types";
+import { useChat } from "@/contexts/ChatContext";
+import { addMessage } from "@/utils/chatUtils";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { FileUploadIcon, SendMessageIcon } from "../icons/Icons";
-import ChatMessages from "./ChatMessages";
-import { addChat } from "@/utils/chatUtils";
 
-interface ChatInputProps {
-  setChats: Function;
-  chats: Chat[];
-}
-
-const ChatInput: React.FC<ChatInputProps> = ({ setChats, chats }) => {
+const ChatInput = () => {
   const [message, setMessage] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { messages, setMessages } = useChat();
 
   const adjustTextareaHeight = () => {
     if (textareaRef.current) {
@@ -48,7 +43,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ setChats, chats }) => {
 
   const handleSendMessage = async () => {
     if (message.trim()) {
-      addChat(message.trim(), setChats, chats);
+      addMessage(message.trim(), setMessages, messages);
       setMessage("");
     }
   };

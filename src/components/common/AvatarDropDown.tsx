@@ -6,12 +6,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { signOut } from "next-auth/react";
 import { AppsIcon, LogoutIcon } from "../icons/Icons";
+import MyPlan from "../plan/MyPlan";
 import Settings from "../settings/Settings";
 import CustomiseGpts from "./CustomiseGpts";
-import MyPlan from "../plan/MyPlan";
-import Link from "next/link";
-import { signOut } from "next-auth/react";
 
 const AvatarDropDown = () => {
   return (

@@ -1,6 +1,6 @@
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { PlanIcon } from "../icons/Icons";
 import { DropdownMenuItem } from "../ui/dropdown-menu";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import PlanDialog from "./PlanDialog";
 
 const MyPlan = () => {

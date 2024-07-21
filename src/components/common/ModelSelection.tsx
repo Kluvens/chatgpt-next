@@ -1,18 +1,17 @@
-import React, { useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useState } from "react";
 import {
   DownArrow,
-  ModelSelectionTick,
   Gpt3Icon,
   Gpt4Icon,
   Gpt4oIcon,
+  ModelSelectionTick,
 } from "../icons/Icons";
 
 const ModelSelection = () => {

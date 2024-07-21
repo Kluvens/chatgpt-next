@@ -1,4 +1,4 @@
-import { DownArrow, SpeechRadioPlayIcon } from "../icons/Icons";
+import { SpeechRadioPlayIcon } from "../icons/Icons";
 import { Button } from "../ui/button";
 import {
   Select,

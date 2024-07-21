@@ -1,12 +1,11 @@
-import React, { memo, useEffect, useState } from "react";
+import { Response } from "@/types";
+import React, { memo, useState } from "react";
 import ReactMarkdown from "react-markdown";
+import rehypeKatex from "rehype-katex";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
-import LoadingMessage from "./LoadingMessage";
 import { ChatGptIcon, MessageCopyIcon, MessageTickIcon } from "../icons/Icons";
-import markdownToHtml from "../../lib/markdownToHtml";
-import { Response } from "@/types";
+import LoadingMessage from "./LoadingMessage";
 interface ModelMessageProps {
   response: Response;
   onToggleMarkBad: () => void;
@@ -19,15 +18,7 @@ const ModelMessage: React.FC<ModelMessageProps> = ({
   regenerate,
 }) => {
   const [copied, setCopied] = useState(false);
-  const [content, setContent] = useState("");
 
-  useEffect(() => {
-    async function convertMarkdown() {
-      const htmlContent = await markdownToHtml(response.response);
-      setContent(htmlContent);
-    }
-    convertMarkdown();
-  }, []);
   const playAudio = async () => {
     const audio = new Audio(response.audioUrl);
     audio.play();

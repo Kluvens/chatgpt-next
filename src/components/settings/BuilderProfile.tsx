@@ -1,6 +1,3 @@
-import { Button } from "../ui/button";
-import { Label } from "../ui/label";
-import { Separator } from "../ui/separator";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   Tooltip,
@@ -8,6 +5,9 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Button } from "../ui/button";
+import { Label } from "../ui/label";
+import { Separator } from "../ui/separator";
 
 const BuilderProfile = () => {
   return (

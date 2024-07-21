@@ -1,7 +1,6 @@
-import Head from "next/head";
-import Link from "next/link";
-import { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/react";
+import Head from "next/head";
+import { ReactNode } from "react";
 
 interface LayoutProps {
   children: ReactNode;

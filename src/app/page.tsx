@@ -1,14 +1,12 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import Link from "next/link";
-import { InfiniteMovingCards } from "../components/ui/infinite-moving-cards";
-import { useRef } from "react";
-import VideoPlayer from "@/components/common/VideoPlayer";
-import { ListItemTickIcon } from "@/components/icons/Icons";
 import { ListOne, ListThree, ListTwo } from "@/assets/MovingList";
 import HomeSectionHeader from "@/components/common/HomeSectionHeader";
+import VideoPlayer from "@/components/common/VideoPlayer";
+import { ListItemTickIcon } from "@/components/icons/Icons";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { InfiniteMovingCards } from "../components/ui/infinite-moving-cards";
 
 export default function Home() {
   return (
@@ -486,7 +484,7 @@ export default function Home() {
               <div className="col-span-12 md:col-span-8 md:col-start-3 max-w-none prose opacity-100">
                 <p>
                   <b>
-                    <span>​​</span>
+                    <span></span>
                   </b>
                   <span>
                     Explore the GPT store and see what others have made. ChatGPT
@@ -736,7 +734,7 @@ export default function Home() {
                             data-content="I've created a birthday card for your daughter featuring a cheerful pink jellyfish! I hope it brings her joy and makes her birthday even more special."
                             style={{ animationDelay: "0.6s" }}
                           >
-                            I've created a birthday card for your daughter
+                            I&apos;ve created a birthday card for your daughter
                             featuring a cheerful pink jellyfish! I hope it
                             brings her joy and makes her birthday even more
                             special.

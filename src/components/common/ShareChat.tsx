@@ -1,17 +1,15 @@
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
-import { ShareUpIcon } from "../icons/Icons";
 import { useState } from "react";
+import { ShareUpIcon } from "../icons/Icons";
 import { Label } from "../ui/label";
 
 const ShareChat = () => {

@@ -1,14 +1,14 @@
-import { Chat } from "@/types";
+import { Message } from "@/types";
 
-export const addChat = async (
-  message: string,
-  setChats: Function,
-  chats: Chat[]
+export const addMessage = async (
+  request: string,
+  setMessages: React.Dispatch<React.SetStateAction<Message[]>>,
+  messages: Message[],
 ) => {
-  const newChatId = new Date().toString();
-  let newChat: Chat = {
-    id: newChatId,
-    message,
+  const newMessageId = new Date().toString();
+  const newMessage: Message = {
+    id: newMessageId,
+    request,
     response: {
       response: null,
       audioUrl: "",
@@ -16,25 +16,25 @@ export const addChat = async (
     },
   };
 
-  setChats([...chats, newChat]);
+  setMessages([...messages, newMessage]);
   try {
     await new Promise((resolve) => setTimeout(resolve, 5000));
-    setChats((prevChats: Chat[]) =>
-      prevChats.map((chat) =>
-        chat.id === newChatId
+    setMessages((prevMessages: Message[]) =>
+      prevMessages.map((message) =>
+        message.id === newMessageId
           ? {
-              ...chat,
+              ...message,
               response: {
-                ...chat.response,
+                ...message.response,
                 response: "very very very very nice",
               },
             }
-          : chat
-      )
+          : message,
+      ),
     );
   } catch (error) {
     console.error(error);
   }
 
-  return newChatId;
+  return newMessageId;
 };

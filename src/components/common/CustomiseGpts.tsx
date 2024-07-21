@@ -1,3 +1,4 @@
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -6,19 +7,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { CrossIcon, CustomizeIcon } from "../icons/Icons";
+import { Button } from "../ui/button";
 import {
   Dialog,
   DialogClose,
   DialogContent,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogFooter,
 } from "../ui/dialog";
-import { CrossIcon, CustomizeIcon } from "../icons/Icons";
-import { Button } from "../ui/button";
 import { DropdownMenuItem } from "../ui/dropdown-menu";
 
 const CustomiseGpts = () => {

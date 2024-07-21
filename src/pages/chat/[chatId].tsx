@@ -1,31 +1,31 @@
-import React, { useEffect, useState } from "react";
 import Sidebar from "@/components/layout/Sidebar";
-import ChatMessages from "../../components/chat/ChatMessages";
-import ChatInput from "../../components/chat/ChatInput";
 import QuestionButton from "@/components/question/QuestionButton";
-import { motion } from "framer-motion";
-import { addChat } from "@/utils/chatUtils";
 import { useChat } from "@/contexts/ChatContext";
+import { addMessage } from "@/utils/chatUtils";
+import { motion } from "framer-motion";
+import React from "react";
+import ChatInput from "../../components/chat/ChatInput";
+import ChatMessages from "../../components/chat/ChatMessages";
 
 const Home: React.FC = () => {
-  const { chats, setChats, isSidebarOpen, toggleSidebar } = useChat();
+  const { messages, setMessages, isSidebarOpen, toggleSidebar } = useChat();
 
-  const updateMessage = (id: string, newMessage: string) => {
-    setChats(
-      chats.map((chat) =>
-        chat.id === id ? { ...chat, message: newMessage } : chat
-      )
+  const updateMessage = (id: string, request: string) => {
+    setMessages(
+      messages.map((message) =>
+        message.id === id ? { ...message, request } : message,
+      ),
     );
   };
 
   const regenerateResponse = (chatId: string) => {
-    const chat = chats.find((chat) => chat.id === chatId);
-    const updatedChats = chats.filter((chat) => chat.id !== chatId);
-    setChats(updatedChats);
+    const message = messages.find((message) => message.id === chatId);
+    const updatedChats = messages.filter((message) => message.id !== chatId);
+    setMessages(updatedChats);
 
     try {
-      if (chat?.message) {
-        addChat(chat?.message, setChats, chats);
+      if (message?.request) {
+        addMessage(message?.request, setMessages, messages);
       } else {
         console.error("The chat to regenerate is not found");
       }
@@ -35,18 +35,18 @@ const Home: React.FC = () => {
   };
 
   const toggleMarkBad = (id: string) => {
-    setChats(
-      chats.map((chat) =>
-        chat.id === id
+    setMessages(
+      messages.map((message) =>
+        message.id === id
           ? {
-              ...chat,
+              ...message,
               response: {
-                ...chat.response,
-                isResponseBad: !chat.response.isResponseBad,
+                ...message.response,
+                isResponseBad: !message.response.isResponseBad,
               },
             }
-          : chat
-      )
+          : message,
+      ),
     );
   };
 
@@ -80,14 +80,14 @@ const Home: React.FC = () => {
       </motion.div>
       <div className="flex flex-col flex-1 px-1 pt-1">
         <ChatMessages
-          chats={chats}
+          messages={messages}
           updateMessage={updateMessage}
           toggleMarkBad={toggleMarkBad}
           regenerateResponse={regenerateResponse}
           isSidebarOpen={isSidebarOpen}
           toggleSidebar={toggleSidebar}
         />
-        <ChatInput setChats={setChats} chats={chats} />
+        <ChatInput />
       </div>
       <QuestionButton />
     </div>

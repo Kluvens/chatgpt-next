@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Dialog,
   DialogClose,
@@ -7,30 +6,28 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Switch } from "@/components/ui/switch";
 
-import {
-  SettingsIcon,
-  GeneralIcon,
-  PersonalizationIcon,
-  SpeechIcon,
-  DataControlsIcon,
-  BuilderProfileIcon,
-  ConnectedIcon,
-  SecurityIcon,
-  CrossIcon,
-} from "../icons/Icons";
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  BuilderProfileIcon,
+  ConnectedIcon,
+  CrossIcon,
+  DataControlsIcon,
+  GeneralIcon,
+  PersonalizationIcon,
+  SecurityIcon,
+  SettingsIcon,
+  SpeechIcon,
+} from "../icons/Icons";
 import { Separator } from "../ui/separator";
 import BuilderProfile from "./BuilderProfile";
+import ConnectedApps from "./ConnectedApps";
+import DataControl from "./DataControls";
 import General from "./General";
 import Personalisation from "./Personalisation";
 import Security from "./Security";
-import DataControl from "./DataControls";
 import Speech from "./Speech";
-import ConnectedApps from "./ConnectedApps";
 
 const Settings = () => {
   return (

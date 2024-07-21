@@ -1,20 +1,15 @@
-import { useRouter } from "next/router";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  ShortCutsIcon,
-  ShareRightIcon,
-  CopyIcon,
-  ToastTickIcon,
-} from "../icons/Icons";
-import Shortcuts from "./Shortcuts";
-import { useToast } from "@/components/ui/use-toast";
 import { Toaster } from "@/components/ui/toaster";
+import { useToast } from "@/components/ui/use-toast";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { CopyIcon, ShareRightIcon, ToastTickIcon } from "../icons/Icons";
+import Shortcuts from "./Shortcuts";
 
 const QuestionButton = () => {
   const { toast } = useToast();

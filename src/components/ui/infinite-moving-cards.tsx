@@ -47,12 +47,12 @@ export const InfiniteMovingCards = ({
       if (direction === "left") {
         containerRef.current.style.setProperty(
           "--animation-direction",
-          "forwards"
+          "forwards",
         );
       } else {
         containerRef.current.style.setProperty(
           "--animation-direction",
-          "reverse"
+          "reverse",
         );
       }
     }
@@ -73,7 +73,7 @@ export const InfiniteMovingCards = ({
       ref={containerRef}
       className={cn(
         "scroller relative z-20  max-w-screen-2xl overflow-hidden bg-base [mask-image:linear-gradient(to_right,transparent,white_15%,white_85%,transparent)]",
-        className
+        className,
       )}
     >
       <ul
@@ -81,7 +81,7 @@ export const InfiniteMovingCards = ({
         className={cn(
           "flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap",
           start && "animate-scroll ",
-          pauseOnHover && "hover:[animation-play-state:paused]"
+          pauseOnHover && "hover:[animation-play-state:paused]",
         )}
       >
         {items.map((item, idx) => (
@@ -90,7 +90,7 @@ export const InfiniteMovingCards = ({
             key={idx}
           >
             <Link
-              href={`/message/${encodeURIComponent(item.question)}`}
+              href={`/request/${encodeURIComponent(item.question)}`}
               className="transition ease-in-out duration-250 text-caption group-hover:underline block"
               target="_blank"
               rel="noreferrer"

@@ -1,9 +1,9 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
-import { Chat } from "@/types";
+import { Message } from "@/types";
+import React, { createContext, ReactNode, useContext, useState } from "react";
 
 interface ChatContextType {
-  chats: Chat[];
-  setChats: React.Dispatch<React.SetStateAction<Chat[]>>;
+  messages: Message[];
+  setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
   isSidebarOpen: boolean;
   setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
   toggleSidebar: () => void;
@@ -14,7 +14,7 @@ const ChatContext = createContext<ChatContextType | undefined>(undefined);
 export const ChatProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [chats, setChats] = useState<Chat[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>(true);
 
   const toggleSidebar = () => {
@@ -23,7 +23,13 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({
 
   return (
     <ChatContext.Provider
-      value={{ chats, setChats, isSidebarOpen, setSidebarOpen, toggleSidebar }}
+      value={{
+        messages,
+        setMessages,
+        isSidebarOpen,
+        setSidebarOpen,
+        toggleSidebar,
+      }}
     >
       {children}
     </ChatContext.Provider>

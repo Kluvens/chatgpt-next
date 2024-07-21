@@ -1,15 +1,15 @@
+import { Button } from "@/components/ui/button";
 import React, { memo, useState } from "react";
 import { EditIcon } from "../icons/Icons";
-import { Button } from "@/components/ui/button";
 
 interface UserMessageProps {
-  message: string;
+  request: string;
   onUpdate: (newText: string) => void;
 }
 
-const UserMessage: React.FC<UserMessageProps> = ({ message, onUpdate }) => {
+const UserMessage: React.FC<UserMessageProps> = ({ request, onUpdate }) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [editedMessage, setEditedMessage] = useState(message);
+  const [editedMessage, setEditedMessage] = useState(request);
 
   const handleEditClick = () => {
     setIsEditing(true);
@@ -17,7 +17,7 @@ const UserMessage: React.FC<UserMessageProps> = ({ message, onUpdate }) => {
 
   const handleCancelClick = () => {
     setIsEditing(false);
-    setEditedMessage(message);
+    setEditedMessage(request);
   };
 
   const handleSendClick = () => {
@@ -78,7 +78,7 @@ const UserMessage: React.FC<UserMessageProps> = ({ message, onUpdate }) => {
                 <div className="min-h-[20px] text-message flex flex-col items-start whitespace-pre-wrap break-words [.text-message+&]:mt-5 w-full items-end overflow-x-auto gap-2">
                   <div className="flex w-full flex-col gap-1 empty:hidden items-end rtl:items-start">
                     <div className="relative max-w-[70%] rounded-3xl bg-[#f4f4f4] px-5 py-2.5 dark:bg-token-main-surface-secondary">
-                      <div>{message}</div>
+                      <div>{request}</div>
                       <div className="absolute bottom-0 right-full top-0 -mr-3.5 hidden pr-5 pt-1 group-hover/conversation-turn:block">
                         <span className="">
                           <button

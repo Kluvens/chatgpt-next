@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { CollapseIcon, NewChatIcon } from "../icons/Icons";
-import ModelSelection from "../common/ModelSelection";
-import ShareChat from "../common/ShareChat";
-import AvatarDropDown from "../common/AvatarDropDown";
 import { useSession } from "next-auth/react";
 import AuthButton from "../common/AuthButton";
+import AvatarDropDown from "../common/AvatarDropDown";
+import ModelSelection from "../common/ModelSelection";
+import ShareChat from "../common/ShareChat";
+import { CollapseIcon, NewChatIcon } from "../icons/Icons";
 
 const Header: React.FC<{
   isSidebarOpen: boolean;

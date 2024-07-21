@@ -1,30 +1,13 @@
-import React from "react";
 import {
   Dialog,
   DialogClose,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
-import { Switch } from "@/components/ui/switch";
-import {
-  SettingsIcon,
-  GeneralIcon,
-  PersonalizationIcon,
-  SpeechIcon,
-  DataControlsIcon,
-  BuilderProfileIcon,
-  ConnectedIcon,
-  SecurityIcon,
-  ShortCutsIcon,
-  CrossIcon,
-} from "../icons/Icons";
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
+import { CrossIcon, ShortCutsIcon } from "../icons/Icons";
 import ShortcutBox from "./ShortcutBox";
 import ShortcutTitle from "./ShortcutTitle";
 
