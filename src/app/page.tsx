@@ -5,12 +5,16 @@ import HomeSectionHeader from "@/components/common/HomeSectionHeader";
 import VideoPlayer from "@/components/common/VideoPlayer";
 import { ListItemTickIcon } from "@/components/icons/Icons";
 import { Button } from "@/components/ui/button";
+import { useSettings } from "@/contexts/SettingsContext";
 import Link from "next/link";
 import { InfiniteMovingCards } from "../components/ui/infinite-moving-cards";
 
 export default function Home() {
+  const { settings } = useSettings();
+
+  console.log(settings);
   return (
-    <div className="flex flex-col justify-center pt-24 bg-base">
+    <div className="flex flex-col justify-center pt-24 bg-base dark:bg-black">
       <div className="relative mb-4">
         <div className="px-5 mx-auto max-w-[68rem] grid grid-cols-12 mt-8">
           <div className="md:col-span-12 col-span-12">

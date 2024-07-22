@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
+import { useSettings } from "@/contexts/SettingsContext";
 import {
   Select,
   SelectContent,
@@ -9,13 +10,28 @@ import {
 } from "../ui/select";
 
 const General = () => {
+  const { settings, setSettings } = useSettings();
+
+  const handleThemeChange = (value: "system" | "light" | "dark") => {
+    setSettings((prevSettings) => ({
+      ...prevSettings,
+      general: {
+        ...prevSettings.general,
+        theme: value,
+      },
+    }));
+  };
+
   return (
     <div className="w-full overflow-y-auto">
       <div className="flex flex-col gap-3 px-4 pb-1 text-sm token-text-primary sm:px-6 sm:pb-2 md:ps-0">
         <div className="border-b pb-3">
           <div className="flex items-center justify-between pt-1">
             <div>Theme</div>
-            <Select defaultValue="system">
+            <Select
+              defaultValue={settings.general.theme}
+              onValueChange={handleThemeChange}
+            >
               <SelectTrigger className="w-auto focus-visible:outline-none">
                 <SelectValue placeholder="Select a theme" />
               </SelectTrigger>

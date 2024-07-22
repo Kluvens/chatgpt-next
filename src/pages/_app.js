@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@/contexts/ThemeProvider";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SessionProvider } from "next-auth/react";
@@ -11,13 +12,20 @@ export default function App({
 }) {
   return (
     <SessionProvider session={session}>
-      <SettingsProvider>
-        <ChatProvider>
-          <Component {...pageProps} />
-          <Analytics />
-          <SpeedInsights />
-        </ChatProvider>
-      </SettingsProvider>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <SettingsProvider>
+          <ChatProvider>
+            <Component {...pageProps} />
+            <Analytics />
+            <SpeedInsights />
+          </ChatProvider>
+        </SettingsProvider>
+      </ThemeProvider>
     </SessionProvider>
   );
 }

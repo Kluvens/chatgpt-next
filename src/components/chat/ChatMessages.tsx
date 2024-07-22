@@ -28,7 +28,7 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({
   }, [messages.length]);
 
   return (
-    <div className="flex-1 overflow-y-auto overflow-x-hidden h-full w-full relative">
+    <div className="flex-1 token-surface-primary text-token-primary overflow-y-auto overflow-x-hidden h-full w-full relative">
       <div className="flex flex-col text-sm md:pb-9">
         {/* Model Selection */}
         <Header isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />

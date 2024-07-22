@@ -1,4 +1,8 @@
+import { SettingsProvider } from "@/contexts/SettingsContext";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
 
@@ -16,7 +20,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <SettingsProvider>
+            {children}
+            <Analytics />
+            <SpeedInsights />
+          </SettingsProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

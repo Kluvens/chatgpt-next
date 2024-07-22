@@ -32,7 +32,7 @@ const QuestionButton = () => {
             ?
           </div>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-80 rounded-3xl mr-4">
+        <DropdownMenuContent className="token-surface-primary w-80 rounded-3xl mr-4">
           {session && (
             <DropdownMenuItem
               className="flex items-center cursor-pointer hover:by-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2"

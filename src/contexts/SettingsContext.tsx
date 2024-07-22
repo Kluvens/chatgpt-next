@@ -1,3 +1,6 @@
+"use client";
+
+import { useTheme } from "next-themes";
 import React, {
   createContext,
   ReactNode,
@@ -49,6 +52,7 @@ export const SettingsProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [settings, setSettings] = useState<SettingsType>(initialSettings);
+  const { setTheme } = useTheme();
 
   useEffect(() => {
     const savedSettings = localStorage.getItem("appSettings");
@@ -60,6 +64,14 @@ export const SettingsProvider: React.FC<{ children: ReactNode }> = ({
   useEffect(() => {
     localStorage.setItem("appSettings", JSON.stringify(settings));
   }, [settings]);
+
+  useEffect(() => {
+    applyTheme(settings.general.theme);
+  }, [settings.general.theme]);
+
+  const applyTheme = (theme: "system" | "light" | "dark") => {
+    setTheme(theme);
+  };
 
   return (
     <SettingsContext.Provider

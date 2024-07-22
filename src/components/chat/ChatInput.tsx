@@ -64,13 +64,13 @@ const ChatInput = () => {
   };
 
   return (
-    <div className="w-full md:pt-0 md:border-transparent md:w-[calc(100%-.5rem)]">
+    <div className="w-full token-surface-primary md:pt-0 md:border-transparent md:w-[calc(100%-.5rem)]">
       <div className="px-3 text-base md:px-4 m-auto md:px-5 lg:px-1 xl:px-5">
         <div className="mx-auto flex flex-1 gap-3 text-base md:max-2-3xl lg:max-w[40rem] xl:max-w-[48rem]">
           <form className="w-full" onSubmit={handleFormSubmit}>
             <div className="relative flex h-full max-w-full flex-1 flex-col">
               <div className="flex w-full items-center">
-                <div className="flex w-full flex-col gap-1.5 rounded-[26px] p-1.5 transition-colors bg-[#f4f4f4]">
+                <div className="flex w-full flex-col gap-1.5 rounded-[26px] p-1.5 transition-colors token-surface-secondary">
                   <div className="flex items-end">
                     {/* Upload File */}
                     <div className="flex flex-col">
