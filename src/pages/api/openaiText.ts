@@ -36,32 +36,7 @@ export default async function handler(
 
     const chatContent = completion.choices[0].message.content ?? "";
 
-    const mp3Response = await openai.audio.speech.create({
-      model: "tts-1",
-      voice: "alloy",
-      input: chatContent,
-    });
-
-    const buffer = Buffer.from(await mp3Response.arrayBuffer());
-    const audioUrl = `data:audio/mpeg;base64,${buffer.toString("base64")}`;
-
-    // const response = await axios.post('https://api.openai.com/v1/chat/completions', {
-    //   model: 'gpt-3.5-turbo',
-    //   messages: [
-    //     { role: 'system', content: 'Answer questions as concise as possible' },
-    //     { role: 'user', content: message }
-    //   ],
-    //   max_tokens: 300,
-    // }, {
-    //   headers: {
-    //     'Authorization': `Bearer ${openaiApiKey}`,
-    //     'Content-Type': 'application/json',
-    //   },
-    // });
-
-    // const openaiResponse = response.data.choices[0].message.content
-
-    res.status(200).json({ chatContent, audioUrl });
+    res.status(200).json({ chatContent });
   } catch (error) {
     console.error("Error fetching OpenAI response:", error);
     res.status(500).json({ error });

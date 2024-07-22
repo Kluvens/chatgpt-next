@@ -10,13 +10,7 @@ export interface Chat {
 export interface Message {
   id: string;
   request: string;
-  response: Response;
-}
-
-export interface Response {
   response: string | null;
-  audioUrl: string;
-  isResponseBad: boolean;
 }
 
 export enum ModelType {

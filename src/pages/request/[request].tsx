@@ -54,7 +54,6 @@ const ChatMessagePage = () => {
         <ChatMessages
           messages={messages}
           updateMessage={() => {}}
-          toggleMarkBad={() => {}}
           regenerateResponse={() => {}}
           isSidebarOpen={isSidebarOpen}
           toggleSidebar={toggleSidebar}

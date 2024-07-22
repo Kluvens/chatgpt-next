@@ -9,25 +9,33 @@ export const addMessage = async (
   const newMessage: Message = {
     id: newMessageId,
     request,
-    response: {
-      response: null,
-      audioUrl: "",
-      isResponseBad: false,
-    },
+    response: null,
   };
 
   setMessages([...messages, newMessage]);
   try {
-    await new Promise((resolve) => setTimeout(resolve, 5000));
+    // const response = await fetch("/api/openaiText", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({ message: request }),
+    // });
+
+    // if (!response.ok) {
+    //   throw new Error("Failed to fetch OpenAI response");
+    // }
+
+    // const data = await response.json();
+    // const generatedText = data.chatContent;
+    const generatedText = "very very good";
+
     setMessages((prevMessages: Message[]) =>
       prevMessages.map((message) =>
         message.id === newMessageId
           ? {
               ...message,
-              response: {
-                ...message.response,
-                response: "very very very very nice",
-              },
+              response: generatedText,
             }
           : message,
       ),

@@ -7,7 +7,6 @@ import UserMessage from "./UserMessage";
 interface ChatMessagesProps {
   messages: Message[];
   updateMessage: (id: string, newText: string) => void;
-  toggleMarkBad: (id: string) => void;
   regenerateResponse: (id: string) => void;
   isSidebarOpen: boolean;
   toggleSidebar: () => void;
@@ -16,7 +15,6 @@ interface ChatMessagesProps {
 const ChatMessages: React.FC<ChatMessagesProps> = ({
   messages,
   updateMessage,
-  toggleMarkBad,
   regenerateResponse,
   isSidebarOpen,
   toggleSidebar,
@@ -44,7 +42,6 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({
               />
               <ModelMessage
                 response={message.response}
-                onToggleMarkBad={() => toggleMarkBad(message.id)}
                 regenerate={() => regenerateResponse(message.id)}
               />
             </div>

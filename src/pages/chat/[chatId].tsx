@@ -34,22 +34,6 @@ const Home: React.FC = () => {
     }
   };
 
-  const toggleMarkBad = (id: string) => {
-    setMessages(
-      messages.map((message) =>
-        message.id === id
-          ? {
-              ...message,
-              response: {
-                ...message.response,
-                isResponseBad: !message.response.isResponseBad,
-              },
-            }
-          : message,
-      ),
-    );
-  };
-
   const containerVariants = {
     close: {
       width: "0rem",
@@ -82,7 +66,6 @@ const Home: React.FC = () => {
         <ChatMessages
           messages={messages}
           updateMessage={updateMessage}
-          toggleMarkBad={toggleMarkBad}
           regenerateResponse={regenerateResponse}
           isSidebarOpen={isSidebarOpen}
           toggleSidebar={toggleSidebar}
