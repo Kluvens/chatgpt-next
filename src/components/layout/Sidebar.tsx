@@ -43,29 +43,22 @@ const Sidebar: React.FC<SidebarProps> = ({ toggleSidebar }) => {
   };
 
   return (
-    <div className="h-full w-full">
+    <div className="sidebar-surface-primary h-full w-full">
       <div className="flex h-full min-h-0 pt-3 flex-col">
-        <div className="relative h-full w-full flex-1 items-start border-white/20">
-          <nav className="flex h-full w-full flex-col px-3 pb-3.5">
+        <div className="relative h-full flex-1 items-start">
+          <nav className="flex h-full flex-col px-3 pb-3.5">
             <div className="flex justify-between flex h-14 items-center">
-              <span className="">
-                <button
-                  className="h-10 rounded-lg px-2 token-text-secondary focus-visible:outline-0 hover:token-surface-secondary focus-visible:token-surface-secondary"
-                  onClick={toggleSidebar}
-                >
-                  <CollapseIcon />
-                </button>
-              </span>
-              <span className="">
-                <button className="h-10 rounded-lg px-2 token-text-secondary focus-visible:outline-0 hover:token-surface-secondary focus-visible:token-surface-secondary">
-                  <NewChatIcon />
-                </button>
-              </span>
+              <button
+                className="h-10 rounded-lg px-2 token-text-secondary focus-visible:outline-0 hover:sidebar-surface-secondary focus-visible:token-surface-secondary"
+                onClick={toggleSidebar}
+              >
+                <CollapseIcon />
+              </button>
+              <button className="h-10 rounded-lg px-2 token-text-secondary focus-visible:outline-0 hover:sidebar-surface-secondary focus-visible:token-surface-secondary">
+                <NewChatIcon />
+              </button>
             </div>
-
-            <div className="flex-col flex-1 -mr-2 pr-2">
-              <div></div>
-
+            <div className="flex-col overflow-y-auto flex-1 -mr-2 pr-2 transition-opacity duration-500">
               {/* Chat History */}
               <div className="flex flex-col gap-2 pb-2 text-md mt-5">
                 <div>
@@ -82,7 +75,6 @@ const Sidebar: React.FC<SidebarProps> = ({ toggleSidebar }) => {
                       ))}
                     </ol>
                   </div>
-
                   {/* Chat History Yesterday */}
                   <div className="relative mt-5">
                     <div>
@@ -98,7 +90,6 @@ const Sidebar: React.FC<SidebarProps> = ({ toggleSidebar }) => {
                       ))}
                     </ol>
                   </div>
-
                   {/* Placeholder for Previous 7 Days */}
                   <div></div>
                 </div>

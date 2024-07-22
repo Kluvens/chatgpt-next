@@ -2,7 +2,7 @@ import React from "react";
 
 const Policies: React.FC = () => {
   return (
-    <div>
+    <div className="token-surface-primary">
       <div className="mt-2xl">
         <div className="relative mb-l">
           <div className="max-w-[68rem] grid grid-cols-12 mt-2xl">

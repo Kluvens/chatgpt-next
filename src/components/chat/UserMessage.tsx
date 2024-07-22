@@ -44,7 +44,7 @@ const UserMessage: React.FC<UserMessageProps> = ({ request, onUpdate }) => {
                   <div className="flex flex-grow flex-col max-w-full">
                     <div className="grid">
                       <textarea
-                        className="rounded-3xl min-h-36 col-start-1 col-end-2 row-start-1 row-end-2 resize-none overflow-hidden m-0 border-0 bg-transparent p-6 focus:outline-none"
+                        className="rounded-3xl min-h-36 col-start-1 col-end-2 row-start-1 row-end-2 resize-none m-0 border-0 bg-transparent p-6 focus:outline-none"
                         value={editedMessage}
                         onChange={handleInputChange}
                       ></textarea>

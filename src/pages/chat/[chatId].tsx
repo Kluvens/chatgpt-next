@@ -52,13 +52,13 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="relative z-0 flex h-screen w-full overflow-hidden">
       <motion.div
         initial={false}
         animate={isSidebarOpen ? "open" : "close"}
         variants={containerVariants}
         layout
-        className="hidden md:flex flex-shrink-0 bg-gray-50 overflow-x-hidden"
+        className="hidden md:flex flex-shrink-0 bg-gray-50 w-[260px] overflow-x-hidden"
       >
         <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       </motion.div>

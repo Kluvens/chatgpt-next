@@ -7,7 +7,7 @@ import {
 
 const qa = () => {
   return (
-    <div className="flex shrink-0 grow basis-auto justify-center px-5 sm:px-10">
+    <div className="flex token-surface-primary shrink-0 grow basis-auto justify-center px-5 sm:px-10">
       <div className="w-96">
         <div className="mb-5">
           <div

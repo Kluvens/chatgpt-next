@@ -1,5 +1,5 @@
 const Release = () => {
-  return <div>Release</div>;
+  return <div className="token-surface-primary">Release</div>;
 };
 
 export default Release;

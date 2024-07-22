@@ -34,7 +34,7 @@ const Settings = () => {
     <Dialog>
       <DialogTrigger asChild>
         <DropdownMenuItem
-          className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-sm p-3 m-1.5 gap-2"
+          className="flex items-center cursor-pointer hover:token-surface-secondary rounded-xl text-sm p-3 m-1.5 gap-2"
           onSelect={(e) => e.preventDefault()}
         >
           <div className="flex items-center gap-2 w-full token-text-primary">
@@ -45,14 +45,14 @@ const Settings = () => {
           </div>
         </DropdownMenuItem>
       </DialogTrigger>
-      <DialogContent className="flex flex-col rounded-3xl p-0 min-w-[750px] min-h-[500px] gap-0">
+      <DialogContent className="flex flex-col token-surface-primary rounded-3xl p-0 min-w-[750px] min-h-[500px] gap-0">
         <DialogHeader className="flex-grow-0 px-8 pt-8 pb-6 justify-center">
           <div className="flex justify-between items-center">
             <DialogTitle className="text-xl font-semibold leading-6 token-text-primary h-full">
               Settings
             </DialogTitle>
             <DialogClose asChild>
-              <button className="flex h-8 w-8 items-center justify-center rounded-full bg-transparent hover:token-surface-secondary focus-visible:outline-none dark:hover:bg-token-main-surface-tertiary sm:mt-0">
+              <button className="flex h-8 w-8 items-center justify-center rounded-full bg-transparent hover:token-surface-secondary focus-visible:outline-none dark:hover:token-surface-tertiary sm:mt-0">
                 <CrossIcon />
               </button>
             </DialogClose>
@@ -64,7 +64,7 @@ const Settings = () => {
           orientation="vertical"
           className="flex-grow flex flex-row"
         >
-          <TabsList className="flex flex-col justify-start w-auto h-auto p-4">
+          <TabsList className="flex flex-col token-surface-primary justify-start w-auto h-auto p-4">
             <TabsTrigger
               value="general"
               className="flex w-full items-center justify-start gap-2 p-2"

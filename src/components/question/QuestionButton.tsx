@@ -35,7 +35,7 @@ const QuestionButton = () => {
         <DropdownMenuContent className="token-surface-primary w-80 rounded-3xl mr-4">
           {session && (
             <DropdownMenuItem
-              className="flex items-center cursor-pointer hover:by-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2"
+              className="flex items-center cursor-pointer hover:token-surface-secondary rounded-xl text-md p-3 m-1.5 gap-2"
               onClick={(e) => {
                 e.preventDefault();
                 toast({
@@ -58,7 +58,7 @@ const QuestionButton = () => {
           )}
 
           <DropdownMenuItem
-            className="flex items-center cursor-pointer hover:by-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2"
+            className="flex items-center cursor-pointer hover:token-surface-secondary rounded-xl text-md p-3 m-1.5 gap-2"
             onClick={() => handleNavigate("/qa")}
           >
             <div className="flex items-center justify-center token-text-secondary h-5 w-5">
@@ -67,7 +67,7 @@ const QuestionButton = () => {
             Help & FAQ
           </DropdownMenuItem>
           <DropdownMenuItem
-            className="flex items-center cursor-pointer hover:by-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2"
+            className="flex items-center cursor-pointer hover:token-surface-secondary rounded-xl text-md p-3 m-1.5 gap-2"
             onClick={() => handleNavigate("/release")}
           >
             <div className="flex items-center justify-center token-text-secondary h-5 w-5">
@@ -76,7 +76,7 @@ const QuestionButton = () => {
             Release notes
           </DropdownMenuItem>
           <DropdownMenuItem
-            className="flex items-center cursor-pointer hover:by-[#f5f5f5] rounded-xl text-md p-3 m-1.5 gap-2"
+            className="flex items-center cursor-pointer hover:token-surface-secondary rounded-xl text-md p-3 m-1.5 gap-2"
             onClick={() => handleNavigate("/policies")}
           >
             <div className="flex items-center justify-center token-text-secondary h-5 w-5">

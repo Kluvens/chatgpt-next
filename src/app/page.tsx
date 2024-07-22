@@ -51,8 +51,8 @@ export default function Home() {
                           d="M1 9L9 1M9 1H2.5M9 1V7.22222"
                           stroke="currentColor"
                           strokeWidth="1.25"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         ></path>
                       </svg>
                       <span className="sr-only">(opens in a new window)</span>

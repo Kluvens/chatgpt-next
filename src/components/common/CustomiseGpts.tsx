@@ -26,7 +26,7 @@ const CustomiseGpts = () => {
     <Dialog>
       <DialogTrigger asChild>
         <DropdownMenuItem
-          className="flex items-center cursor-pointer hover:bg-[#f5f5f5] rounded-xl text-sm p-3 m-1.5 gap-2"
+          className="flex items-center cursor-pointer hover:token-surface-secondary rounded-xl text-sm p-3 m-1.5 gap-2"
           onSelect={(e) => e.preventDefault()}
         >
           <div className="flex items-center gap-2 w-full token-text-primary">
@@ -37,14 +37,14 @@ const CustomiseGpts = () => {
           </div>
         </DropdownMenuItem>
       </DialogTrigger>
-      <DialogContent className="flex flex-col rounded-3xl p-0 min-w-[750px] max-h-[500px]">
+      <DialogContent className="flex flex-col token-surface-primary rounded-3xl p-0 min-w-[750px] max-h-[500px]">
         <DialogHeader>
           <div className="px-4 pb-4 pt-5 sm:p-6 flex items-center justify-between border-b border-black/10 dark:border-white/10">
             <DialogTitle className="text-xl font-semibold leading-6 token-text-primary">
               Keyboard shortcuts
             </DialogTitle>
             <DialogClose asChild>
-              <button className="flex h-8 w-8 items-center justify-center rounded-full bg-transparent hover:token-surface-secondary focus-visible:outline-none dark:hover:bg-token-main-surface-tertiary sm:mt-0">
+              <button className="flex h-8 w-8 items-center justify-center rounded-full bg-transparent hover:token-surface-secondary focus-visible:outline-none dark:hover:token-surface-tertiary sm:mt-0">
                 <CrossIcon />
               </button>
             </DialogClose>

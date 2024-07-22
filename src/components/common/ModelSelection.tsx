@@ -50,16 +50,19 @@ const ModelSelection = () => {
           <DownArrow />
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="rounded-3xl w-96 py-2">
+      <DropdownMenuContent
+        align="start"
+        className="token-surface-primary rounded-3xl w-96 py-2"
+      >
         <div className="flex items-center justify-between pb-0 pl-5 pr-4 pt-2">
-          <DropdownMenuLabel className="text-md token-text-tertiary">
+          <DropdownMenuLabel className="text-sm font-normal token-surface-primary token-text-secondary">
             Model
           </DropdownMenuLabel>
         </div>
         {models.map((model) => (
           <DropdownMenuItem
             key={model.name}
-            className="flex items-center m-1.5 p-2.5 text-sm cursor-pointer focus-visible:outline-0 group relative hover:bg-[#f5f5f5] focus-visible:bg-[#f5f5f5] dark:hover:bg-token-main-surface-secondary dark:focus-visible:bg-token-main-surface-secondary rounded-md my-0 px-3 mx-2 gap-2.5 py-3 !pr-3"
+            className="flex items-center m-1.5 p-2.5 text-sm cursor-pointer focus-visible:outline-0 group relative hover:token-surface-secondary focus-visible:token-surface-secondary dark:hover:token-surface-secondary dark:focus-visible:bg-token-main-surface-secondary rounded-md my-0 px-3 mx-2 gap-2.5 py-3 !pr-3"
             onSelect={() => handleModelSelect(model.name)}
           >
             <div className="flex grow items-center justify-between gap-2">
@@ -69,7 +72,7 @@ const ModelSelection = () => {
                 </div>
                 <div className="flex flex-col gap-1">
                   GPT-{model.name}
-                  <div className="token-text-tertiary text-sm">
+                  <div className="token-text-secondary bg-transparent text-sm">
                     {model.description}
                   </div>
                 </div>

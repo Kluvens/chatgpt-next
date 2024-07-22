@@ -26,7 +26,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex token-surface-primary h-screen">
       <motion.div
         initial={false}
         animate={isSidebarOpen ? "open" : "close"}

@@ -37,11 +37,11 @@ const ShareChat = () => {
           <ShareUpIcon />
         </button>
       </DialogTrigger>
-      <DialogContent className="rounded-3xl">
+      <DialogContent className="token-surface-primary token-text-primary rounded-3xl">
         <DialogHeader>
           <DialogTitle className="py-4">Share public link to chat</DialogTitle>
           <Separator />
-          <DialogDescription className="py-4 text-lg">
+          <DialogDescription className="py-4 text-lg token-text-primary">
             Your name, custom instructions, and any messages you add after
             sharing stay private.
           </DialogDescription>
