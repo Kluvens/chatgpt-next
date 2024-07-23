@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { useChat } from "../../contexts/ChatContext";
 import { addMessage } from "../../utils/chatUtils";
 import ChatInput from "../components/chat/ChatInput";
@@ -37,10 +37,12 @@ const ChatMessagePage = () => {
     if (request) {
       const decodedMessage = decodeURIComponent(request as string);
       addMessage(decodedMessage, setMessages, messages).then((newChatId) => {
-        router.replace(`/chat/${newChatId}`);
+        if (newChatId) {
+          router.replace(`/chat/${newChatId}`);
+        }
       });
     }
-  }, [request]);
+  }, [request, setMessages, messages, router]);
 
   return (
     <div className="flex h-screen">
@@ -67,4 +69,10 @@ const ChatMessagePage = () => {
   );
 };
 
-export default ChatMessagePage;
+const PageWrapper = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <ChatMessagePage />
+  </Suspense>
+);
+
+export default PageWrapper;
