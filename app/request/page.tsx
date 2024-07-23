@@ -42,7 +42,7 @@ const ChatMessagePage = () => {
         }
       });
     }
-  }, [request, setMessages, messages, router]);
+  }, [request]);
 
   return (
     <div className="flex h-screen">
