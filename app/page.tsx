@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import HomeSectionHeader from "./components/common/HomeSectionHeader";
 import VideoPlayer from "./components/common/VideoPlayer";
@@ -112,7 +113,7 @@ export default function Home() {
                       media="(prefers-color-scheme: dark)"
                       srcSet="https://images.ctfassets.net/kftzwdyauwt9/3gtF0yMwo3meYqs4AfArEi/dc9cf9ed563401e5c3e35e37062f62be/01_edit_email_mobile_dark.png?w=640&q=70&fm=webp 640w, https://images.ctfassets.net/kftzwdyauwt9/3gtF0yMwo3meYqs4AfArEi/dc9cf9ed563401e5c3e35e37062f62be/01_edit_email_mobile_dark.png?w=750&q=70&fm=webp 750w, https://images.ctfassets.net/kftzwdyauwt9/3gtF0yMwo3meYqs4AfArEi/dc9cf9ed563401e5c3e35e37062f62be/01_edit_email_mobile_dark.png?w=828&q=70&fm=webp 828w, https://images.ctfassets.net/kftzwdyauwt9/3gtF0yMwo3meYqs4AfArEi/dc9cf9ed563401e5c3e35e37062f62be/01_edit_email_mobile_dark.png?w=1080&q=70&fm=webp 1080w, https://images.ctfassets.net/kftzwdyauwt9/3gtF0yMwo3meYqs4AfArEi/dc9cf9ed563401e5c3e35e37062f62be/01_edit_email_mobile_dark.png?w=1200&q=70&fm=webp 1200w, https://images.ctfassets.net/kftzwdyauwt9/3gtF0yMwo3meYqs4AfArEi/dc9cf9ed563401e5c3e35e37062f62be/01_edit_email_mobile_dark.png?w=1920&q=70&fm=webp 1920w, https://images.ctfassets.net/kftzwdyauwt9/3gtF0yMwo3meYqs4AfArEi/dc9cf9ed563401e5c3e35e37062f62be/01_edit_email_mobile_dark.png?w=2048&q=70&fm=webp 2048w, https://images.ctfassets.net/kftzwdyauwt9/3gtF0yMwo3meYqs4AfArEi/dc9cf9ed563401e5c3e35e37062f62be/01_edit_email_mobile_dark.png?w=3840&q=70&fm=webp 3840w"
                     />
-                    <img
+                    <Image
                       alt="A conversation between a user and ChatGPT on an interface about rewriting an email to appear friendly and professional."
                       loading="lazy"
                       width="1940"
@@ -120,8 +121,7 @@ export default function Home() {
                       decoding="async"
                       className="mx-auto"
                       sizes="(min-width: 1728px) 1728px, 100vw"
-                      srcSet="https://images.ctfassets.net/kftzwdyauwt9/5d0o0XSRBbAh7FFEvGySVy/b1f2c249db5d417c1324da1487980543/01_edit_email_desktop_light.png?w=640&q=90&fm=webp 640w, https://images.ctfassets.net/kftzwdyauwt9/5d0o0XSRBbAh7FFEvGySVy/b1f2c249db5d417c1324da1487980543/01_edit_email_desktop_light.png?w=750&q=90&fm=webp 750w, https://images.ctfassets.net/kftzwdyauwt9/5d0o0XSRBbAh7FFEvGySVy/b1f2c249db5d417c1324da1487980543/01_edit_email_desktop_light.png?w=828&q=90&fm=webp 828w, https://images.ctfassets.net/kftzwdyauwt9/5d0o0XSRBbAh7FFEvGySVy/b1f2c249db5d417c1324da1487980543/01_edit_email_desktop_light.png?w=1080&q=90&fm=webp 1080w, https://images.ctfassets.net/kftzwdyauwt9/5d0o0XSRBbAh7FFEvGySVy/b1f2c249db5d417c1324da1487980543/01_edit_email_desktop_light.png?w=1200&q=90&fm=webp 1200w, https://images.ctfassets.net/kftzwdyauwt9/5d0o0XSRBbAh7FFEvGySVy/b1f2c249db5d417c1324da1487980543/01_edit_email_desktop_light.png?w=1920&q=90&fm=webp 1920w, https://images.ctfassets.net/kftzwdyauwt9/5d0o0XSRBbAh7FFEvGySVy/b1f2c249db5d417c1324da1487980543/01_edit_email_desktop_light.png?w=2048&q=90&fm=webp 2048w, https://images.ctfassets.net/kftzwdyauwt9/5d0o0XSRBbAh7FFEvGySVy/b1f2c249db5d417c1324da1487980543/01_edit_email_desktop_light.png?w=3840&q=90&fm=webp 3840w"
-                      src="https://images.ctfassets.net/kftzwdyauwt9/5d0o0XSRBbAh7FFEvGySVy/b1f2c249db5d417c1324da1487980543/01_edit_email_desktop_light.png?w=3840&q=90&fm=webp"
+                      src="https://images.ctfassets.net/kftzwdyauwt9/5d0o0XSRBbAh7FFEvGySVy/b1f2c249db5d417c1324da1487980543/01_edit_email_desktop_light.png"
                     />
                   </picture>
                 </div>
@@ -194,7 +194,7 @@ export default function Home() {
                       https://images.ctfassets.net/kftzwdyauwt9/jXzARra8l4nlsIjhj3tSw/c51b9ca9baea90a1c1680dd26bfd7c6c/02_summarize_mobile_dark.png?w=3840&q=70&fm=webp 3840w
                     "
                     />
-                    <img
+                    <Image
                       alt="A conversation between a user and ChatGPT on an interface about summarizing meeting notes."
                       loading="lazy"
                       width="1940"
@@ -203,16 +203,6 @@ export default function Home() {
                       className="mx-auto"
                       style={{ color: "transparent" }}
                       sizes="(min-width: 1728px) 1728px, 100vw"
-                      srcSet="
-                      https://images.ctfassets.net/kftzwdyauwt9/2TGxQkhDFLiCHyxUZZKzC/668cbe2acdd27d36e8cbcd36538760a7/02_summarize_desktop_light.png?w=640&q=90&fm=webp 640w,
-                      https://images.ctfassets.net/kftzwdyauwt9/2TGxQkhDFLiCHyxUZZKzC/668cbe2acdd27d36e8cbcd36538760a7/02_summarize_desktop_light.png?w=750&q=90&fm=webp 750w,
-                      https://images.ctfassets.net/kftzwdyauwt9/2TGxQkhDFLiCHyxUZZKzC/668cbe2acdd27d36e8cbcd36538760a7/02_summarize_desktop_light.png?w=828&q=90&fm=webp 828w,
-                      https://images.ctfassets.net/kftzwdyauwt9/2TGxQkhDFLiCHyxUZZKzC/668cbe2acdd27d36e8cbcd36538760a7/02_summarize_desktop_light.png?w=1080&q=90&fm=webp 1080w,
-                      https://images.ctfassets.net/kftzwdyauwt9/2TGxQkhDFLiCHyxUZZKzC/668cbe2acdd27d36e8cbcd36538760a7/02_summarize_desktop_light.png?w=1200&q=90&fm=webp 1200w,
-                      https://images.ctfassets.net/kftzwdyauwt9/2TGxQkhDFLiCHyxUZZKzC/668cbe2acdd27d36e8cbcd36538760a7/02_summarize_desktop_light.png?w=1920&q=90&fm=webp 1920w,
-                      https://images.ctfassets.net/kftzwdyauwt9/2TGxQkhDFLiCHyxUZZKzC/668cbe2acdd27d36e8cbcd36538760a7/02_summarize_desktop_light.png?w=2048&q=90&fm=webp 2048w,
-                      https://images.ctfassets.net/kftzwdyauwt9/2TGxQkhDFLiCHyxUZZKzC/668cbe2acdd27d36e8cbcd36538760a7/02_summarize_desktop_light.png?w=3840&q=90&fm=webp 3840w
-                    "
                       src="https://images.ctfassets.net/kftzwdyauwt9/2TGxQkhDFLiCHyxUZZKzC/668cbe2acdd27d36e8cbcd36538760a7/02_summarize_desktop_light.png?w=3840&q=90&fm=webp"
                     />
                   </picture>
@@ -286,7 +276,7 @@ export default function Home() {
                       https://images.ctfassets.net/kftzwdyauwt9/4A4HyE48SruFIxETD17a4L/9498b93c837437e6eff57994bfd982c7/03_code_mobile_dark.png?w=3840&q=70&fm=webp 3840w
                     "
                     />
-                    <img
+                    <Image
                       alt="A conversation between a user and ChatGPT on an interface about creating CSS with specific parameters."
                       loading="lazy"
                       width="1940"
@@ -295,16 +285,6 @@ export default function Home() {
                       className="mx-auto"
                       style={{ color: "transparent" }}
                       sizes="(min-width: 1728px) 1728px, 100vw"
-                      srcSet="
-                      https://images.ctfassets.net/kftzwdyauwt9/01qGC80lAevPov5jhoBQ6a/92e40c8d0e41e6943d854d154cb6cbd7/03_code_desktop_light.png?w=640&q=90&fm=webp 640w,
-                      https://images.ctfassets.net/kftzwdyauwt9/01qGC80lAevPov5jhoBQ6a/92e40c8d0e41e6943d854d154cb6cbd7/03_code_desktop_light.png?w=750&q=90&fm=webp 750w,
-                      https://images.ctfassets.net/kftzwdyauwt9/01qGC80lAevPov5jhoBQ6a/92e40c8d0e41e6943d854d154cb6cbd7/03_code_desktop_light.png?w=828&q=90&fm=webp 828w,
-                      https://images.ctfassets.net/kftzwdyauwt9/01qGC80lAevPov5jhoBQ6a/92e40c8d0e41e6943d854d154cb6cbd7/03_code_desktop_light.png?w=1080&q=90&fm=webp 1080w,
-                      https://images.ctfassets.net/kftzwdyauwt9/01qGC80lAevPov5jhoBQ6a/92e40c8d0e41e6943d854d154cb6cbd7/03_code_desktop_light.png?w=1200&q=90&fm=webp 1200w,
-                      https://images.ctfassets.net/kftzwdyauwt9/01qGC80lAevPov5jhoBQ6a/92e40c8d0e41e6943d854d154cb6cbd7/03_code_desktop_light.png?w=1920&q=90&fm=webp 1920w,
-                      https://images.ctfassets.net/kftzwdyauwt9/01qGC80lAevPov5jhoBQ6a/92e40c8d0e41e6943d854d154cb6cbd7/03_code_desktop_light.png?w=2048&q=90&fm=webp 2048w,
-                      https://images.ctfassets.net/kftzwdyauwt9/01qGC80lAevPov5jhoBQ6a/92e40c8d0e41e6943d854d154cb6cbd7/03_code_desktop_light.png?w=3840&q=90&fm=webp 3840w
-                    "
                       src="https://images.ctfassets.net/kftzwdyauwt9/01qGC80lAevPov5jhoBQ6a/92e40c8d0e41e6943d854d154cb6cbd7/03_code_desktop_light.png?w=3840&q=90&fm=webp"
                     />
                   </picture>
@@ -378,7 +358,7 @@ export default function Home() {
                       https://images.ctfassets.net/kftzwdyauwt9/IyfqwqAb9nCzSzjG5Rvsi/dfd01c3cf752c2d239f08d8a29b7c884/04_learn_mobile_dark.png?w=3840&q=70&fm=webp 3840w
                     "
                     />
-                    <img
+                    <Image
                       alt="A conversation between a user and ChatGPT on an interface about gathering a list of things needed to start a herb garden."
                       loading="lazy"
                       width="1940"
@@ -387,16 +367,6 @@ export default function Home() {
                       className="mx-auto"
                       style={{ color: "transparent" }}
                       sizes="(min-width: 1728px) 1728px, 100vw"
-                      srcSet="
-                      https://images.ctfassets.net/kftzwdyauwt9/dj3TUYzcObBHupmeNKuoT/84827f81d82240279359525b3f988e50/04_learn_desktop_light.png?w=640&q=90&fm=webp 640w,
-                      https://images.ctfassets.net/kftzwdyauwt9/dj3TUYzcObBHupmeNKuoT/84827f81d82240279359525b3f988e50/04_learn_desktop_light.png?w=750&q=90&fm=webp 750w,
-                      https://images.ctfassets.net/kftzwdyauwt9/dj3TUYzcObBHupmeNKuoT/84827f81d82240279359525b3f988e50/04_learn_desktop_light.png?w=828&q=90&fm=webp 828w,
-                      https://images.ctfassets.net/kftzwdyauwt9/dj3TUYzcObBHupmeNKuoT/84827f81d82240279359525b3f988e50/04_learn_desktop_light.png?w=1080&q=90&fm=webp 1080w,
-                      https://images.ctfassets.net/kftzwdyauwt9/dj3TUYzcObBHupmeNKuoT/84827f81d82240279359525b3f988e50/04_learn_desktop_light.png?w=1200&q=90&fm=webp 1200w,
-                      https://images.ctfassets.net/kftzwdyauwt9/dj3TUYzcObBHupmeNKuoT/84827f81d82240279359525b3f988e50/04_learn_desktop_light.png?w=1920&q=90&fm=webp 1920w,
-                      https://images.ctfassets.net/kftzwdyauwt9/dj3TUYzcObBHupmeNKuoT/84827f81d82240279359525b3f988e50/04_learn_desktop_light.png?w=2048&q=90&fm=webp 2048w,
-                      https://images.ctfassets.net/kftzwdyauwt9/dj3TUYzcObBHupmeNKuoT/84827f81d82240279359525b3f988e50/04_learn_desktop_light.png?w=3840&q=90&fm=webp 3840w
-                    "
                       src="https://images.ctfassets.net/kftzwdyauwt9/dj3TUYzcObBHupmeNKuoT/84827f81d82240279359525b3f988e50/04_learn_desktop_light.png?w=3840&q=90&fm=webp"
                     />
                   </picture>
@@ -429,7 +399,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <VideoPlayer src="https://cdn.openai.com/chatgpt/use_it_your_way.mp4" />
+          <VideoPlayer src="https://p0hbqsdgsd9gt3kh.public.blob.vercel-storage.com/videos/use_it_your_way.mp4" />
         </div>
       </div>
       <div className="max-w-[68rem] mx-auto px-5 lg:px-0 mt-16 md:mt-20">
@@ -449,7 +419,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <VideoPlayer src="https://cdn.openai.com/chatgpt/browsing.mp4" />
+          <VideoPlayer src="https://p0hbqsdgsd9gt3kh.public.blob.vercel-storage.com/videos/browsing.mp4" />
         </div>
       </div>
       <div className="max-w-[68rem] mx-auto px-5 lg:px-0 mt-16 md:mt-20">
@@ -469,7 +439,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <VideoPlayer src="https://cdn.openai.com/chatgpt/analyze.mp4" />
+          <VideoPlayer src="https://p0hbqsdgsd9gt3kh.public.blob.vercel-storage.com/videos/analyze.mp4" />
         </div>
       </div>
       <div className="max-w-[68rem] mx-auto px-5 lg:px-0 mt-16 md:mt-20">
@@ -547,16 +517,6 @@ export default function Home() {
                         color: "transparent",
                       }}
                       sizes="(min-width: 68rem) 485px, 100vw"
-                      srcSet="
-                      https://images.ctfassets.net/kftzwdyauwt9/7Dg0i0yinRGkIeqeVXig6i/20dc76142190c28809a5aa1b8ee7c8f6/4a.png?w=640&q=90&fm=webp 640w,
-                      https://images.ctfassets.net/kftzwdyauwt9/7Dg0i0yinRGkIeqeVXig6i/20dc76142190c28809a5aa1b8ee7c8f6/4a.png?w=750&q=90&fm=webp 750w,
-                      https://images.ctfassets.net/kftzwdyauwt9/7Dg0i0yinRGkIeqeVXig6i/20dc76142190c28809a5aa1b8ee7c8f6/4a.png?w=828&q=90&fm=webp 828w,
-                      https://images.ctfassets.net/kftzwdyauwt9/7Dg0i0yinRGkIeqeVXig6i/20dc76142190c28809a5aa1b8ee7c8f6/4a.png?w=1080&q=90&fm=webp 1080w,
-                      https://images.ctfassets.net/kftzwdyauwt9/7Dg0i0yinRGkIeqeVXig6i/20dc76142190c28809a5aa1b8ee7c8f6/4a.png?w=1200&q=90&fm=webp 1200w,
-                      https://images.ctfassets.net/kftzwdyauwt9/7Dg0i0yinRGkIeqeVXig6i/20dc76142190c28809a5aa1b8ee7c8f6/4a.png?w=1920&q=90&fm=webp 1920w,
-                      https://images.ctfassets.net/kftzwdyauwt9/7Dg0i0yinRGkIeqeVXig6i/20dc76142190c28809a5aa1b8ee7c8f6/4a.png?w=2048&q=90&fm=webp 2048w,
-                      https://images.ctfassets.net/kftzwdyauwt9/7Dg0i0yinRGkIeqeVXig6i/20dc76142190c28809a5aa1b8ee7c8f6/4a.png?w=3840&q=90&fm=webp 3840w
-                    "
                       src="https://images.ctfassets.net/kftzwdyauwt9/7Dg0i0yinRGkIeqeVXig6i/20dc76142190c28809a5aa1b8ee7c8f6/4a.png?w=3840&q=90&fm=webp"
                     />
                   </picture>
@@ -591,34 +551,14 @@ export default function Home() {
             >
               <div className="relative w-full" style={{ aspectRatio: "1 / 1" }}>
                 <div className="relative h-full w-full overflow-hidden rounded-none aspect-1/1 bg-transparent transition-[background] ease-curve-d duration-normal">
-                  <img
+                  <Image
+                    src="https://images.ctfassets.net/kftzwdyauwt9/7ihQsaaemgI8U2PMcXKdg0/5a5dc8235cd597668c279ef0422c0133/2a.png"
                     alt="2a"
-                    loading="lazy"
-                    decoding="async"
-                    data-nimg="fill"
-                    className="object-cover object-center"
-                    style={{
-                      position: "absolute",
-                      height: "100%",
-                      width: "100%",
-                      left: 0,
-                      top: 0,
-                      right: 0,
-                      bottom: 0,
-                      color: "transparent",
-                    }}
+                    layout="fill"
+                    objectFit="cover"
+                    objectPosition="center"
                     sizes="(min-width: 68rem) 485px, 100vw"
-                    srcSet="
-                    https://images.ctfassets.net/kftzwdyauwt9/7ihQsaaemgI8U2PMcXKdg0/5a5dc8235cd597668c279ef0422c0133/2a.png?w=640&q=90&fm=webp 640w,
-                    https://images.ctfassets.net/kftzwdyauwt9/7ihQsaaemgI8U2PMcXKdg0/5a5dc8235cd597668c279ef0422c0133/2a.png?w=750&q=90&fm=webp 750w,
-                    https://images.ctfassets.net/kftzwdyauwt9/7ihQsaaemgI8U2PMcXKdg0/5a5dc8235cd597668c279ef0422c0133/2a.png?w=828&q=90&fm=webp 828w,
-                    https://images.ctfassets.net/kftzwdyauwt9/7ihQsaaemgI8U2PMcXKdg0/5a5dc8235cd597668c279ef0422c0133/2a.png?w=1080&q=90&fm=webp 1080w,
-                    https://images.ctfassets.net/kftzwdyauwt9/7ihQsaaemgI8U2PMcXKdg0/5a5dc8235cd597668c279ef0422c0133/2a.png?w=1200&q=90&fm=webp 1200w,
-                    https://images.ctfassets.net/kftzwdyauwt9/7ihQsaaemgI8U2PMcXKdg0/5a5dc8235cd597668c279ef0422c0133/2a.png?w=1920&q=90&fm=webp 1920w,
-                    https://images.ctfassets.net/kftzwdyauwt9/7ihQsaaemgI8U2PMcXKdg0/5a5dc8235cd597668c279ef0422c0133/2a.png?w=2048&q=90&fm=webp 2048w,
-                    https://images.ctfassets.net/kftzwdyauwt9/7ihQsaaemgI8U2PMcXKdg0/5a5dc8235cd597668c279ef0422c0133/2a.png?w=3840&q=90&fm=webp 3840w
-                  "
-                    src="https://images.ctfassets.net/kftzwdyauwt9/7ihQsaaemgI8U2PMcXKdg0/5a5dc8235cd597668c279ef0422c0133/2a.png?w=3840&q=90&fm=webp"
+                    priority={false}
                   />
                 </div>
               </div>
@@ -646,24 +586,14 @@ export default function Home() {
                           <div className="flex gap-x-5xs items-center w-full text-small mb-5xs">
                             <div className="flex-none rounded-full overflow-hidden w-[1.125rem] h-[1.125rem]">
                               <div className="relative h-full w-full overflow-hidden rounded-md aspect-1/1 bg-transparent transition-[background] ease-curve-d duration-normal">
-                                <img
+                                <Image
+                                  src="https://images.ctfassets.net/kftzwdyauwt9/32TaWeYDFTjsFWz6xjwTek/dfc579d0c4961d13ff95e178e87b0734/dall-e1.png"
                                   alt="DALL-E 3 Logo"
-                                  loading="lazy"
-                                  decoding="async"
-                                  data-nimg="fill"
-                                  className="object-cover object-center"
+                                  layout="responsive"
+                                  width={3840}
+                                  height={2160}
+                                  quality={90}
                                   sizes="(min-width: 1728px) 1728px, 100vw"
-                                  srcSet="
-                                  https://images.ctfassets.net/kftzwdyauwt9/32TaWeYDFTjsFWz6xjwTek/dfc579d0c4961d13ff95e178e87b0734/dall-e1.png?w=640&q=90&fm=webp 640w,
-                                  https://images.ctfassets.net/kftzwdyauwt9/32TaWeYDFTjsFWz6xjwTek/dfc579d0c4961d13ff95e178e87b0734/dall-e1.png?w=750&q=90&fm=webp 750w,
-                                  https://images.ctfassets.net/kftzwdyauwt9/32TaWeYDFTjsFWz6xjwTek/dfc579d0c4961d13ff95e178e87b0734/dall-e1.png?w=828&q=90&fm=webp 828w,
-                                  https://images.ctfassets.net/kftzwdyauwt9/32TaWeYDFTjsFWz6xjwTek/dfc579d0c4961d13ff95e178e87b0734/dall-e1.png?w=1080&q=90&fm=webp 1080w,
-                                  https://images.ctfassets.net/kftzwdyauwt9/32TaWeYDFTjsFWz6xjwTek/dfc579d0c4961d13ff95e178e87b0734/dall-e1.png?w=1200&q=90&fm=webp 1200w,
-                                  https://images.ctfassets.net/kftzwdyauwt9/32TaWeYDFTjsFWz6xjwTek/dfc579d0c4961d13ff95e178e87b0734/dall-e1.png?w=1920&q=90&fm=webp 1920w,
-                                  https://images.ctfassets.net/kftzwdyauwt9/32TaWeYDFTjsFWz6xjwTek/dfc579d0c4961d13ff95e178e87b0734/dall-e1.png?w=2048&q=90&fm=webp 2048w,
-                                  https://images.ctfassets.net/kftzwdyauwt9/32TaWeYDFTjsFWz6xjwTek/dfc579d0c4961d13ff95e178e87b0734/dall-e1.png?w=3840&q=90&fm=webp 3840w
-                                "
-                                  src="https://images.ctfassets.net/kftzwdyauwt9/32TaWeYDFTjsFWz6xjwTek/dfc579d0c4961d13ff95e178e87b0734/dall-e1.png?w=3840&q=90&fm=webp"
                                 />
                               </div>
                             </div>
@@ -692,27 +622,15 @@ export default function Home() {
                             <div className="flex flex-wrap gap-5xs">
                               <div className="w-[6.25rem]">
                                 <div className="relative h-full w-full overflow-hidden rounded-md aspect-auto bg-transparent transition-[background] ease-curve-d duration-normal [&_img]:mx-0 [&_img]:rounded-sm">
-                                  <img
-                                    alt="jellyfish birthday card"
-                                    loading="lazy"
-                                    width="200"
-                                    height="200"
-                                    decoding="async"
-                                    data-nimg="1"
-                                    className="mx-auto"
+                                  <Image
+                                    src="https://images.ctfassets.net/kftzwdyauwt9/2OstCaAU9SDJ4qGKwizr9D/be6c73164f4ea4016697231ca67aa20d/jellyfish_birthday_card.png"
+                                    alt="Jellyfish birthday card"
+                                    layout="responsive"
+                                    width={200}
+                                    height={200}
+                                    quality={90}
                                     sizes="(min-width: 1728px) 1728px, 100vw"
-                                    srcSet="
-                                    https://images.ctfassets.net/kftzwdyauwt9/2OstCaAU9SDJ4qGKwizr9D/be6c73164f4ea4016697231ca67aa20d/jellyfish_birthday_card.png?w=640&q=90&fm=webp 640w,
-                                    https://images.ctfassets.net/kftzwdyauwt9/2OstCaAU9SDJ4qGKwizr9D/be6c73164f4ea4016697231ca67aa20d/jellyfish_birthday_card.png?w=750&q=90&fm=webp 750w,
-                                    https://images.ctfassets.net/kftzwdyauwt9/2OstCaAU9SDJ4qGKwizr9D/be6c73164f4ea4016697231ca67aa20d/jellyfish_birthday_card.png?w=828&q=90&fm=webp 828w,
-                                    https://images.ctfassets.net/kftzwdyauwt9/2OstCaAU9SDJ4qGKwizr9D/be6c73164f4ea4016697231ca67aa20d/jellyfish_birthday_card.png?w=1080&q=90&fm=webp 1080w,
-                                    https://images.ctfassets.net/kftzwdyauwt9/2OstCaAU9SDJ4qGKwizr9D/be6c73164f4ea4016697231ca67aa20d/jellyfish_birthday_card.png?w=1200&q=90&fm=webp 1200w,
-                                    https://images.ctfassets.net/kftzwdyauwt9/2OstCaAU9SDJ4qGKwizr9D/be6c73164f4ea4016697231ca67aa20d/jellyfish_birthday_card.png?w=1920&q=90&fm=webp 1920w,
-                                    https://images.ctfassets.net/kftzwdyauwt9/2OstCaAU9SDJ4qGKwizr9D/be6c73164f4ea4016697231ca67aa20d/jellyfish_birthday_card.png?w=2048&q=90&fm=webp 2048w,
-                                    https://images.ctfassets.net/kftzwdyauwt9/2OstCaAU9SDJ4qGKwizr9D/be6c73164f4ea4016697231ca67aa20d/jellyfish_birthday_card.png?w=3840&q=90&fm=webp 3840w
-                                  "
-                                    src="https://images.ctfassets.net/kftzwdyauwt9/2OstCaAU9SDJ4qGKwizr9D/be6c73164f4ea4016697231ca67aa20d/jellyfish_birthday_card.png?w=3840&q=90&fm=webp"
-                                    style={{ color: "transparent" }}
+                                    priority={false}
                                   />
                                 </div>
                               </div>
@@ -785,34 +703,14 @@ export default function Home() {
             >
               <div className="relative w-full" style={{ aspectRatio: "1 / 1" }}>
                 <div className="relative h-full w-full overflow-hidden rounded-none aspect-1/1 bg-transparent transition-[background] ease-curve-d duration-normal">
-                  <img
+                  <Image
+                    src="https://images.ctfassets.net/kftzwdyauwt9/6cPAUkFUSpBSsGDlrFZBeL/4d73c5107a1f6e00cec29ad35d772019/apple-art-2a-1x1.jpg"
                     alt="ChatGPT > Two Up Text + Media > Plus > Apple + ChatGPT > Media Item > Apple abstract"
-                    loading="lazy"
-                    decoding="async"
-                    data-nimg="fill"
-                    className="object-cover object-center"
-                    style={{
-                      position: "absolute",
-                      height: "100%",
-                      width: "100%",
-                      left: 0,
-                      top: 0,
-                      right: 0,
-                      bottom: 0,
-                      color: "transparent",
-                    }}
+                    layout="fill"
+                    objectFit="cover"
+                    objectPosition="center"
                     sizes="(min-width: 68rem) 485px, 100vw"
-                    srcSet="
-                    https://images.ctfassets.net/kftzwdyauwt9/6cPAUkFUSpBSsGDlrFZBeL/4d73c5107a1f6e00cec29ad35d772019/apple-art-2a-1x1.jpg?w=640&q=90&fm=webp 640w,
-                    https://images.ctfassets.net/kftzwdyauwt9/6cPAUkFUSpBSsGDlrFZBeL/4d73c5107a1f6e00cec29ad35d772019/apple-art-2a-1x1.jpg?w=750&q=90&fm=webp 750w,
-                    https://images.ctfassets.net/kftzwdyauwt9/6cPAUkFUSpBSsGDlrFZBeL/4d73c5107a1f6e00cec29ad35d772019/apple-art-2a-1x1.jpg?w=828&q=90&fm=webp 828w,
-                    https://images.ctfassets.net/kftzwdyauwt9/6cPAUkFUSpBSsGDlrFZBeL/4d73c5107a1f6e00cec29ad35d772019/apple-art-2a-1x1.jpg?w=1080&q=90&fm=webp 1080w,
-                    https://images.ctfassets.net/kftzwdyauwt9/6cPAUkFUSpBSsGDlrFZBeL/4d73c5107a1f6e00cec29ad35d772019/apple-art-2a-1x1.jpg?w=1200&q=90&fm=webp 1200w,
-                    https://images.ctfassets.net/kftzwdyauwt9/6cPAUkFUSpBSsGDlrFZBeL/4d73c5107a1f6e00cec29ad35d772019/apple-art-2a-1x1.jpg?w=1920&q=90&fm=webp 1920w,
-                    https://images.ctfassets.net/kftzwdyauwt9/6cPAUkFUSpBSsGDlrFZBeL/4d73c5107a1f6e00cec29ad35d772019/apple-art-2a-1x1.jpg?w=2048&q=90&fm=webp 2048w,
-                    https://images.ctfassets.net/kftzwdyauwt9/6cPAUkFUSpBSsGDlrFZBeL/4d73c5107a1f6e00cec29ad35d772019/apple-art-2a-1x1.jpg?w=3840&q=90&fm=webp 3840w
-                  "
-                    src="https://images.ctfassets.net/kftzwdyauwt9/6cPAUkFUSpBSsGDlrFZBeL/4d73c5107a1f6e00cec29ad35d772019/apple-art-2a-1x1.jpg?w=3840&q=90&fm=webp"
+                    priority={false}
                   />
                 </div>
               </div>
