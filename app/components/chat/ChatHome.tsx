@@ -1,8 +1,11 @@
+import Header from "../layout/Header";
+import QuestionButton from "../question/QuestionButton";
+
 const ChatHome = () => {
   return (
-    <div className="relative h-full">
+    <div className="relative  token-surface-primary h-full text-sm md:pb-9">
       {/* Model Selection */}
-      <div className="absolute left-0 right-0"></div>
+      <Header />
 
       {/* Home Page */}
       <div className="flex h-full flex-col items-center justify-center token-text-primary">
@@ -138,6 +141,7 @@ const ChatHome = () => {
           </div>
         </div>
       </div>
+      <QuestionButton />
     </div>
   );
 };

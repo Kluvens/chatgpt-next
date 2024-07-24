@@ -28,7 +28,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="flex token-surface-primary h-screen">
+    <div className="flex h-screen">
       <motion.div
         initial={false}
         animate={isSidebarOpen ? "open" : "close"}
@@ -38,7 +38,7 @@ const Home: React.FC = () => {
       >
         <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       </motion.div>
-      <div className="flex flex-col flex-1">
+      <div className="flex flex-col flex-1 px-1 pt-1">
         <ChatHome />
         <ChatInput />
       </div>

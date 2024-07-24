@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname, useRouter } from "next/navigation";
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useChat } from "../../../contexts/ChatContext";
 import { addMessage } from "../../../utils/chatUtils";
@@ -10,6 +11,9 @@ const ChatInput = () => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { messages, setMessages } = useChat();
+
+  const router = useRouter();
+  const pathname = usePathname();
 
   const adjustTextareaHeight = () => {
     if (textareaRef.current) {
@@ -44,10 +48,12 @@ const ChatInput = () => {
   };
 
   const handleSendMessage = async () => {
-    if (message.trim()) {
+    if (pathname === "/chat") {
+      router.push(`/request?message=${message.trim()}`);
+    } else {
       addMessage(message.trim(), setMessages, messages);
-      setMessage("");
     }
+    setMessage("");
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {

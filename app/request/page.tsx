@@ -60,8 +60,6 @@ const ChatMessagePage = () => {
           messages={messages}
           updateMessage={() => {}}
           regenerateResponse={() => {}}
-          isSidebarOpen={isSidebarOpen}
-          toggleSidebar={toggleSidebar}
         />
         <ChatInput />
       </div>

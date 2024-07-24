@@ -69,8 +69,6 @@ const Home: React.FC = () => {
           messages={messages}
           updateMessage={updateMessage}
           regenerateResponse={regenerateResponse}
-          isSidebarOpen={isSidebarOpen}
-          toggleSidebar={toggleSidebar}
         />
         <ChatInput />
       </div>

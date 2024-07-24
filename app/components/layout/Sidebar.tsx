@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import React from "react";
 import HistoryItem from "../common/HistoryItem";
 import { CollapseIcon, NewChatIcon } from "../icons/Icons";
@@ -10,6 +11,8 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ toggleSidebar }) => {
+  const router = useRouter();
+
   const chatHistory = {
     today: [
       "Interact Next js with the backend",
@@ -56,7 +59,12 @@ const Sidebar: React.FC<SidebarProps> = ({ toggleSidebar }) => {
               >
                 <CollapseIcon />
               </button>
-              <button className="h-10 rounded-lg px-2 token-text-secondary focus-visible:outline-0 hover:sidebar-surface-secondary focus-visible:token-surface-secondary">
+              <button
+                className="h-10 rounded-lg px-2 token-text-secondary focus-visible:outline-0 hover:sidebar-surface-secondary focus-visible:token-surface-secondary"
+                onClick={() => {
+                  router.push("/chat");
+                }}
+              >
                 <NewChatIcon />
               </button>
             </div>
