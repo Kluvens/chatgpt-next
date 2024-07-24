@@ -1,0 +1,38 @@
+[
+  {
+    "question": "What is ChatGPT?",
+    "answer": "ChatGPT is an AI language model developed by OpenAI that can generate human-like text based on the input it receives. It is used for various applications, including answering questions, creating content, and engaging in conversation."
+  },
+  {
+    "question": "How much does it cost to use ChatGPT?",
+    "answer": "The cost to use ChatGPT varies, with a free tier available and a ChatGPT Plus subscription costing $20 per month, while API usage is priced based on the number of tokens processed."
+  },
+  {
+    "question": "Why does the AI seem so real and lifelike?",
+    "answer": "These models were trained on vast amounts of data from the internet written by humans, including conversations, so the responses it provides may sound human-like. It is important to keep in mind that this is a direct result of the system's design and that such outputs may be inaccurate, untruthful, and otherwise misleading at times."
+  },
+  {
+    "question": "Can I trust that the AI is telling me the truth?",
+    "answer": "ChatGPT is not connected to the internet, and it can occasionally produce incorrect answers. It has limited knowledge of world and events after 2021 and may also occasionally produce harmful instructions or biased content."
+  },
+  {
+    "question": "What is TypeScript?",
+    "answer": "TypeScript is a programming language developed by Microsoft that builds on JavaScript by adding static types, allowing developers to catch errors earlier and write more robust and maintainable code."
+  },
+  {
+    "question": "What is Tailwind CSS?",
+    "answer": "Tailwind CSS is a utility-first CSS framework that provides a set of predefined classes to help developers design and build responsive, customizable user interfaces quickly and efficiently."
+  },
+  {
+    "question": "What is Shadcn UI?",
+    "answer": "ShadCN UI is a user interface component library built for modern web development, offering a collection of pre-designed, customizable UI components to help developers quickly create visually appealing and responsive web applications."
+  },
+  {
+    "question": "What is Framer Motion?",
+    "answer": "Framer Motion is a popular open-source library for React that provides a simple and powerful API for creating animations and gestures, allowing developers to add smooth, interactive animations to their web applications."
+  },
+  {
+    "question": "What is the purpose of this cloned website?",
+    "answer": "As a developer, I am using this website for practicing purpose only. I use this project to demonstrate that I can develop website applications, not for commercial purposes."
+  }
+]

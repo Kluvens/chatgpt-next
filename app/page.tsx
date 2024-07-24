@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { ListOne, ListThree, ListTwo } from "../public/MovingList";
 import HomeSectionHeader from "./components/common/HomeSectionHeader";
 import VideoPlayer from "./components/common/VideoPlayer";
 import { ListItemTickIcon } from "./components/icons/Icons";
 import { Button } from "./components/ui/button";
 import { InfiniteMovingCards } from "./components/ui/infinite-moving-cards";
+import { ListOne, ListThree, ListTwo } from "./data/MovingList";
 
 export default function Home() {
   return (

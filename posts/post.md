@@ -9,7 +9,6 @@ This is a clone of [ChatGPT](https://chatgpt.com/) from [OpenAI](https://openai.
 - [shadcn UI](https://ui.shadcn.com/) for UI components
 - [NextAuth.js](https://next-auth.js.org/) for authentication
 - [Aceternity UI](https://ui.aceternity.com/) for cool animated UI components
-- Static generation, now supports release notes and blogs
 
 ## Model Providers
 
