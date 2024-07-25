@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   Accordion,
   AccordionContent,
@@ -25,13 +24,13 @@ const qa = () => {
             data-testid="collection-photo"
           >
             <div className="h-9 w-9 sm:h-10 sm:w-10">
-              <Image
-                src="https://intercom.help/openai/assets/svg/icon:people-chat-gets-chat-bubble-left-ellipsis/0E0E1A"
+              {/* <Image
+                src="https://p0hbqsdgsd9gt3kh.public.blob.vercel-storage.com/utilityImgs/chat_bubble.svg"
                 alt="Chat icon"
-                fill
+                layout="fill"
                 objectFit="contain"
                 priority
-              />
+              /> */}
             </div>
           </div>
         </div>
