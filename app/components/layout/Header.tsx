@@ -7,9 +7,10 @@ import AvatarDropDown from "../common/AvatarDropDown";
 import ModelSelection from "../common/ModelSelection";
 import ShareChat from "../common/ShareChat";
 import { CollapseIcon, NewChatIcon } from "../icons/Icons";
+import { Skeleton } from "../ui/skeleton";
 
 const Header = () => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const { isSidebarOpen, toggleSidebar } = useChat();
   const router = useRouter();
 
@@ -39,15 +40,20 @@ const Header = () => {
 
         <ModelSelection />
       </div>
-      {session ? (
-        <div className="flex items-center gap-2 pr-1">
-          {/* Share link */}
-          <ShareChat />
-          {/* Profile Avatar */}
-          <AvatarDropDown />
+      {status === "loading" ? (
+        <div className="flex items-center gap-4">
+          <Skeleton className="h-[35px] w-[100px] rounded-xl" />
+          <Skeleton className="h-[40px] w-[40px] rounded-full" />
         </div>
-      ) : (
+      ) : status === "unauthenticated" ? (
         <AuthButton />
+      ) : (
+        session && (
+          <div className="flex items-center gap-2 pr-1">
+            <ShareChat />
+            <AvatarDropDown />
+          </div>
+        )
       )}
     </div>
   );

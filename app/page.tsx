@@ -554,7 +554,7 @@ export default function Home() {
                   <Image
                     src="https://images.ctfassets.net/kftzwdyauwt9/7ihQsaaemgI8U2PMcXKdg0/5a5dc8235cd597668c279ef0422c0133/2a.png"
                     alt="2a"
-                    layout="fill"
+                    fill
                     objectFit="cover"
                     objectPosition="center"
                     sizes="(min-width: 68rem) 485px, 100vw"
@@ -706,7 +706,7 @@ export default function Home() {
                   <Image
                     src="https://images.ctfassets.net/kftzwdyauwt9/6cPAUkFUSpBSsGDlrFZBeL/4d73c5107a1f6e00cec29ad35d772019/apple-art-2a-1x1.jpg"
                     alt="ChatGPT > Two Up Text + Media > Plus > Apple + ChatGPT > Media Item > Apple abstract"
-                    layout="fill"
+                    fill
                     objectFit="cover"
                     objectPosition="center"
                     sizes="(min-width: 68rem) 485px, 100vw"

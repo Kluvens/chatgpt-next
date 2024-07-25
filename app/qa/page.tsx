@@ -28,7 +28,7 @@ const qa = () => {
               <Image
                 src="https://intercom.help/openai/assets/svg/icon:people-chat-gets-chat-bubble-left-ellipsis/0E0E1A"
                 alt="Chat icon"
-                layout="fill"
+                fill
                 objectFit="contain"
                 priority
               />
