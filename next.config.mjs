@@ -8,6 +8,7 @@ const nextConfig = {
   images: {
     domains: ["images.ctfassets.net"],
   },
+  reactStrictMode: false,
 };
 
 const withMDX = createMDX({

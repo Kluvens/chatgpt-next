@@ -1,13 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { User } from "@prisma/client";
-import NextAuth, { Account, NextAuthOptions, Session } from "next-auth";
-import { AdapterUser } from "next-auth/adapters";
+import NextAuth, { NextAuthOptions, Session } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import GoogleProvider from "next-auth/providers/google";
 import prisma from "../../../../lib/prisma";
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
@@ -35,8 +33,8 @@ export const authOptions: NextAuthOptions = {
       account,
     }: {
       token: JWT;
-      user: User | AdapterUser;
-      account: Account | null;
+      user: any;
+      account: any;
     }) {
       if (user) {
         token.id = user.id;

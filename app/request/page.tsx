@@ -41,7 +41,8 @@ const ChatMessagePage = () => {
   const processMessage = async () => {
     try {
       const decodedMessage = decodeURIComponent(request as string);
-      const chatId = await createChat(session?.user.id || "", model);
+      console.log(session);
+      const chatId = await createChat(session?.user.id || "bug", model);
 
       if (chatId) {
         // Send the initial message and await a response from the backend
@@ -72,10 +73,12 @@ const ChatMessagePage = () => {
   useEffect(() => {
     if (!request) return;
 
-    console.log("print here");
-
-    processMessage();
-  }, []);
+    if (session?.user) {
+      console.log("session");
+      console.log(session);
+      processMessage();
+    }
+  }, [session]);
 
   return (
     <div className="flex h-screen">

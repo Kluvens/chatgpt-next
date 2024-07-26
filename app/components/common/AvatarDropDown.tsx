@@ -1,4 +1,4 @@
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { AppsIcon, LogoutIcon } from "../icons/Icons";
 import MyPlan from "../plan/MyPlan";
 import Settings from "../settings/Settings";
@@ -13,12 +13,14 @@ import {
 import CustomiseGpts from "./CustomiseGpts";
 
 const AvatarDropDown = () => {
+  const { data: session } = useSession();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="h-10 w-10 flex items-center justify-center rounded-full focus-visible:outline-0 focus-visible:token-surface-secondary hover:token-surface-secondary">
         <Avatar className="w-8 h-8">
           <AvatarImage
-            src="https://lh3.googleusercontent.com/a/AEdFTp7GohtCTuOxye4y1c9F_BD4P6svNv7398pMSiLS=s96-c"
+            src={session?.user.image || ""}
             loading="lazy"
             decoding="async"
           />
