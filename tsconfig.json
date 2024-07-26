@@ -28,7 +28,8 @@
     ".next/types/**/*.ts",
     "src/pages/_app.js",
     "lib/auth.js",
-    "types/next-auth.d.ts"
+    "types/next-auth.d.ts",
+    "vercel-build.js"
   ],
   "exclude": ["node_modules"]
 }
