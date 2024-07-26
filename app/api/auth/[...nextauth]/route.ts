@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import NextAuth, { NextAuthOptions, Session } from "next-auth";
 import { JWT } from "next-auth/jwt";
@@ -27,22 +26,13 @@ const authOptions: NextAuthOptions = {
       }
       return session;
     },
-    async jwt({
-      token,
-      user,
-      account,
-    }: {
-      token: JWT;
-      user: any;
-      account: any;
-    }) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    async jwt({ token, user }: { token: JWT; user: any }) {
       if (user) {
         token.id = user.id;
         token.email = user.email;
       }
-      if (account) {
-        token.accessToken = account.access_token;
-      }
+
       return token;
     },
   },
