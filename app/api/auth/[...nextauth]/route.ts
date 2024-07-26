@@ -38,8 +38,6 @@ const authOptions: NextAuthOptions = {
   },
   events: {
     async createUser({ user }) {
-      // You can access and modify the user object here
-      // For example, setting default roles or other custom fields
       if (user.email) {
         await prisma.user.update({
           where: { id: user.id },
