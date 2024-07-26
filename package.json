@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint-fix": "next lint --fix"
+    "lint-fix": "next lint --fix",
+    "vercel-build": "node vercel-build.js"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.0.1",
