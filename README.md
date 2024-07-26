@@ -10,6 +10,10 @@ This is a clone of [ChatGPT](https://chatgpt.com/) from [OpenAI](https://openai.
 - [NextAuth.js](https://next-auth.js.org/) for authentication
 - [Aceternity UI](https://ui.aceternity.com/) for cool animated UI components
 - Static generation, now supports release notes and blogs
+- NextAuth.js for authentication and authorisation
+- Prisma ORM to connect to the database
+- Vercel serverless postgresql as database
+- Vercel key-value (KV) for redis-based caching
 
 ## Model Providers
 

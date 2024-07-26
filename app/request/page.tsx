@@ -1,10 +1,12 @@
 "use client";
 
+import axios from "axios";
 import { motion } from "framer-motion";
+import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect } from "react";
 import { useChat } from "../../contexts/ChatContext";
-import { addMessage } from "../../utils/chatUtils";
+import { addMessage, createChat } from "../../utils/chatUtils";
 import ChatInput from "../components/chat/ChatInput";
 import ChatMessages from "../components/chat/ChatMessages";
 import Sidebar from "../components/layout/Sidebar";
@@ -12,6 +14,7 @@ import Sidebar from "../components/layout/Sidebar";
 const ChatMessagePage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { data: session } = useSession();
 
   const request = searchParams.get("message");
   const { messages, setMessages, isSidebarOpen, toggleSidebar } = useChat();
@@ -33,16 +36,46 @@ const ChatMessagePage = () => {
     },
   };
 
-  useEffect(() => {
-    if (request) {
+  const model = "GPT_4O";
+
+  const processMessage = async () => {
+    try {
       const decodedMessage = decodeURIComponent(request as string);
-      addMessage(decodedMessage, setMessages, messages).then((newChatId) => {
-        if (newChatId) {
-          router.replace(`/chat/${newChatId}`);
+      const chatId = await createChat(session?.user.id || "", model);
+
+      if (chatId) {
+        // Send the initial message and await a response from the backend
+        const responseText = await addMessage(decodedMessage, setMessages);
+
+        // Send the backend response to the server for saving the message
+        const messageCreationResponse = await axios.post(
+          "/api/message/create",
+          {
+            chatId,
+            request: decodedMessage,
+            response: responseText,
+          },
+        );
+
+        // Handle post-message creation actions
+        if (messageCreationResponse.status === 201) {
+          router.replace(`/chat/${chatId}`);
+        } else {
+          console.error("Error saving the message to the server");
         }
-      });
+      }
+    } catch (error) {
+      console.error("Error processing message:", error);
     }
-  }, [request]);
+  };
+
+  useEffect(() => {
+    if (!request) return;
+
+    console.log("print here");
+
+    processMessage();
+  }, []);
 
   return (
     <div className="flex h-screen">

@@ -17,11 +17,37 @@ datasource db {
 model User {
   id        String   @id @default(uuid())
   email     String   @unique
-  password  String
+  password  String?  // Password can be null for OAuth users
   name      String
-  avatar    String
-  chats     Chat[]
+  image     String
+  emailVerified DateTime?
   createdAt DateTime @default(now())
+  
+  // Relations
+  accounts  Account[] // Linking to OAuth accounts
+  chats     Chat[]
+}
+
+model Account {
+  id                String   @id @default(uuid())    // Unique identifier for the account record
+  userId            String   // Foreign key to User model
+  type              String   // oauth
+  provider          String   // OAuth provider (e.g., "google")
+  providerAccountId String   // Provider-specific account ID
+  refresh_token     String?  // Refresh token provided by the provider
+  access_token      String?  // Access token provided by the provider
+  expires_at        Int?     // Expiration time for the access token
+  token_type        String?
+  scope             String?
+  id_token          String?  @db.Text
+  session_state     String?
+  createdAt         DateTime @default(now())         // Timestamp for when the account was created
+  updatedAt         DateTime @updatedAt              // Timestamp for the last update
+
+  // Relations
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId]) // Ensures each provider account is unique
 }
 
 model Message {

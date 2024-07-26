@@ -1,11 +1,24 @@
 "use client";
 
+import axios from "axios";
 import { Message } from "../types";
+
+export const createChat = async (userId: string, model: string) => {
+  try {
+    const response = await axios.post("/api/chat/create", {
+      userId,
+      model,
+    });
+    return response.data.id;
+  } catch (error) {
+    console.error("Error creating chat:", error);
+    return null;
+  }
+};
 
 export const addMessage = async (
   request: string,
   setMessages: React.Dispatch<React.SetStateAction<Message[]>>,
-  messages: Message[],
 ) => {
   const newMessageId = new Date().toString();
   const newMessage: Message = {
@@ -14,9 +27,7 @@ export const addMessage = async (
     response: null,
   };
 
-  console.log(newMessage);
-
-  setMessages([...messages, newMessage]);
+  setMessages((prevMessages) => [...prevMessages, newMessage]);
   try {
     // const response = await fetch("/api/openaiText", {
     //   method: "POST",
@@ -46,9 +57,11 @@ export const addMessage = async (
           : message,
       ),
     );
+
+    return generatedText;
   } catch (error) {
     console.error(error);
   }
 
-  return newMessageId;
+  return null;
 };

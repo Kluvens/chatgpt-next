@@ -27,7 +27,7 @@ const Home: React.FC = () => {
 
     try {
       if (message?.request) {
-        addMessage(message?.request, setMessages, messages);
+        addMessage(message?.request, setMessages);
       } else {
         console.error("The chat to regenerate is not found");
       }
