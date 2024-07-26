@@ -9,9 +9,6 @@ const nextConfig = {
     domains: ["images.ctfassets.net"],
   },
   reactStrictMode: false,
-  typescript: {
-    ignoreBuildErrors: true,
-  },
 };
 
 const withMDX = createMDX({

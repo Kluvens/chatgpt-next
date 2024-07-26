@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && tsc --noEmit",
+    "build": "next build",
+    "postinstall": "prisma generate",
     "start": "next start",
     "lint": "next lint",
     "lint-fix": "next lint --fix",
-    "vercel-build": "node vercel-build.js && tsc --noEmit"
+    "vercel-build": "node vercel-build.js"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.0.1",
