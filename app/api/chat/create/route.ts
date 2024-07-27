@@ -9,8 +9,6 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const { userId, model } = body;
-    console.log(userId);
-    console.log(model);
 
     if (!userId || !model) {
       return NextResponse.json(

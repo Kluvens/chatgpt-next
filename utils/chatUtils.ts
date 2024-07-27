@@ -17,9 +17,15 @@ export const createChat = async (userId: string, model: string) => {
 };
 
 export const addMessage = async (
+  chatId: string | null,
   request: string,
   setMessages: React.Dispatch<React.SetStateAction<Message[]>>,
 ) => {
+  if (!chatId) {
+    console.error("Chat ID is required");
+    return;
+  }
+
   const newMessageId = new Date().toString();
   const newMessage: Message = {
     id: newMessageId,
@@ -29,7 +35,7 @@ export const addMessage = async (
 
   setMessages((prevMessages) => [...prevMessages, newMessage]);
   try {
-    // const response = await fetch("/api/openaiText", {
+    // const response = await fetch("/api/openai/text", {
     //   method: "POST",
     //   headers: {
     //     "Content-Type": "application/json",
@@ -58,7 +64,17 @@ export const addMessage = async (
       ),
     );
 
-    return generatedText;
+    const messageCreationResponse = await axios.post("/api/message/create", {
+      chatId,
+      request,
+      response: generatedText,
+    });
+
+    if (messageCreationResponse.status !== 201) {
+      console.error("Error saving the message to the server");
+    }
+
+    return messageCreationResponse;
   } catch (error) {
     console.error(error);
   }

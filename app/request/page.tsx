@@ -1,6 +1,5 @@
 "use client";
 
-import axios from "axios";
 import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -41,25 +40,18 @@ const ChatMessagePage = () => {
   const processMessage = async () => {
     try {
       const decodedMessage = decodeURIComponent(request as string);
-      console.log(session);
       const chatId = await createChat(session?.user.id || "bug", model);
 
       if (chatId) {
         // Send the initial message and await a response from the backend
-        const responseText = await addMessage(decodedMessage, setMessages);
-
-        // Send the backend response to the server for saving the message
-        const messageCreationResponse = await axios.post(
-          "/api/message/create",
-          {
-            chatId,
-            request: decodedMessage,
-            response: responseText,
-          },
+        const messageCreationResponse = await addMessage(
+          chatId,
+          decodedMessage,
+          setMessages,
         );
 
         // Handle post-message creation actions
-        if (messageCreationResponse.status === 201) {
+        if (messageCreationResponse && messageCreationResponse.status === 201) {
           router.replace(`/chat/${chatId}`);
         } else {
           console.error("Error saving the message to the server");
@@ -74,8 +66,6 @@ const ChatMessagePage = () => {
     if (!request) return;
 
     if (session?.user) {
-      console.log("session");
-      console.log(session);
       processMessage();
     }
   }, [session]);

@@ -15,13 +15,13 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  password  String?  // Password can be null for OAuth users
-  name      String
-  image     String
+  id            String   @id @default(cuid())
+  email         String   @unique
+  password      String?  // Password can be null for OAuth users
+  name          String
+  image         String
   emailVerified DateTime?
-  createdAt DateTime @default(now())
+  createdAt     DateTime @default(now())
   
   // Relations
   accounts  Account[] // Linking to OAuth accounts
@@ -29,7 +29,7 @@ model User {
 }
 
 model Account {
-  id                String   @id @default(uuid())    // Unique identifier for the account record
+  id                String   @id @default(cuid())
   userId            String   // Foreign key to User model
   type              String   // oauth
   provider          String   // OAuth provider (e.g., "google")
@@ -41,17 +41,18 @@ model Account {
   scope             String?
   id_token          String?  @db.Text
   session_state     String?
-  createdAt         DateTime @default(now())         // Timestamp for when the account was created
-  updatedAt         DateTime @updatedAt              // Timestamp for the last update
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
 
   // Relations
   user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId]) // Ensures each provider account is unique
+  @@index([userId])
 }
 
 model Message {
-  id        String   @id @default(uuid())
+  id        Int     @id @default(autoincrement())
   request   String
   response  String
   chatId    String
@@ -62,12 +63,14 @@ model Message {
 }
 
 model Chat {
-  id        String   @id @default(uuid())
+  id        String   @id @default(cuid())
   model     ModelType
   userId    String
   user      User     @relation(fields: [userId], references: [id])
   messages  Message[]
   createdAt DateTime @default(now())
+
+  @@index([userId])
 }
 
 enum ModelType {

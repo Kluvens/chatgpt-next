@@ -30,7 +30,15 @@ const ModelMessage: React.FC<ModelMessageProps> = ({
 
   const playAudio = async () => {
     try {
-      const openaiResponse = await fetch("/api/openaiAudio", {
+      // const openaiResponse = await fetch("/api/openai/audio", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({ chatContent: response, voice }),
+      // });
+
+      const openaiResponse = await fetch("/api/openai/audios", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

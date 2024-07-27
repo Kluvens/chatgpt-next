@@ -9,6 +9,8 @@ interface ChatContextType {
   isSidebarOpen: boolean;
   setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
   toggleSidebar: () => void;
+  chatId: string | null;
+  setChatId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 const ChatContext = createContext<ChatContextType | undefined>(undefined);
@@ -18,6 +20,7 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>(true);
+  const [chatId, setChatId] = useState<string | null>(null);
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
@@ -31,6 +34,8 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({
         isSidebarOpen,
         setSidebarOpen,
         toggleSidebar,
+        chatId,
+        setChatId,
       }}
     >
       {children}

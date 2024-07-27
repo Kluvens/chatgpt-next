@@ -17,7 +17,6 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({
   updateMessage,
   regenerateResponse,
 }) => {
-  console.log(messages);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

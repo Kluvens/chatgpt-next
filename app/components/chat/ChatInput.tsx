@@ -10,7 +10,7 @@ const ChatInput = () => {
   const [message, setMessage] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const { setMessages } = useChat();
+  const { setMessages, chatId } = useChat();
 
   const router = useRouter();
   const pathname = usePathname();
@@ -51,7 +51,7 @@ const ChatInput = () => {
     if (pathname === "/chat") {
       router.push(`/request?message=${message.trim()}`);
     } else {
-      addMessage(message.trim(), setMessages);
+      addMessage(chatId, message.trim(), setMessages);
     }
     setMessage("");
   };
