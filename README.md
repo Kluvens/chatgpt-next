@@ -10,10 +10,12 @@ This is a clone of [ChatGPT](https://chatgpt.com/) from [OpenAI](https://openai.
 - [NextAuth.js](https://next-auth.js.org/) for authentication
 - [Aceternity UI](https://ui.aceternity.com/) for cool animated UI components
 - Static generation, now supports release notes and blogs
-- NextAuth.js for authentication and authorisation
-- Prisma ORM to connect to the database
+- [Framer Motion](https://www.framer.com/motion/) for animated components
+- [NextAuth.js](https://next-auth.js.org/) for authentication and authorisation
+- [Prisma](https://www.prisma.io/) ORM to connect to the database
 - Vercel serverless postgresql as database
 - Vercel key-value (KV) for redis-based caching
+- Vercel Web Analytics and Vercel Speed Insights
 
 ## Model Providers
 
@@ -56,10 +58,11 @@ Now this project has integrated robust CI/CD, insightful web analytics and speed
 
 ## TODO
 
-1. Connect to the database (prisma)
+1. fix bugs with message regenerate and message modification
 2. Beatiful markdown file interpreter
 3. allow streaming chat UI
-4. rate limiting, session storage, and error handling
+4. rate limiting and error handling
+5. Sidebar with chats
 
 ## Author
 

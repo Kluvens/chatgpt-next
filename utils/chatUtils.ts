@@ -49,7 +49,8 @@ export const addMessage = async (
 
     // const data = await response.json();
     // const generatedText = data.chatContent;
-    const generatedText = "very very good";
+    const generatedText =
+      "Oxygen gets you high. In a catastrophic emergency, we're taking giant, panicked breaths. Suddenly you become euphoric, docile. You accept your fate. It's all right here. Emergency water landing, six hundred miles an hour. Blank faces, calm as Hindu cows veryd";
 
     await new Promise((resolve) => setTimeout(resolve, 3000));
 

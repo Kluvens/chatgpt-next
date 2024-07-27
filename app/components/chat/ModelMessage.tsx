@@ -1,12 +1,9 @@
 "use client";
 
 import React, { memo, useState } from "react";
-import ReactMarkdown from "react-markdown";
-import rehypeKatex from "rehype-katex";
-import remarkGfm from "remark-gfm";
-import remarkMath from "remark-math";
 import { useSettings } from "../../../contexts/SettingsContext";
 import { ChatGptIcon, MessageCopyIcon, MessageTickIcon } from "../icons/Icons";
+import { TextGenerateEffect } from "../ui/text-generate-effect";
 import LoadingMessage from "./LoadingMessage";
 
 interface ModelMessageProps {
@@ -111,12 +108,11 @@ const ModelMessage: React.FC<ModelMessageProps> = ({
                 >
                   <div className="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]">
                     <div className="markdown prose w-full break-words dark:prose-invert light">
-                      <ReactMarkdown
-                        remarkPlugins={[remarkGfm, remarkMath]}
-                        rehypePlugins={[rehypeKatex]}
-                      >
-                        {response}
-                      </ReactMarkdown>
+                      <TextGenerateEffect
+                        duration={2}
+                        filter={false}
+                        words={response}
+                      />
                     </div>
                   </div>
                 </div>
