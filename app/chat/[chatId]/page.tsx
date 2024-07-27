@@ -8,9 +8,10 @@ import ChatInput from "../../components/chat/ChatInput";
 import ChatMessages from "../../components/chat/ChatMessages";
 import Sidebar from "../../components/layout/Sidebar";
 import QuestionButton from "../../components/question/QuestionButton";
+import { containerVariants } from "../../data/sidebarFM";
 
 const Home: React.FC = () => {
-  const { setMessages, isSidebarOpen, toggleSidebar, setChatId } = useChat();
+  const { setMessages, isSidebarOpen, setChatId } = useChat();
   const pathname = usePathname();
   const pathSegments = pathname.split("/");
   const chatId = pathSegments[pathSegments.length - 1];
@@ -30,10 +31,10 @@ const Home: React.FC = () => {
       }
 
       const data = await response.json();
-      return data; // Assuming data contains the chat messages
+      return data;
     } catch (error) {
       console.error("Error fetching chat messages:", error);
-      throw error; // Optional: rethrow to be handled by the caller
+      throw error;
     }
   };
 
@@ -47,23 +48,6 @@ const Home: React.FC = () => {
       });
   }, []);
 
-  const containerVariants = {
-    close: {
-      width: "0rem",
-      transition: {
-        type: "spring",
-        duration: 1,
-      },
-    },
-    open: {
-      width: "260px",
-      transition: {
-        type: "spring",
-        duration: 1,
-      },
-    },
-  };
-
   return (
     <div className="relative z-0 flex h-screen w-full overflow-hidden">
       <motion.div
@@ -73,7 +57,7 @@ const Home: React.FC = () => {
         layout
         className="hidden md:flex flex-shrink-0 bg-gray-50 w-[260px] overflow-x-hidden"
       >
-        <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+        <Sidebar />
       </motion.div>
       <div className="flex flex-col flex-1 px-1 pt-1">
         <ChatMessages />

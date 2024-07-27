@@ -43,7 +43,6 @@ const ChatInput = () => {
     const files = e.target.files;
     if (files) {
       console.log("Selected files:", files);
-      // Process the files as needed
     }
   };
 

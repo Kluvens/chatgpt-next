@@ -3,7 +3,7 @@ import QuestionButton from "../question/QuestionButton";
 
 const ChatHome = () => {
   return (
-    <div className="relative  token-surface-primary h-full text-sm md:pb-9">
+    <div className="relative token-surface-primary h-full text-sm md:pb-9">
       {/* Model Selection */}
       <Header />
 

@@ -11,7 +11,9 @@ const ChatMessages = () => {
   const { messages, setMessages, chatId } = useChat();
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const regenerateResponse = (messageId: string) => {
+  const regenerateResponse = async (messageId: string) => {
+    console.log("delete here");
+    console.log(messageId);
     const messageToRegenerate = messages.find(
       (message) => message.id === messageId,
     );

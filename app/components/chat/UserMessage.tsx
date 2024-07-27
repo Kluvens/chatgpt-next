@@ -42,11 +42,11 @@ const UserMessage: React.FC<UserMessageProps> = ({ request, onUpdate }) => {
           <div className="group/conversation-turn relative flex w-full min-w-0 flex-col">
             <div className="flex flex-grow flex-col max-w-full">
               {isEditing ? (
-                <div className="flex-col gap-1 md:gap-3 rounded-3xl token-surface-secondary">
+                <div className="flex-col gap-1 md:gap-3 p-4 rounded-3xl token-surface-secondary">
                   <div className="flex flex-grow flex-col max-w-full">
                     <div className="grid">
                       <textarea
-                        className="rounded-3xl min-h-36 col-start-1 col-end-2 row-start-1 row-end-2 resize-none m-0 border-0 bg-transparent p-6 focus:outline-none"
+                        className="rounded-3xl min-h-36 col-start-1 col-end-2 row-start-1 row-end-2 resize-none m-0 border-0 bg-transparent p-2 focus:outline-none"
                         value={editedMessage}
                         onChange={handleInputChange}
                       ></textarea>
@@ -54,7 +54,7 @@ const UserMessage: React.FC<UserMessageProps> = ({ request, onUpdate }) => {
                         {editedMessage}
                       </span>
                     </div>
-                    <div className="flex justify-end absolute bottom-5 right-4 gap-2">
+                    <div className="flex justify-end gap-2">
                       <Button
                         variant={"secondary"}
                         className="rounded-full"

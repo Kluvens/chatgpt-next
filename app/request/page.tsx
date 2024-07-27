@@ -9,6 +9,7 @@ import { addMessage, createChat } from "../../utils/chatUtils";
 import ChatInput from "../components/chat/ChatInput";
 import ChatMessages from "../components/chat/ChatMessages";
 import Sidebar from "../components/layout/Sidebar";
+import { containerVariants } from "../data/sidebarFM";
 
 const ChatMessagePage = () => {
   const router = useRouter();
@@ -16,24 +17,7 @@ const ChatMessagePage = () => {
   const { data: session } = useSession();
 
   const request = searchParams.get("message");
-  const { setMessages, isSidebarOpen, toggleSidebar } = useChat();
-
-  const containerVariants = {
-    close: {
-      width: "0rem",
-      transition: {
-        type: "spring",
-        duration: 1,
-      },
-    },
-    open: {
-      width: "260px",
-      transition: {
-        type: "spring",
-        duration: 1,
-      },
-    },
-  };
+  const { setMessages, isSidebarOpen } = useChat();
 
   const model = "GPT_4O";
 
@@ -44,14 +28,14 @@ const ChatMessagePage = () => {
 
       if (chatId) {
         // Send the initial message and await a response from the backend
-        const messageCreationResponse = await addMessage(
+        const messageCreationResponseStatus = await addMessage(
           chatId,
           decodedMessage,
           setMessages,
         );
 
         // Handle post-message creation actions
-        if (messageCreationResponse && messageCreationResponse.status === 201) {
+        if (messageCreationResponseStatus === 201) {
           router.replace(`/chat/${chatId}`);
         } else {
           console.error("Error saving the message to the server");
@@ -79,7 +63,7 @@ const ChatMessagePage = () => {
         layout
         className="hidden md:flex flex-shrink-0 bg-gray-50 overflow-x-hidden"
       >
-        <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+        <Sidebar />
       </motion.div>
       <div className="flex flex-col flex-1 px-1 pt-1">
         <ChatMessages />

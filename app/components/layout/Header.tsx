@@ -15,7 +15,7 @@ const Header = () => {
   const router = useRouter();
 
   return (
-    <div className="sticky bg-white top-0 p-3 mb-1.5 flex items-center justify-between z-10 h-14 p-2 font-semibold token-surface-primary">
+    <div className="sticky bg-white top-0 mb-1.5 flex items-center justify-between z-10 h-14 p-2 font-semibold token-surface-primary">
       <div className="flex items-center gap-2 overflow-hidden gap-0">
         {!isSidebarOpen && (
           <motion.div className="flex items-center" layout>

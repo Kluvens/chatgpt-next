@@ -18,18 +18,14 @@ export const createChat = async (userId: string, model: string) => {
 
 export const deleteMessage = async (messageId: string) => {
   try {
-    const response = await fetch(`/api/message/delete/${messageId}`, {
-      method: "DELETE",
+    const response = await axios.delete(`/api/message/delete/${messageId}`, {
       headers: {
         "Content-Type": "application/json",
       },
     });
 
-    if (!response.ok) {
-      const errorDetails = await response.text();
-      throw new Error(
-        `Failed to delete message. Status: ${response.status}, Details: ${errorDetails}`,
-      );
+    if (response.status !== 200) {
+      throw new Error(`Failed to delete message. Status: ${response.status}`);
     }
   } catch (error) {
     console.error("Error deleting message:", error);
@@ -47,59 +43,58 @@ export const addMessage = async (
     return;
   }
 
-  const newMessageId = new Date().toString();
+  const newMessageId = new Date().toISOString(); // More standard format for a temporary ID
   const newMessage: Message = {
     id: newMessageId,
     request,
     response: null,
   };
 
+  // Optimistically add the new message to the UI
   setMessages((prevMessages) => [...prevMessages, newMessage]);
+
   try {
-    // const response = await fetch("/api/openai/text", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ message: request }),
-    // });
+    // Simulating an API response or using a real API
+    const simulatedResponse = "Example response text from the server";
+    await new Promise((resolve) => setTimeout(resolve, 3000)); // Simulate delay
 
-    // if (!response.ok) {
-    //   throw new Error("Failed to fetch OpenAI response");
-    // }
-
-    // const data = await response.json();
-    // const generatedText = data.chatContent;
-    const generatedText =
-      "Oxygen gets you high. In a catastrophic emergency, we're taking giant, panicked breaths. Suddenly you become euphoric, docile. You accept your fate. It's all right here. Emergency water landing, six hundred miles an hour. Blank faces, calm as Hindu cows veryd";
-
-    await new Promise((resolve) => setTimeout(resolve, 3000));
-
-    setMessages((prevMessages: Message[]) =>
+    // Update the message with the server's response
+    setMessages((prevMessages) =>
       prevMessages.map((message) =>
         message.id === newMessageId
-          ? {
-              ...message,
-              response: generatedText,
-            }
+          ? { ...message, response: simulatedResponse }
           : message,
       ),
     );
 
-    const messageCreationResponse = await axios.post("/api/message/create", {
+    // Post the message to the server and receive the permanent ID
+    const response = await axios.post("/api/message/create", {
       chatId,
       request,
-      response: generatedText,
+      response: simulatedResponse,
     });
 
-    if (messageCreationResponse.status !== 201) {
-      console.error("Error saving the message to the server");
+    if (response.status === 201) {
+      const createdMessageId = response.data.id; // Assuming the server response includes the ID
+
+      // Update the message with the permanent ID
+      setMessages((prevMessages) =>
+        prevMessages.map((message) =>
+          message.id === newMessageId
+            ? { ...message, id: createdMessageId }
+            : message,
+        ),
+      );
+    } else {
+      throw new Error("Error saving the message to the server");
     }
 
-    return messageCreationResponse;
+    return response.status;
   } catch (error) {
-    console.error(error);
+    console.error(
+      "An error occurred during the message creation process:",
+      error,
+    );
+    return null;
   }
-
-  return null;
 };

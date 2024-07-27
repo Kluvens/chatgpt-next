@@ -1,12 +1,13 @@
 "use client";
 
+import { Chat } from "@prisma/client";
 import React, { createContext, ReactNode, useContext, useState } from "react";
 import { Message } from "../types";
 
 interface ChatHistory {
-  today: string[];
-  yesterday: string[];
-  previousDays: string[];
+  today: Chat[];
+  yesterday: Chat[];
+  previousDays: Chat[];
 }
 
 interface ChatContextType {
