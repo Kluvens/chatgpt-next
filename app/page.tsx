@@ -4,6 +4,7 @@ import HomeSectionHeader from "./components/common/HomeSectionHeader";
 import VideoPlayer from "./components/common/VideoPlayer";
 import { ListItemTickIcon } from "./components/icons/Icons";
 import { Button } from "./components/ui/button";
+import { Highlight } from "./components/ui/hero-highlight";
 import { InfiniteMovingCards } from "./components/ui/infinite-moving-cards";
 import { ListOne, ListThree, ListTwo } from "./data/MovingList";
 
@@ -19,6 +20,12 @@ export default function Home() {
               </p>
               <h1 className="text-5xl leading-tight font-normal text-balance">
                 Get answers. Find inspiration. Be more productive.
+              </h1>
+              <h1 className="text-5xl leading-tight font-normal text-balance">
+                And let AI&nbsp;
+                <Highlight className="text-black dark:text-white">
+                  change the way you work.
+                </Highlight>
               </h1>
               <div className="mt-6 md:grid md:grid-cols-12">
                 <p className="col-span-12 md:col-span-8 md:col-start-3 text-xl text-balance">
