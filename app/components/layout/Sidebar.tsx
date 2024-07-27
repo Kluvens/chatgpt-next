@@ -1,7 +1,9 @@
 "use client";
 
+import { Chat } from "@prisma/client";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
+import { useChat } from "../../../contexts/ChatContext";
 import HistoryItem from "../common/HistoryItem";
 import { CollapseIcon, NewChatIcon } from "../icons/Icons";
 
@@ -12,40 +14,95 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ toggleSidebar }) => {
   const router = useRouter();
+  const { sidebarChats, setSidebarChats } = useChat();
 
-  const chatHistory = {
-    today: [
-      "Interact Next js with the backend",
-      "This is second for today",
-      "This is third for today",
-    ],
-    yesterday: [
-      "This is first for yesterday",
-      "This is second for yesterday",
-      "This is third for yesterday",
-      "This is fourth for yesterday",
-      "This is first for yesterday",
-      "This is second for yesterday",
-      "This is third for yesterday",
-      "This is fourth for yesterday",
-      "This is first for yesterday",
-      "This is second for yesterday",
-      "This is third for yesterday",
-      "This is fourth for yesterday",
-      "This is first for yesterday",
-      "This is second for yesterday",
-      "This is third for yesterday",
-      "This is fourth for yesterday",
-      "This is first for yesterday",
-      "This is second for yesterday",
-      "This is third for yesterday",
-      "This is fourth for yesterday",
-      "This is first for yesterday",
-      "This is second for yesterday",
-      "This is third for yesterday",
-      "This is fourth for yesterday",
-    ],
+  // const [chatHistory, setChatHistory] = useState({
+  //   today: [
+  //     "Interact Next js with the backend",
+  //     "This is second for today",
+  //     "This is third for today",
+  //   ],
+  //   yesterday: [
+  //     "This is first for yesterday",
+  //     "This is second for yesterday",
+  //     "This is third for yesterday",
+  //     "This is fourth for yesterday",
+  //     "This is first for yesterday",
+  //     "This is second for yesterday",
+  //     "This is third for yesterday",
+  //     "This is fourth for yesterday",
+  //     "This is first for yesterday",
+  //     "This is second for yesterday",
+  //     "This is third for yesterday",
+  //     "This is fourth for yesterday",
+  //     "This is first for yesterday",
+  //     "This is second for yesterday",
+  //     "This is third for yesterday",
+  //     "This is fourth for yesterday",
+  //     "This is first for yesterday",
+  //     "This is second for yesterday",
+  //     "This is third for yesterday",
+  //     "This is fourth for yesterday",
+  //     "This is first for yesterday",
+  //     "This is second for yesterday",
+  //     "This is third for yesterday",
+  //     "This is fourth for yesterday",
+  //   ],
+  // });
+
+  const splitChatsByDate = (chats: Chat[]) => {
+    const today = new Date();
+    const yesterday = new Date(today);
+    yesterday.setDate(yesterday.getDate() - 1);
+
+    const todayChats: Chat[] = [];
+    const yesterdayChats: Chat[] = [];
+    const previousChats: Chat[] = [];
+
+    chats.forEach((chat) => {
+      const chatDate = new Date(chat.createdAt);
+      if (isSameDay(chatDate, today)) {
+        todayChats.push(chat);
+      } else if (isSameDay(chatDate, yesterday)) {
+        yesterdayChats.push(chat);
+      } else {
+        previousChats.push(chat);
+      }
+    });
+
+    setSidebarChats({
+      today: todayChats.map((chat) => chat.id),
+      yesterday: yesterdayChats.map((chat) => chat.id),
+      previousDays: previousChats.map((chat) => chat.id),
+    });
   };
+
+  const isSameDay = (date1: Date, date2: Date) => {
+    return (
+      date1.getFullYear() === date2.getFullYear() &&
+      date1.getMonth() === date2.getMonth() &&
+      date1.getDate() === date2.getDate()
+    );
+  };
+
+  useEffect(() => {
+    const fetchChats = async () => {
+      try {
+        const res = await fetch(`/api/chat/find/chats`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await res.json();
+        splitChatsByDate(data);
+      } catch (error) {
+        console.error("Failed to fetch chat history:", error);
+      }
+    };
+
+    fetchChats();
+  }, []);
 
   return (
     <div className="sidebar-surface-primary h-full w-full">
@@ -80,8 +137,8 @@ const Sidebar: React.FC<SidebarProps> = ({ toggleSidebar }) => {
                       </h3>
                     </div>
                     <ol className="token-text-primary">
-                      {chatHistory.today.map((message, index) => (
-                        <HistoryItem key={index} message={message} />
+                      {sidebarChats.today.map((chat, index) => (
+                        <HistoryItem key={index} chat={chat} />
                       ))}
                     </ol>
                   </div>
@@ -95,8 +152,8 @@ const Sidebar: React.FC<SidebarProps> = ({ toggleSidebar }) => {
                       </span>
                     </div>
                     <ol className="token-text-primary">
-                      {chatHistory.yesterday.map((message, index) => (
-                        <HistoryItem key={index} message={message} />
+                      {sidebarChats.yesterday.map((chat, index) => (
+                        <HistoryItem key={index} chat={chat} />
                       ))}
                     </ol>
                   </div>

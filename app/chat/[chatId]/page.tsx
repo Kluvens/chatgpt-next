@@ -10,8 +10,7 @@ import Sidebar from "../../components/layout/Sidebar";
 import QuestionButton from "../../components/question/QuestionButton";
 
 const Home: React.FC = () => {
-  const { messages, setMessages, isSidebarOpen, toggleSidebar, setChatId } =
-    useChat();
+  const { setMessages, isSidebarOpen, toggleSidebar, setChatId } = useChat();
   const pathname = usePathname();
   const pathSegments = pathname.split("/");
   const chatId = pathSegments[pathSegments.length - 1];
@@ -48,31 +47,6 @@ const Home: React.FC = () => {
       });
   }, []);
 
-  const updateMessage = (id: string, request: string) => {
-    setMessages(
-      messages.map((message) =>
-        message.id === id ? { ...message, request } : message,
-      ),
-    );
-  };
-
-  const regenerateResponse = (chatId: string) => {
-    // const message = messages.find((message) => message.id === chatId);
-    // const updatedChats = messages.filter((message) => message.id !== chatId);
-    // setMessages(updatedChats);
-
-    // try {
-    //   if (message?.request) {
-    //     addMessage(chatId, message?.request, setMessages);
-    //   } else {
-    //     console.error("The chat to regenerate is not found");
-    //   }
-    // } catch (error) {
-    //   console.error("Failed to regenerate response", error);
-    // }
-    console.log(chatId);
-  };
-
   const containerVariants = {
     close: {
       width: "0rem",
@@ -102,11 +76,7 @@ const Home: React.FC = () => {
         <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       </motion.div>
       <div className="flex flex-col flex-1 px-1 pt-1">
-        <ChatMessages
-          messages={messages}
-          updateMessage={updateMessage}
-          regenerateResponse={regenerateResponse}
-        />
+        <ChatMessages />
         <ChatInput />
       </div>
       <QuestionButton />

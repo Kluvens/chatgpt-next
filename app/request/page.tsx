@@ -16,7 +16,7 @@ const ChatMessagePage = () => {
   const { data: session } = useSession();
 
   const request = searchParams.get("message");
-  const { messages, setMessages, isSidebarOpen, toggleSidebar } = useChat();
+  const { setMessages, isSidebarOpen, toggleSidebar } = useChat();
 
   const containerVariants = {
     close: {
@@ -82,11 +82,7 @@ const ChatMessagePage = () => {
         <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       </motion.div>
       <div className="flex flex-col flex-1 px-1 pt-1">
-        <ChatMessages
-          messages={messages}
-          updateMessage={() => {}}
-          regenerateResponse={() => {}}
-        />
+        <ChatMessages />
         <ChatInput />
       </div>
     </div>

@@ -16,6 +16,27 @@ export const createChat = async (userId: string, model: string) => {
   }
 };
 
+export const deleteMessage = async (messageId: string) => {
+  try {
+    const response = await fetch(`/api/message/delete/${messageId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      const errorDetails = await response.text();
+      throw new Error(
+        `Failed to delete message. Status: ${response.status}, Details: ${errorDetails}`,
+      );
+    }
+  } catch (error) {
+    console.error("Error deleting message:", error);
+    throw error;
+  }
+};
+
 export const addMessage = async (
   chatId: string | null,
   request: string,

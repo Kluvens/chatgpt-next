@@ -3,6 +3,12 @@
 import React, { createContext, ReactNode, useContext, useState } from "react";
 import { Message } from "../types";
 
+interface ChatHistory {
+  today: string[];
+  yesterday: string[];
+  previousDays: string[];
+}
+
 interface ChatContextType {
   messages: Message[];
   setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
@@ -11,6 +17,8 @@ interface ChatContextType {
   toggleSidebar: () => void;
   chatId: string | null;
   setChatId: React.Dispatch<React.SetStateAction<string | null>>;
+  sidebarChats: ChatHistory;
+  setSidebarChats: React.Dispatch<React.SetStateAction<ChatHistory>>;
 }
 
 const ChatContext = createContext<ChatContextType | undefined>(undefined);
@@ -21,6 +29,11 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({
   const [messages, setMessages] = useState<Message[]>([]);
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>(true);
   const [chatId, setChatId] = useState<string | null>(null);
+  const [sidebarChats, setSidebarChats] = useState<ChatHistory>({
+    today: [],
+    yesterday: [],
+    previousDays: [],
+  });
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
@@ -36,6 +49,8 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({
         toggleSidebar,
         chatId,
         setChatId,
+        sidebarChats,
+        setSidebarChats,
       }}
     >
       {children}

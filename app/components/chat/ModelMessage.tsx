@@ -15,8 +15,6 @@ const ModelMessage: React.FC<ModelMessageProps> = ({
   response,
   regenerate,
 }) => {
-  // const { settings } = useSettings();
-  // const voice = settings.speech.voice;
   const {
     settings: {
       speech: { voice },

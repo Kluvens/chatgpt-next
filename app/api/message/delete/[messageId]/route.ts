@@ -3,14 +3,16 @@ import prisma from "../../../../../lib/prisma";
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { messageId: number } },
+  { params }: { params: { messageId: string } },
 ) {
   const { messageId } = params;
+
+  const messageIdInt = parseInt(messageId, 10);
 
   try {
     // Attempt to delete the message with the given ID
     const deletedMessage = await prisma.message.delete({
-      where: { id: messageId },
+      where: { id: messageIdInt },
     });
 
     if (deletedMessage) {
