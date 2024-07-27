@@ -1,3 +1,5 @@
+The project is deployed [here](https://chatgpt-next-justin.vercel.app/).
+
 This is a clone of [ChatGPT](https://chatgpt.com/) from [OpenAI](https://openai.com/chatgpt/), built with [Next.js](https://nextjs.org/) and bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Features
@@ -13,9 +15,10 @@ This is a clone of [ChatGPT](https://chatgpt.com/) from [OpenAI](https://openai.
 - [Framer Motion](https://www.framer.com/motion/) for animated components
 - [NextAuth.js](https://next-auth.js.org/) for authentication and authorisation
 - [Prisma](https://www.prisma.io/) ORM to connect to the database
-- Vercel serverless postgresql as database
-- Vercel key-value (KV) for redis-based caching
-- Vercel Web Analytics and Vercel Speed Insights
+- [Vercel serverless postgresql](https://vercel.com/docs/storage/vercel-postgres) as database
+- [Vercel key-value (KV)](https://vercel.com/docs/storage/vercel-kv) for redis-based caching
+- [Vercel Blob](https://vercel.com/docs/storage/vercel-blob) for scalable and cost-effective object storage
+- [Vercel Web Analytics](https://vercel.com/docs/analytics) and [Vercel Speed Insights](https://vercel.com/docs/speed-insights)
 
 ## Model Providers
 
@@ -58,11 +61,12 @@ Now this project has integrated robust CI/CD, insightful web analytics and speed
 
 ## TODO
 
-1. fix bugs with message regenerate and message modification
+1. Prisma with GraphQL
 2. Beatiful markdown file interpreter
 3. allow streaming chat UI
 4. rate limiting and error handling
-5. Sidebar with chats
+5. Responsive sidebar in mobile devices
+6. Implementation for better performance
 
 ## Author
 
