@@ -1,5 +1,5 @@
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useChat } from "../../../contexts/ChatContext";
 import {
   DownArrow,
   Gpt3Icon,
@@ -17,24 +17,30 @@ import {
 
 const ModelSelection = () => {
   const pathname = usePathname();
-  const [selectedModel, setSelectedModel] = useState("4o");
+  const { model, setModel } = useChat();
 
   const handleModelSelect = (model: string) => {
-    setSelectedModel(model);
+    setModel(model);
   };
+
+  const getModelNameByIndicator = (indicator: string) =>
+    models.find((m) => m.indicator === indicator)?.name ?? null;
 
   const models = [
     {
+      indicator: "GPT_4O",
       name: "4o",
       description: "Newest and most advanced model",
       icon: <Gpt4oIcon />,
     },
     {
+      indicator: "GPT_4",
       name: "4",
       description: "Advanced model for complex tasks",
       icon: <Gpt4Icon />,
     },
     {
+      indicator: "GPT_3_5",
       name: "3.5",
       description: "Great for everyday tasks",
       icon: <Gpt3Icon />,
@@ -47,7 +53,9 @@ const ModelSelection = () => {
         <div className="group flex items-center gap-1 py-2 px-3 font-semibold overflow-hidden whitespace-nowrap">
           <div className="flex gap-2 token-text-secondary text-xl">
             ChatGPT
-            <span className="token-text-secondary">{selectedModel}</span>
+            <span className="token-text-secondary">
+              {getModelNameByIndicator(model)}
+            </span>
           </div>
         </div>
       ) : (
@@ -56,7 +64,9 @@ const ModelSelection = () => {
             <div className="group flex cursor-pointer items-center gap-1 py-2 px-3 font-semibold overflow-hidden whitespace-nowrap">
               <div className="flex gap-2 token-text-secondary text-xl">
                 ChatGPT
-                <span className="token-text-secondary">{selectedModel}</span>
+                <span className="token-text-secondary">
+                  {getModelNameByIndicator(model)}
+                </span>
               </div>
               <DownArrow />
             </div>
@@ -70,25 +80,25 @@ const ModelSelection = () => {
                 Model
               </DropdownMenuLabel>
             </div>
-            {models.map((model) => (
+            {models.map((m) => (
               <DropdownMenuItem
-                key={model.name}
+                key={m.indicator}
                 className="flex items-center m-1.5 p-2.5 text-sm cursor-pointer focus-visible:outline-0 group relative hover:token-surface-secondary focus-visible:token-surface-secondary dark:hover:token-surface-secondary dark:focus-visible:bg-token-main-surface-secondary rounded-md my-0 px-3 mx-2 gap-2.5 py-3 !pr-3"
-                onSelect={() => handleModelSelect(model.name)}
+                onSelect={() => handleModelSelect(m.indicator)}
               >
                 <div className="flex grow items-center justify-between gap-2">
                   <div className="flex items-center gap-3">
                     <div className="flex items-center token-surface-secondary rounded-full p-1.5">
-                      {model.icon}
+                      {m.icon}
                     </div>
                     <div className="flex flex-col gap-1">
-                      GPT-{model.name}
+                      GPT-{m.name}
                       <div className="token-text-secondary bg-transparent text-sm">
-                        {model.description}
+                        {m.description}
                       </div>
                     </div>
                   </div>
-                  {selectedModel === model.name && <ModelSelectionTick />}
+                  {model === m.indicator && <ModelSelectionTick />}
                 </div>
               </DropdownMenuItem>
             ))}

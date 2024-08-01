@@ -9,7 +9,9 @@ import Sidebar from "../components/layout/Sidebar";
 import { containerVariants } from "../data/sidebarFM";
 
 const Home: React.FC = () => {
-  const { isSidebarOpen } = useChat();
+  const { isSidebarOpen, setChatId } = useChat();
+
+  setChatId(null);
 
   return (
     <div className="flex h-screen">

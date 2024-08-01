@@ -17,9 +17,7 @@ const ChatMessagePage = () => {
   const { data: session } = useSession();
 
   const request = searchParams.get("message");
-  const { setMessages, isSidebarOpen } = useChat();
-
-  const model = "GPT_4O";
+  const { model, setMessages, isSidebarOpen } = useChat();
 
   const processMessage = async () => {
     try {

@@ -20,6 +20,8 @@ interface ChatContextType {
   setChatId: React.Dispatch<React.SetStateAction<string | null>>;
   sidebarChats: ChatHistory;
   setSidebarChats: React.Dispatch<React.SetStateAction<ChatHistory>>;
+  model: string;
+  setModel: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const ChatContext = createContext<ChatContextType | undefined>(undefined);
@@ -30,6 +32,7 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({
   const [messages, setMessages] = useState<Message[]>([]);
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>(true);
   const [chatId, setChatId] = useState<string | null>(null);
+  const [model, setModel] = useState<string>("GPT_4O");
   const [sidebarChats, setSidebarChats] = useState<ChatHistory>({
     today: [],
     yesterday: [],
@@ -52,6 +55,8 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({
         setChatId,
         sidebarChats,
         setSidebarChats,
+        model,
+        setModel,
       }}
     >
       {children}

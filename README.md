@@ -6,7 +6,7 @@ This is a clone of [ChatGPT](https://chatgpt.com/) from [OpenAI](https://openai.
 
 - [Next.js](https://nextjs.org/) App Router
 - React Server Components (RSCs), Suspense, and Server Actions
-- Support for [OpenAI](https://openai.com)
+- Support for [OpenAI](https://openai.com) with streaming
 - Styling with [Tailwind CSS](https://tailwindcss.com/)
 - [shadcn UI](https://ui.shadcn.com/) for UI components
 - [NextAuth.js](https://next-auth.js.org/) for authentication
@@ -63,10 +63,8 @@ Now this project has integrated robust CI/CD, insightful web analytics and speed
 
 1. Prisma with GraphQL
 2. Beatiful markdown file interpreter
-3. allow streaming chat UI
-4. rate limiting and error handling
-5. Responsive sidebar in mobile devices
-6. Implementation for better performance
+3. Responsive sidebar in mobile devices
+4. Implementation for better performance
 
 ## Author
 
