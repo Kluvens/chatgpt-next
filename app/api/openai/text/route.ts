@@ -24,22 +24,74 @@ export async function POST(req: Request) {
     }
 
     const completion = await openai.chat.completions.create({
-      messages: [
-        {
-          role: "system",
-          content: "Answer questions as concisely as possible",
-        },
-        { role: "user", content: message },
-      ],
       model: "gpt-3.5-turbo",
-      max_tokens: 300,
+      messages: [
+        { role: "system", content: "You are a helpful assistant." },
+        { role: "user", content: "Hello!" },
+      ],
+      stream: true,
     });
 
-    const chatContent = completion.choices[0]?.message?.content ?? "";
+    for await (const chunk of completion) {
+      if (chunk.choices[0].finish_reason === "stop") {
+        return;
+      }
+    }
 
-    return NextResponse.json({ chatContent });
+    // const encoder = new TextEncoder();
+    // const readable = new Readable({
+    //   read() {
+    //     openai.chat.completions
+    //       .create({
+    //         model: "gpt-3.5-turbo",
+    //         messages: [
+    //           {
+    //             role: "system",
+    //             content: "Answer questions as concisely as possible",
+    //           },
+    //           { role: "user", content: message },
+    //         ],
+    //         max_tokens: 300,
+    //         stream: true,
+    //       })
+    //       .then((response) => {
+    //         response.addListener("data", (chunk) => {
+    //           // Assuming chunk is a buffer or string, process accordingly
+    //           const data = chunk.toString();
+    //           const lines = data
+    //             .split("\n")
+    //             .filter((line) => line.trim() !== "");
+    //           for (const line of lines) {
+    //             if (line.startsWith("data: ")) {
+    //               const message = line.substring(6);
+    //               this.push(encoder.encode(`data: ${message}\n\n`));
+    //             }
+    //           }
+    //         });
+
+    //         response.addListener("end", () => {
+    //           this.push(null);
+    //         });
+    //       })
+    //       .catch((err) => {
+    //         console.error("Error fetching OpenAI response:", err);
+    //         this.push(
+    //           encoder.encode(`event: error\ndata: ${JSON.stringify(err)}\n\n`),
+    //         );
+    //         this.push(null);
+    //       });
+    //   },
+    // });
+
+    // return new Response(readable, {
+    //   headers: {
+    //     "Content-Type": "text/event-stream",
+    //     "Cache-Control": "no-cache",
+    //     Connection: "keep-alive",
+    //   },
+    // });
   } catch (error) {
-    console.error("Error fetching OpenAI response:", error);
+    console.error("Error processing request:", error);
     return NextResponse.json({ error: error }, { status: 500 });
   }
 }

@@ -28,16 +28,11 @@ const ChatMessagePage = () => {
 
       if (chatId) {
         // Send the initial message and await a response from the backend
-        const messageCreationResponseStatus = await addMessage(
-          chatId,
-          decodedMessage,
-          setMessages,
-        );
+        try {
+          await addMessage(chatId, decodedMessage, setMessages);
 
-        // Handle post-message creation actions
-        if (messageCreationResponseStatus === 201) {
           router.replace(`/chat/${chatId}`);
-        } else {
+        } catch (error) {
           console.error("Error saving the message to the server");
         }
       }

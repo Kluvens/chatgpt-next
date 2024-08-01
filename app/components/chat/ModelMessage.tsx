@@ -2,6 +2,7 @@
 
 import React, { memo, useState } from "react";
 import { useSettings } from "../../../contexts/SettingsContext";
+import { getResponseAudio } from "../../../utils/chatUtils";
 import { ChatGptIcon, MessageCopyIcon, MessageTickIcon } from "../icons/Icons";
 import LoadingMessage from "./LoadingMessage";
 
@@ -24,25 +25,7 @@ const ModelMessage: React.FC<ModelMessageProps> = ({
 
   const playAudio = async () => {
     try {
-      // const openaiResponse = await fetch("/api/openai/audio", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({ chatContent: response, voice }),
-      // });
-
-      const openaiResponse = await fetch("/api/openai/audios", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ chatContent: response, voice }),
-      });
-
-      if (!openaiResponse.ok) {
-        throw new Error("Failed to fetch audio");
-      }
+      const openaiResponse = await getResponseAudio(response || "", voice);
 
       const data = await openaiResponse.json();
       const audioUrl = data.audioUrl;
@@ -105,11 +88,6 @@ const ModelMessage: React.FC<ModelMessageProps> = ({
                 >
                   <div className="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]">
                     <div className="markdown prose w-full break-words dark:prose-invert light">
-                      {/* <TextGenerateEffect
-                        duration={2}
-                        filter={false}
-                        words={response}
-                      /> */}
                       {response}
                     </div>
                   </div>
