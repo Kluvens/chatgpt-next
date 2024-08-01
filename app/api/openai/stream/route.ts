@@ -45,15 +45,14 @@ export async function GET(req: NextRequest) {
 
           try {
             for await (const chunk of stream) {
+              console.log(chunk);
               const text = chunk.choices[0]?.delta?.content || "";
-              if (text) {
+              const finishReason = chunk.choices[0]?.finish_reason;
+              if (text || finishReason === "stop") {
                 controller.enqueue(encoder.encode(`data: ${text}\n\n`));
               }
             }
           } catch (err) {
-            console.error("Error reading stream:", err);
-            controller.error(err);
-          } finally {
             controller.close();
           }
         },

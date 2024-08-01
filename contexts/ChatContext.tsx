@@ -22,6 +22,8 @@ interface ChatContextType {
   setSidebarChats: React.Dispatch<React.SetStateAction<ChatHistory>>;
   model: string;
   setModel: React.Dispatch<React.SetStateAction<string>>;
+  isGenerating: boolean;
+  setIsGenerating: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const ChatContext = createContext<ChatContextType | undefined>(undefined);
@@ -38,6 +40,7 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({
     yesterday: [],
     previousDays: [],
   });
+  const [isGenerating, setIsGenerating] = useState<boolean>(false);
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
@@ -57,6 +60,8 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({
         setSidebarChats,
         model,
         setModel,
+        isGenerating,
+        setIsGenerating,
       }}
     >
       {children}

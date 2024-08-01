@@ -1,9 +1,15 @@
 "use client";
 
-import React, { memo, useState } from "react";
+import React, { memo, useRef, useState } from "react";
 import { useSettings } from "../../../contexts/SettingsContext";
 import { getResponseAudio } from "../../../utils/chatUtils";
-import { ChatGptIcon, MessageCopyIcon, MessageTickIcon } from "../icons/Icons";
+import {
+  AudioLoadingIcon,
+  AudioPlayingIcon,
+  ChatGptIcon,
+  MessageCopyIcon,
+  MessageTickIcon,
+} from "../icons/Icons";
 import LoadingMessage from "./LoadingMessage";
 
 interface ModelMessageProps {
@@ -22,18 +28,38 @@ const ModelMessage: React.FC<ModelMessageProps> = ({
   } = useSettings();
   const [copied, setCopied] = useState(false);
   const [isResponseBad, setIsResponseBad] = useState(false);
+  const [audioState, setAudioState] = useState<"idle" | "loading" | "playing">(
+    "idle",
+  );
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const playAudio = async () => {
+    if (audioState === "playing") {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
+      setAudioState("idle");
+      return;
+    }
+
+    setAudioState("loading");
     try {
       const openaiResponse = await getResponseAudio(response || "", voice);
-
       const data = await openaiResponse.json();
       const audioUrl = data.audioUrl;
 
       const audio = new Audio(audioUrl);
+      audioRef.current = audio;
       audio.play();
+      setAudioState("playing");
+
+      audio.onended = () => {
+        setAudioState("idle");
+      };
     } catch (error) {
       console.error("Error fetching audio:", error);
+      setAudioState("idle");
     }
   };
 
@@ -103,21 +129,25 @@ const ModelMessage: React.FC<ModelMessageProps> = ({
                           onClick={playAudio}
                         >
                           <span className="flex h-[30px] w-[30px] items-center justify-center">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="24"
-                              height="24"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              className="icon-md-heavy"
-                            >
-                              <path
-                                fill="currentColor"
-                                fillRule="evenodd"
-                                d="M11 4.91a.5.5 0 0 0-.838-.369L6.676 7.737A1 1 0 0 1 6 8H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2a1 1 0 0 1 .676.263l3.486 3.196A.5.5 0 0 0 11 19.09zM8.81 3.067C10.415 1.597 13 2.735 13 4.91v14.18c0 2.175-2.586 3.313-4.19 1.843L5.612 18H4a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h1.611zm11.507 3.29a1 1 0 0 1 1.355.401A10.96 10.96 0 0 1 23 12c0 1.85-.458 3.597-1.268 5.13a1 1 0 1 1-1.768-.934A8.96 8.96 0 0 0 21 12a8.96 8.96 0 0 0-1.085-4.287 1 1 0 0 1 .402-1.356M15.799 7.9a1 1 0 0 1 1.4.2 6.48 6.48 0 0 1 1.3 3.9c0 1.313-.39 2.537-1.06 3.56a1 1 0 0 1-1.673-1.096A4.47 4.47 0 0 0 16.5 12a4.47 4.47 0 0 0-.9-2.7 1 1 0 0 1 .2-1.4"
-                                clipRule="evenodd"
-                              ></path>
-                            </svg>
+                            {audioState === "loading" && <AudioLoadingIcon />}
+                            {audioState === "playing" && <AudioPlayingIcon />}
+                            {audioState === "idle" && (
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                className="icon-md-heavy"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  fillRule="evenodd"
+                                  d="M11 4.91a.5.5 0 0 0-.838-.369L6.676 7.737A1 1 0 0 1 6 8H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2a1 1 0 0 1 .676.263l3.486 3.196A.5.5 0 0 0 11 19.09zM8.81 3.067C10.415 1.597 13 2.735 13 4.91v14.18c0 2.175-2.586 3.313-4.19 1.843L5.612 18H4a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h1.611zm11.507 3.29a1 1 0 0 1 1.355.401A10.96 10.96 0 0 1 23 12c0 1.85-.458 3.597-1.268 5.13a1 1 0 1 1-1.768-.934A8.96 8.96 0 0 0 21 12a8.96 8.96 0 0 0-1.085-4.287 1 1 0 0 1 .402-1.356M15.799 7.9a1 1 0 0 1 1.4.2 6.48 6.48 0 0 1 1.3 3.9c0 1.313-.39 2.537-1.06 3.56a1 1 0 0 1-1.673-1.096A4.47 4.47 0 0 0 16.5 12a4.47 4.47 0 0 0-.9-2.7 1 1 0 0 1 .2-1.4"
+                                  clipRule="evenodd"
+                                ></path>
+                              </svg>
+                            )}
                           </span>
                         </button>
                       </span>

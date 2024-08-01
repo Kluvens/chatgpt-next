@@ -3,14 +3,15 @@
 import { usePathname, useRouter } from "next/navigation";
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useChat } from "../../../contexts/ChatContext";
-import { addMessage } from "../../../utils/chatUtils";
+import { addMessage, saveChatMessage } from "../../../utils/chatUtils";
 import { FileUploadIcon, SendMessageIcon } from "../icons/Icons";
 
 const ChatInput = () => {
   const [message, setMessage] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const { setMessages, chatId } = useChat();
+  const { setMessages, chatId, isGenerating, setIsGenerating } = useChat();
+  const eventSourceRef = useRef<EventSource | null>(null);
 
   const router = useRouter();
   const pathname = usePathname();
@@ -28,6 +29,10 @@ const ChatInput = () => {
       }
     }
   };
+
+  useEffect(() => {
+    console.log(isGenerating);
+  }, [isGenerating]);
 
   useEffect(() => {
     adjustTextareaHeight();
@@ -50,9 +55,27 @@ const ChatInput = () => {
     if (pathname === "/chat") {
       router.push(`/request?message=${message.trim()}`);
     } else {
-      addMessage(chatId, message.trim(), setMessages);
+      setMessage("");
+      try {
+        const { generatedText, tempMessageId } = await addMessage(
+          chatId,
+          message.trim(),
+          setMessages,
+          setIsGenerating,
+          eventSourceRef,
+        );
+        console.log(generatedText, tempMessageId);
+        await saveChatMessage(
+          chatId,
+          message.trim(),
+          generatedText,
+          tempMessageId,
+          setMessages,
+        );
+      } catch (error) {
+        console.error(error);
+      }
     }
-    setMessage("");
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -68,6 +91,15 @@ const ChatInput = () => {
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+  };
+
+  const handleStopGenerating = () => {
+    console.log("start stopping");
+    if (eventSourceRef.current) {
+      eventSourceRef.current = null;
+      console.log("terminated streaming");
+      setIsGenerating(false);
+    }
   };
 
   return (
@@ -113,14 +145,39 @@ const ChatInput = () => {
                       />
                     </div>
                     {/* Send Button */}
-                    <button
-                      aria-label="Send Message"
-                      onClick={handleSendMessage}
-                      className="mb-1 mr-2 flex h-8 w-8 items-center justify-center rounded-full bg-black text-white transition-colors hover:opacity-70 focus-visible:outline-none focus-visible:outline-black disabled:bg-[#D7D7D7] disabled:text-[#f4f4f4] disabled:hover:opacity-100 dark:bg-white dark:text-black dark:focus-visible:outline-white disabled:dark:bg-token-text-quaternary dark:disabled:token-surface-tertiary"
-                      disabled={!message.trim()}
-                    >
-                      <SendMessageIcon />
-                    </button>
+                    {isGenerating ? (
+                      <button
+                        onClick={handleStopGenerating}
+                        className="mb-1 mr-1 flex h-8 w-8 items-center justify-center rounded-full bg-black text-white transition-opacity hover:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black disabled:bg-gray-400 disabled:text-gray-200 disabled:hover:opacity-100 dark:bg-white dark:text-black dark:focus-visible:ring-white dark:disabled:bg-gray-700 dark:disabled:text-gray-400"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          className="icon-lg"
+                        >
+                          <rect
+                            width="10"
+                            height="10"
+                            x="7"
+                            y="7"
+                            fill="currentColor"
+                            rx="1.25"
+                          ></rect>
+                        </svg>
+                      </button>
+                    ) : (
+                      <button
+                        aria-label="Send Message"
+                        onClick={handleSendMessage}
+                        className="mb-1 mr-2 flex h-8 w-8 items-center justify-center rounded-full bg-black text-white transition-colors hover:opacity-70 focus-visible:outline-none focus-visible:outline-black disabled:bg-[#D7D7D7] disabled:text-[#f4f4f4] disabled:hover:opacity-100 dark:bg-white dark:text-black dark:focus-visible:outline-white disabled:dark:bg-token-text-quaternary dark:disabled:token-surface-tertiary"
+                        disabled={!message.trim()}
+                      >
+                        <SendMessageIcon />
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

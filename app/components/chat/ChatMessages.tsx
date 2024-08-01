@@ -2,14 +2,19 @@
 
 import { useEffect, useRef } from "react";
 import { useChat } from "../../../contexts/ChatContext";
-import { addMessage, deleteMessage } from "../../../utils/chatUtils";
+import {
+  addMessage,
+  deleteMessage,
+  saveChatMessage,
+} from "../../../utils/chatUtils";
 import Header from "../layout/Header";
 import ModelMessage from "./ModelMessage";
 import UserMessage from "./UserMessage";
 
 const ChatMessages = () => {
-  const { messages, setMessages, chatId } = useChat();
+  const { messages, setMessages, chatId, setIsGenerating } = useChat();
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const eventSourceRef = useRef<EventSource | null>(null);
 
   const regenerateResponse = async (messageId: string) => {
     console.log("delete here");
@@ -22,12 +27,30 @@ const ChatMessages = () => {
         (message) => message.id !== messageId,
       );
       setMessages(newMessages);
-      deleteMessage(messageId);
-      addMessage(chatId, messageToRegenerate.request, setMessages);
+      await deleteMessage(messageId);
+      try {
+        const { generatedText, tempMessageId } = await addMessage(
+          chatId,
+          messageToRegenerate.request,
+          setMessages,
+          setIsGenerating,
+          eventSourceRef,
+        );
+        console.log(generatedText, tempMessageId);
+        await saveChatMessage(
+          chatId,
+          messageToRegenerate.request,
+          generatedText,
+          tempMessageId,
+          setMessages,
+        );
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 
-  const updateMessage = (messageId: string, newText: string) => {
+  const updateMessage = async (messageId: string, newText: string) => {
     const messageToRegenerate = messages.find(
       (message) => message.id === messageId,
     );
@@ -37,7 +60,20 @@ const ChatMessages = () => {
       );
       setMessages(newMessages);
       deleteMessage(messageId);
-      addMessage(chatId, newText, setMessages);
+      const { generatedText, tempMessageId } = await addMessage(
+        chatId,
+        newText,
+        setMessages,
+        setIsGenerating,
+        eventSourceRef,
+      );
+      await saveChatMessage(
+        chatId,
+        newText,
+        generatedText,
+        tempMessageId,
+        setMessages,
+      );
     }
   };
 

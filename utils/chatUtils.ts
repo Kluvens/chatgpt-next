@@ -33,92 +33,84 @@ export const deleteMessage = async (messageId: string) => {
   }
 };
 
-// export const addMessage = async (
-//   chatId: string | null,
-//   request: string,
-//   messages: Message[],
-//   setMessages: React.Dispatch<React.SetStateAction<Message[]>>,
-// ) => {
-//   if (!chatId) {
-//     console.error("Chat ID is required");
-//     return;
-//   }
-
-//   const newMessageId = new Date().toString();
-//   const newMessage: Message = {
-//     id: newMessageId,
-//     request,
-//     response: null,
-//   };
-
-//   setMessages((prevMessages) => [...prevMessages, newMessage]);
-//   try {
-//     // const response = await fetch("/api/openai/text", {
-//     //   method: "POST",
-//     //   headers: {
-//     //     "Content-Type": "application/json",
-//     //   },
-//     //   body: JSON.stringify({ message: request }),
-//     // });
-
-//     // if (!response.ok) {
-//     //   throw new Error("Failed to fetch OpenAI response");
-//     // }
-
-//     // const data = await response.json();
-//     // const generatedText = data.chatContent;
-//     const generatedText =
-//       "Oxygen gets you high. In a catastrophic emergency, we're taking giant, panicked breaths. Suddenly you become euphoric, docile. You accept your fate. It's all right here. Emergency water landing, six hundred miles an hour. Blank faces, calm as Hindu cows veryd";
-
-//     await new Promise((resolve) => setTimeout(resolve, 3000));
-
-//     setMessages((prevMessages: Message[]) =>
-//       prevMessages.map((message) =>
-//         message.id === newMessageId
-//           ? {
-//               ...message,
-//               response: generatedText,
-//             }
-//           : message,
-//       ),
-//     );
-
-//     const messageCreationResponse = await axios.post("/api/message/create", {
-//       chatId,
-//       request,
-//       response: generatedText,
-//     });
-
-//     if (messageCreationResponse.status !== 201) {
-//       console.error("Error saving the message to the server");
-//     }
-
-//     const createdMessage = messageCreationResponse.data.json();
-//     console.log("created message is", createdMessage);
-//     const createdMessageId = createdMessage.id;
-
-//     setMessages((prevMessages: Message[]) =>
-//       prevMessages.map((message) =>
-//         message.id === newMessageId
-//           ? {
-//               ...message,
-//               id: createdMessageId,
-//             }
-//           : message,
-//       ),
-//     );
-
-//     return messageCreationResponse.status;
-//   } catch (error) {
-//     console.error(error);
-//   }
-
-//   return null;
-// };
-
-export const addMessage = async (
+export const addMessage = (
   chatId: string | null,
   request: string,
+  setMessages: React.Dispatch<React.SetStateAction<Message[]>>,
+  setIsGenerating: React.Dispatch<React.SetStateAction<boolean>>,
+  eventSourceRef: React.MutableRefObject<EventSource | null>,
+): Promise<{ generatedText: string; tempMessageId: string }> => {
+  return new Promise((resolve, reject) => {
+    setIsGenerating(true);
+
+    const tempMessageId = new Date().toISOString();
+    const newMessage: Message = {
+      id: tempMessageId,
+      request,
+      response: null,
+    };
+
+    // Optimistically add the new message to the UI
+    setMessages((prevMessages) => [...prevMessages, newMessage]);
+
+    let generatedText = "";
+
+    try {
+      const eventSource = new EventSource(
+        `/api/openai/stream?message=${encodeURIComponent(request)}`,
+      );
+
+      // reference to current event source
+      eventSourceRef.current = eventSource;
+
+      eventSource.onmessage = (event) => {
+        const { data } = event;
+        generatedText += data;
+        if (!eventSourceRef.current) {
+          eventSource.close();
+          eventSourceRef.current = null;
+          setIsGenerating(false);
+          resolve({ generatedText, tempMessageId });
+        }
+        if (data === "") {
+          console.log("empty data");
+          eventSource.close();
+          eventSourceRef.current = null;
+          setIsGenerating(false);
+          resolve({ generatedText, tempMessageId });
+        }
+        setMessages((prevMessages) =>
+          prevMessages.map((message) =>
+            message.id === tempMessageId
+              ? { ...message, response: (message.response || "") + data }
+              : message,
+          ),
+        );
+      };
+
+      eventSource.onerror = (error) => {
+        console.error(error);
+        eventSource.close();
+        eventSourceRef.current = null;
+        setIsGenerating(false);
+        resolve({ generatedText, tempMessageId });
+      };
+    } catch (error) {
+      console.error(
+        "An error occurred during the message creation process:",
+        error,
+      );
+      setIsGenerating(false);
+      reject(error);
+    }
+  });
+};
+
+export const saveChatMessage = async (
+  chatId: string | null,
+  request: string,
+  generatedText: string,
+  tempMessageId: string,
   setMessages: React.Dispatch<React.SetStateAction<Message[]>>,
 ) => {
   if (!chatId) {
@@ -126,77 +118,33 @@ export const addMessage = async (
     return;
   }
 
-  const newMessageId = new Date().toISOString();
-  const newMessage: Message = {
-    id: newMessageId,
-    request,
-    response: null,
-  };
-
-  // Optimistically add the new message to the UI
-  setMessages((prevMessages) => [...prevMessages, newMessage]);
-
   try {
-    const eventSource = new EventSource(
-      `/api/openai/stream?message=${encodeURIComponent(request)}`,
-    );
+    // Save the message with the final response to the server
+    const messageCreationResponse = await axios.post("/api/message/create", {
+      chatId,
+      request,
+      response: generatedText,
+    });
 
-    let generatedText = "";
+    if (messageCreationResponse.status === 201) {
+      const createdMessageId = messageCreationResponse.data.id;
 
-    eventSource.onmessage = (event) => {
-      const { data } = event;
-      generatedText += data;
+      // Update the message with the permanent ID
       setMessages((prevMessages) =>
         prevMessages.map((message) =>
-          message.id === newMessageId
-            ? { ...message, response: (message.response || "") + data }
+          message.id === tempMessageId
+            ? { ...message, id: createdMessageId }
             : message,
         ),
       );
-    };
-
-    eventSource.onerror = async () => {
-      eventSource.close();
-      try {
-        // Save the message with the final response to the server
-        const messageCreationResponse = await axios.post(
-          "/api/message/create",
-          {
-            chatId,
-            request,
-            response: generatedText,
-          },
-        );
-
-        if (messageCreationResponse.status === 201) {
-          const createdMessageId = messageCreationResponse.data.id;
-
-          // Update the message with the permanent ID
-          setMessages((prevMessages) =>
-            prevMessages.map((message) =>
-              message.id === newMessageId
-                ? { ...message, id: createdMessageId }
-                : message,
-            ),
-          );
-
-          console.log("save properly");
-        } else {
-          throw new Error("Error saving the message to the server");
-        }
-      } catch (error) {
-        console.error(
-          "An error occurred during the message creation process:",
-          error,
-        );
-      }
-    };
+    } else {
+      throw new Error("Error saving the message to the server");
+    }
   } catch (error) {
     console.error(
       "An error occurred during the message creation process:",
       error,
     );
-    return null;
   }
 };
 

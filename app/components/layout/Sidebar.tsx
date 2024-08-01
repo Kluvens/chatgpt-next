@@ -10,7 +10,7 @@ import { CollapseIcon, NewChatIcon } from "../icons/Icons";
 
 const Sidebar = () => {
   const router = useRouter();
-  const { sidebarChats, setSidebarChats, toggleSidebar } = useChat();
+  const { sidebarChats, setSidebarChats, toggleSidebar, chatId } = useChat();
 
   useEffect(() => {
     const setSidebarChatsByDate = async () => {
@@ -24,7 +24,7 @@ const Sidebar = () => {
     };
 
     setSidebarChatsByDate();
-  }, []);
+  }, [chatId]);
 
   return (
     <div className="sidebar-surface-primary h-full w-full">

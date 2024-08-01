@@ -3,9 +3,9 @@
 import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { useChat } from "../../contexts/ChatContext";
-import { addMessage, createChat } from "../../utils/chatUtils";
+import { addMessage, createChat, saveChatMessage } from "../../utils/chatUtils";
 import ChatInput from "../components/chat/ChatInput";
 import ChatMessages from "../components/chat/ChatMessages";
 import Sidebar from "../components/layout/Sidebar";
@@ -17,7 +17,8 @@ const ChatMessagePage = () => {
   const { data: session } = useSession();
 
   const request = searchParams.get("message");
-  const { model, setMessages, isSidebarOpen } = useChat();
+  const { model, setMessages, isSidebarOpen, setIsGenerating } = useChat();
+  const eventSourceRef = useRef<EventSource | null>(null);
 
   const processMessage = async () => {
     try {
@@ -27,7 +28,20 @@ const ChatMessagePage = () => {
       if (chatId) {
         // Send the initial message and await a response from the backend
         try {
-          await addMessage(chatId, decodedMessage, setMessages);
+          const { generatedText, tempMessageId } = await addMessage(
+            chatId,
+            decodedMessage,
+            setMessages,
+            setIsGenerating,
+            eventSourceRef,
+          );
+          await saveChatMessage(
+            chatId,
+            decodedMessage,
+            generatedText,
+            tempMessageId,
+            setMessages,
+          );
 
           router.replace(`/chat/${chatId}`);
         } catch (error) {
