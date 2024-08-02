@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useChat } from "../../../contexts/ChatContext";
 import {
   addMessage,
@@ -12,9 +12,10 @@ import ModelMessage from "./ModelMessage";
 import UserMessage from "./UserMessage";
 
 const ChatMessages = () => {
-  const { messages, setMessages, chatId, setIsGenerating } = useChat();
+  const { messages, setMessages, chatId, setIsGenerating, eventSourceRef } =
+    useChat();
+  const [isInitialScroll, setIsInitialScroll] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const eventSourceRef = useRef<EventSource | null>(null);
 
   const regenerateResponse = async (messageId: string) => {
     console.log("delete here");
@@ -27,7 +28,7 @@ const ChatMessages = () => {
         (message) => message.id !== messageId,
       );
       setMessages(newMessages);
-      await deleteMessage(messageId);
+      deleteMessage(messageId);
       try {
         const { generatedText, tempMessageId } = await addMessage(
           chatId,
@@ -79,7 +80,12 @@ const ChatMessages = () => {
 
   useEffect(() => {
     if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+      if (isInitialScroll) {
+        messagesEndRef.current.scrollIntoView({ behavior: "auto" });
+        setIsInitialScroll(false);
+      } else {
+        messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+      }
     }
   }, [messages.length]);
 

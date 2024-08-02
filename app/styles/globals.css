@@ -37,6 +37,7 @@
     --text-primary: #0d0d0d;
     --text-secondary: #7d7d7d;
     --text-tertiary: #b4b4b4;
+    --text-primary-reverse: #ffffff;
     --text-error: #f93a37;
     --underline: #0d0d0d;
     --surface-primary: #ffffff;
@@ -45,6 +46,7 @@
     --sidebar-surface-primary: #f9f9f9;
     --sidebar-surface-secondary: #ececec;
     --sidebar-surface-tertiary: #e3e3e3;
+    --button-surface-primary: #0d0d0d;
     --switch-button: #0d0d0d;
   }
 
@@ -80,6 +82,7 @@
     --text-primary: #ececec;
     --text-secondary: #b4b4b4;
     --text-tertiary: #9b9b9b;
+    --text-primary-reverse: #000000;
     --text-error: #f93a37;
     --underline: #ececec;
     --surface-primary: #2f2f2f;
@@ -88,6 +91,7 @@
     --sidebar-surface-primary: #171717;
     --sidebar-surface-secondary: #212121;
     --sidebar-surface-tertiary: #2f2f2f;
+    --button-surface-primary: #ececec;
     --switch-button: #ececec;
   }
 }
@@ -131,6 +135,12 @@
   }
   .bg-underline {
     background: var(--underline) !important;
+  }
+  .button-surface-primary {
+    background: var(--button-surface-primary) !important;
+  }
+  .token-text-primary-reverse {
+    color: var(--text-primary-reverse) !important;
   }
 }
 

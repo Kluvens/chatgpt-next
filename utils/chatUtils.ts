@@ -170,3 +170,24 @@ export const getResponseAudio = async (response: string, voice: string) => {
     throw error;
   }
 };
+
+export const fetchChatMessages = async (chatId: string) => {
+  try {
+    const response = await fetch(`/api/chat/find/${chatId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch messages: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching chat messages:", error);
+    throw error;
+  }
+};

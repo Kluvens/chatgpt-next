@@ -1,33 +1,26 @@
 "use client";
 
-import { motion } from "framer-motion";
 import React from "react";
 import { useChat } from "../../contexts/ChatContext";
 import ChatHome from "../components/chat/ChatHome";
 import ChatInput from "../components/chat/ChatInput";
 import Sidebar from "../components/layout/Sidebar";
-import { containerVariants } from "../data/sidebarFM";
+import QuestionButton from "../components/question/QuestionButton";
 
 const Home: React.FC = () => {
-  const { isSidebarOpen, setChatId } = useChat();
+  const { setChatId } = useChat();
 
   setChatId(null);
 
   return (
     <div className="flex h-screen">
-      <motion.div
-        initial={false}
-        animate={isSidebarOpen ? "open" : "close"}
-        variants={containerVariants}
-        layout
-        className="hidden md:flex flex-shrink-0 bg-gray-50 overflow-x-hidden"
-      >
-        <Sidebar />
-      </motion.div>
+      <Sidebar />
+
       <div className="flex flex-col flex-1 px-1 pt-1">
         <ChatHome />
         <ChatInput />
       </div>
+      <QuestionButton />
     </div>
   );
 };

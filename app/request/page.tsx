@@ -1,15 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useRef } from "react";
+import { Suspense, useEffect } from "react";
 import { useChat } from "../../contexts/ChatContext";
 import { addMessage, createChat, saveChatMessage } from "../../utils/chatUtils";
 import ChatInput from "../components/chat/ChatInput";
 import ChatMessages from "../components/chat/ChatMessages";
 import Sidebar from "../components/layout/Sidebar";
-import { containerVariants } from "../data/sidebarFM";
 
 const ChatMessagePage = () => {
   const router = useRouter();
@@ -17,8 +15,7 @@ const ChatMessagePage = () => {
   const { data: session } = useSession();
 
   const request = searchParams.get("message");
-  const { model, setMessages, isSidebarOpen, setIsGenerating } = useChat();
-  const eventSourceRef = useRef<EventSource | null>(null);
+  const { model, setMessages, setIsGenerating, eventSourceRef } = useChat();
 
   const processMessage = async () => {
     try {
@@ -56,6 +53,8 @@ const ChatMessagePage = () => {
   useEffect(() => {
     if (!request) return;
 
+    setMessages([]);
+
     if (session?.user) {
       processMessage();
     }
@@ -63,15 +62,8 @@ const ChatMessagePage = () => {
 
   return (
     <div className="flex h-screen">
-      <motion.div
-        initial={false}
-        animate={isSidebarOpen ? "open" : "close"}
-        variants={containerVariants}
-        layout
-        className="hidden md:flex flex-shrink-0 bg-gray-50 overflow-x-hidden"
-      >
-        <Sidebar />
-      </motion.div>
+      <Sidebar />
+
       <div className="flex flex-col flex-1 px-1 pt-1">
         <ChatMessages />
         <ChatInput />

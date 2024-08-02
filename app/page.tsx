@@ -1,5 +1,9 @@
+"use client";
+
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import HomeSectionHeader from "./components/common/HomeSectionHeader";
 import VideoPlayer from "./components/common/VideoPlayer";
 import { ListItemTickIcon } from "./components/icons/Icons";
@@ -8,7 +12,36 @@ import { Highlight } from "./components/ui/hero-highlight";
 import { InfiniteMovingCards } from "./components/ui/infinite-moving-cards";
 import { ListOne, ListThree, ListTwo } from "./data/MovingList";
 
+const tabs = [
+  {
+    id: "students",
+    label: "Students",
+    video:
+      "https://p0hbqsdgsd9gt3kh.public.blob.vercel-storage.com/videos/use_it_your_way.mp4",
+  },
+  {
+    id: "faculty",
+    label: "Faculty",
+    video:
+      "https://p0hbqsdgsd9gt3kh.public.blob.vercel-storage.com/videos/browsing.mp4",
+  },
+  {
+    id: "research",
+    label: "Research",
+    video:
+      "https://p0hbqsdgsd9gt3kh.public.blob.vercel-storage.com/videos/analyze.mp4",
+  },
+  {
+    id: "campus",
+    label: "Campus operations",
+    video:
+      "https://p0hbqsdgsd9gt3kh.public.blob.vercel-storage.com/videos/use_it_your_way.mp4",
+  },
+];
+
 export default function Home() {
+  const [activeTab, setActiveTab] = useState(tabs[0].id);
+
   return (
     <div className="flex flex-col justify-center pt-24 bg-base dark:bg-black">
       <div className="relative mb-4">
@@ -725,6 +758,67 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <HomeSectionHeader text="How campuses use ChatGPT today" />
+
+      <div className="max-w-[68rem] mx-auto px-5 lg:px-0 mt-6 md:mt-8">
+        <div className="mb-12 max-w-[68rem] mx-auto px-5 lg:px-0 grid grid-cols-12 p-0">
+          <div className="md:col-span-8 md:col-start-3 col-span-12">
+            <div className="flex flex-col relative items-center text-center">
+              <div className="flex space-x-1">
+                {tabs.map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`${
+                      activeTab === tab.id
+                        ? "token-text-primary-reverse"
+                        : "token-text-primary hover:token-surface-tertiary"
+                    } relative rounded-full whitespace-nowrap text-md px-5 py-2 font-normal outline-sky-400 transition focus-visible:outline-2`}
+                    style={{
+                      WebkitTapHighlightColor: "transparent",
+                    }}
+                  >
+                    {activeTab === tab.id && (
+                      <motion.span
+                        layoutId="bubble"
+                        className="absolute inset-0 z-10 bg-black"
+                        style={{ borderRadius: 9999 }}
+                        transition={{
+                          type: "spring",
+                          bounce: 0.2,
+                          duration: 0.6,
+                        }}
+                      />
+                    )}
+                    <p className="relative z-[20]">{tab.label}</p>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="mt-8">
+          <AnimatePresence mode="wait">
+            {tabs.map((tab) =>
+              activeTab === tab.id ? (
+                <motion.div
+                  key={tab.id}
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: 1,
+                    transition: { duration: 1 },
+                  }}
+                  exit={{ opacity: 0, transition: { duration: 0.5 } }}
+                >
+                  <VideoPlayer src={tab.video} />
+                </motion.div>
+              ) : null,
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
+
       <div className="max-w-[68rem] mx-auto px-5 lg:px-0 mt-16 md:mt-20">
         <div className="mb-12 max-w-[68rem] mx-auto px-5 lg:px-0 grid grid-cols-12 p-0">
           <div className="md:col-span-8 md:col-start-3 col-span-12">

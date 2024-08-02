@@ -4,14 +4,18 @@ import { usePathname, useRouter } from "next/navigation";
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useChat } from "../../../contexts/ChatContext";
 import { addMessage, saveChatMessage } from "../../../utils/chatUtils";
-import { FileUploadIcon, SendMessageIcon } from "../icons/Icons";
+import {
+  ChatInputGeneratingIcon,
+  FileUploadIcon,
+  SendMessageIcon,
+} from "../icons/Icons";
 
 const ChatInput = () => {
   const [message, setMessage] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const { setMessages, chatId, isGenerating, setIsGenerating } = useChat();
-  const eventSourceRef = useRef<EventSource | null>(null);
+  const { setMessages, chatId, isGenerating, setIsGenerating, eventSourceRef } =
+    useChat();
 
   const router = useRouter();
   const pathname = usePathname();
@@ -64,7 +68,6 @@ const ChatInput = () => {
           setIsGenerating,
           eventSourceRef,
         );
-        console.log(generatedText, tempMessageId);
         await saveChatMessage(
           chatId,
           message.trim(),
@@ -94,10 +97,8 @@ const ChatInput = () => {
   };
 
   const handleStopGenerating = () => {
-    console.log("start stopping");
     if (eventSourceRef.current) {
       eventSourceRef.current = null;
-      console.log("terminated streaming");
       setIsGenerating(false);
     }
   };
@@ -130,6 +131,7 @@ const ChatInput = () => {
                         <FileUploadIcon />
                       </button>
                     </div>
+
                     {/* Text Input */}
                     <div className="flex p-2 min-w-0 flex-1 flex-col">
                       <textarea
@@ -144,29 +146,15 @@ const ChatInput = () => {
                         onKeyDown={handleKeyDown}
                       />
                     </div>
+
                     {/* Send Button */}
                     {isGenerating ? (
                       <button
+                        aria-label="Chat Input Generating"
                         onClick={handleStopGenerating}
                         className="mb-1 mr-1 flex h-8 w-8 items-center justify-center rounded-full bg-black text-white transition-opacity hover:opacity-70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black disabled:bg-gray-400 disabled:text-gray-200 disabled:hover:opacity-100 dark:bg-white dark:text-black dark:focus-visible:ring-white dark:disabled:bg-gray-700 dark:disabled:text-gray-400"
                       >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          className="icon-lg"
-                        >
-                          <rect
-                            width="10"
-                            height="10"
-                            x="7"
-                            y="7"
-                            fill="currentColor"
-                            rx="1.25"
-                          ></rect>
-                        </svg>
+                        <ChatInputGeneratingIcon />
                       </button>
                     ) : (
                       <button

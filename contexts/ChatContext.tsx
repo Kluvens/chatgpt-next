@@ -1,7 +1,15 @@
 "use client";
 
 import { Chat } from "@prisma/client";
-import React, { createContext, ReactNode, useContext, useState } from "react";
+import React, {
+  createContext,
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useContext,
+  useRef,
+  useState,
+} from "react";
 import { Message } from "../types";
 
 interface ChatHistory {
@@ -12,18 +20,19 @@ interface ChatHistory {
 
 interface ChatContextType {
   messages: Message[];
-  setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
+  setMessages: Dispatch<SetStateAction<Message[]>>;
   isSidebarOpen: boolean;
-  setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setSidebarOpen: Dispatch<SetStateAction<boolean>>;
   toggleSidebar: () => void;
   chatId: string | null;
-  setChatId: React.Dispatch<React.SetStateAction<string | null>>;
+  setChatId: Dispatch<SetStateAction<string | null>>;
   sidebarChats: ChatHistory;
-  setSidebarChats: React.Dispatch<React.SetStateAction<ChatHistory>>;
+  setSidebarChats: Dispatch<SetStateAction<ChatHistory>>;
   model: string;
-  setModel: React.Dispatch<React.SetStateAction<string>>;
+  setModel: Dispatch<SetStateAction<string>>;
   isGenerating: boolean;
-  setIsGenerating: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsGenerating: Dispatch<SetStateAction<boolean>>;
+  eventSourceRef: React.MutableRefObject<EventSource | null>;
 }
 
 const ChatContext = createContext<ChatContextType | undefined>(undefined);
@@ -41,9 +50,10 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({
     previousDays: [],
   });
   const [isGenerating, setIsGenerating] = useState<boolean>(false);
+  const eventSourceRef = useRef<EventSource | null>(null);
 
   const toggleSidebar = () => {
-    setSidebarOpen(!isSidebarOpen);
+    setSidebarOpen((prevState) => !prevState);
   };
 
   return (
@@ -62,6 +72,7 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({
         setModel,
         isGenerating,
         setIsGenerating,
+        eventSourceRef,
       }}
     >
       {children}
