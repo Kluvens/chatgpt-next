@@ -1,6 +1,7 @@
 "use client";
 
 import axios from "axios";
+import kv from "../lib/kv";
 import { Message } from "../types";
 
 export const createChat = async (userId: string, model: string) => {
@@ -66,12 +67,14 @@ export const addMessage = (
       eventSource.onmessage = (event) => {
         const { data } = event;
         generatedText += data;
+
         if (!eventSourceRef.current) {
           eventSource.close();
           eventSourceRef.current = null;
           setIsGenerating(false);
           resolve({ generatedText, tempMessageId });
         }
+
         if (data === "") {
           console.log("empty data");
           eventSource.close();
@@ -79,13 +82,25 @@ export const addMessage = (
           setIsGenerating(false);
           resolve({ generatedText, tempMessageId });
         }
-        setMessages((prevMessages) =>
-          prevMessages.map((message) =>
+
+        setMessages((prevMessages) => {
+          const newMessages = prevMessages.map((message) =>
             message.id === tempMessageId
-              ? { ...message, response: (message.response || "") + data }
+              ? {
+                  ...message,
+                  response: (message.response || "") + data,
+                }
               : message,
-          ),
-        );
+          );
+
+          console.log("new messages");
+
+          if (chatId) {
+            kv.set(chatId, newMessages, { ex: 3600 }).catch(console.error);
+          }
+
+          return newMessages;
+        });
       };
 
       eventSource.onerror = (error) => {
@@ -130,13 +145,19 @@ export const saveChatMessage = async (
       const createdMessageId = messageCreationResponse.data.id;
 
       // Update the message with the permanent ID
-      setMessages((prevMessages) =>
-        prevMessages.map((message) =>
+      setMessages((prevMessages) => {
+        const newMessages = prevMessages.map((message) =>
           message.id === tempMessageId
             ? { ...message, id: createdMessageId }
             : message,
-        ),
-      );
+        );
+
+        if (chatId) {
+          kv.set(chatId, newMessages, { ex: 3600 }).catch(console.error);
+        }
+
+        return newMessages;
+      });
     } else {
       throw new Error("Error saving the message to the server");
     }
@@ -145,6 +166,115 @@ export const saveChatMessage = async (
       "An error occurred during the message creation process:",
       error,
     );
+  }
+};
+
+export const updateMessage = async (
+  chatId: string | null,
+  messageId: string,
+  request: string,
+  setMessages: React.Dispatch<React.SetStateAction<Message[]>>,
+  setIsGenerating: React.Dispatch<React.SetStateAction<boolean>>,
+  eventSourceRef: React.MutableRefObject<EventSource | null>,
+) => {
+  setMessages((prevMessages) => {
+    const newMessages = prevMessages.filter(
+      (message) => message.id !== messageId,
+    );
+    const updatedMessage: Message = {
+      id: messageId,
+      request,
+      response: null,
+    };
+
+    newMessages.push(updatedMessage);
+
+    return newMessages;
+  });
+
+  let generatedText = "";
+
+  try {
+    const eventSource = new EventSource(
+      `/api/openai/stream?message=${encodeURIComponent(request)}`,
+    );
+
+    // reference to current event source
+    eventSourceRef.current = eventSource;
+
+    eventSource.onmessage = async (event) => {
+      const { data } = event;
+      generatedText += data;
+
+      if (!eventSourceRef.current) {
+        eventSource.close();
+        eventSourceRef.current = null;
+        setIsGenerating(false);
+        console.log("update message", request, generatedText);
+        const res = await fetch(`/api/message/update/${messageId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ request, response: generatedText }),
+        });
+
+        if (!res.ok) {
+          const errorData = await res.json();
+          console.error(errorData);
+        }
+      }
+
+      if (data === "") {
+        console.log("empty data");
+        eventSource.close();
+        eventSourceRef.current = null;
+        setIsGenerating(false);
+        console.log("update message", request, generatedText);
+        const res = await fetch(`/api/message/update/${messageId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ request, response: generatedText }),
+        });
+
+        if (!res.ok) {
+          const errorData = await res.json();
+          console.error(errorData);
+        }
+      }
+
+      setMessages((prevMessages) => {
+        const newMessages = prevMessages.map((message) =>
+          message.id === messageId
+            ? {
+                ...message,
+                response: (message.response || "") + data,
+              }
+            : message,
+        );
+
+        if (chatId) {
+          kv.set(chatId, newMessages, { ex: 3600 }).catch(console.error);
+        }
+
+        return newMessages;
+      });
+    };
+
+    eventSource.onerror = (error) => {
+      console.error(error);
+      eventSource.close();
+      eventSourceRef.current = null;
+      setIsGenerating(false);
+    };
+  } catch (error) {
+    console.error(
+      "An error occurred during the message creation process:",
+      error,
+    );
+    setIsGenerating(false);
   }
 };
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useChat } from "../../contexts/ChatContext";
 import ChatHome from "../components/chat/ChatHome";
 import ChatInput from "../components/chat/ChatInput";
@@ -8,9 +8,12 @@ import Sidebar from "../components/layout/Sidebar";
 import QuestionButton from "../components/question/QuestionButton";
 
 const Home: React.FC = () => {
-  const { setChatId } = useChat();
+  const { setChatId, setMessages } = useChat();
 
-  setChatId(null);
+  useEffect(() => {
+    setChatId(null);
+    setMessages([]);
+  }, []);
 
   return (
     <div className="flex h-screen">

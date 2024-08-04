@@ -1,12 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useChat } from "../../../contexts/ChatContext";
-import {
-  addMessage,
-  deleteMessage,
-  saveChatMessage,
-} from "../../../utils/chatUtils";
+import { updateMessage } from "../../../utils/chatUtils";
 import Header from "../layout/Header";
 import ModelMessage from "./ModelMessage";
 import UserMessage from "./UserMessage";
@@ -14,36 +10,21 @@ import UserMessage from "./UserMessage";
 const ChatMessages = () => {
   const { messages, setMessages, chatId, setIsGenerating, eventSourceRef } =
     useChat();
-  const [isInitialScroll, setIsInitialScroll] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const regenerateResponse = async (messageId: string) => {
-    console.log("delete here");
-    console.log(messageId);
     const messageToRegenerate = messages.find(
       (message) => message.id === messageId,
     );
-    if (messageToRegenerate?.request) {
-      const newMessages = messages.filter(
-        (message) => message.id !== messageId,
-      );
-      setMessages(newMessages);
-      deleteMessage(messageId);
+    if (messageToRegenerate?.request && chatId) {
       try {
-        const { generatedText, tempMessageId } = await addMessage(
+        await updateMessage(
           chatId,
+          messageId,
           messageToRegenerate.request,
           setMessages,
           setIsGenerating,
           eventSourceRef,
-        );
-        console.log(generatedText, tempMessageId);
-        await saveChatMessage(
-          chatId,
-          messageToRegenerate.request,
-          generatedText,
-          tempMessageId,
-          setMessages,
         );
       } catch (error) {
         console.error(error);
@@ -51,41 +32,29 @@ const ChatMessages = () => {
     }
   };
 
-  const updateMessage = async (messageId: string, newText: string) => {
+  const modifyMessage = async (messageId: string, newText: string) => {
     const messageToRegenerate = messages.find(
       (message) => message.id === messageId,
     );
-    if (messageToRegenerate?.request) {
-      const newMessages = messages.filter(
-        (message) => message.id !== messageId,
-      );
-      setMessages(newMessages);
-      deleteMessage(messageId);
-      const { generatedText, tempMessageId } = await addMessage(
-        chatId,
-        newText,
-        setMessages,
-        setIsGenerating,
-        eventSourceRef,
-      );
-      await saveChatMessage(
-        chatId,
-        newText,
-        generatedText,
-        tempMessageId,
-        setMessages,
-      );
+    if (messageToRegenerate?.request && chatId) {
+      try {
+        await updateMessage(
+          chatId,
+          messageId,
+          newText,
+          setMessages,
+          setIsGenerating,
+          eventSourceRef,
+        );
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 
   useEffect(() => {
     if (messagesEndRef.current) {
-      if (isInitialScroll) {
-        messagesEndRef.current.scrollIntoView({ behavior: "auto" });
-        setIsInitialScroll(false);
-      } else {
-        messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-      }
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages.length]);
 
@@ -98,7 +67,7 @@ const ChatMessages = () => {
           <div key={message.id}>
             <UserMessage
               request={message.request}
-              onUpdate={(newText) => updateMessage(message.id, newText)}
+              onUpdate={(newText) => modifyMessage(message.id, newText)}
             />
             <ModelMessage
               response={message.response}

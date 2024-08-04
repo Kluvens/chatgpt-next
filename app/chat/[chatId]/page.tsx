@@ -3,6 +3,8 @@
 import { usePathname } from "next/navigation";
 import React, { useEffect, useMemo } from "react";
 import { useChat } from "../../../contexts/ChatContext";
+import kv from "../../../lib/kv";
+import { Message } from "../../../types";
 import { fetchChatMessages } from "../../../utils/chatUtils";
 import ChatInput from "../../components/chat/ChatInput";
 import ChatMessages from "../../components/chat/ChatMessages";
@@ -18,17 +20,29 @@ const Home: React.FC = () => {
   }, [pathname]);
 
   useEffect(() => {
-    setChatId(chatId);
-    setMessages([]);
+    async function fetchAndSetMessages() {
+      setChatId(chatId);
 
-    fetchChatMessages(chatId)
-      .then((response) => {
-        setMessages(response.messages);
-        setModel(response.model);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+      try {
+        const cachedMessages = await kv.get<Message[]>(chatId);
+        if (cachedMessages) {
+          setMessages(cachedMessages);
+        } else {
+          setMessages([]);
+
+          const response = await fetchChatMessages(chatId);
+          setMessages(response.messages);
+          setModel(response.model);
+
+          await kv.set(chatId, response.messages, { ex: 3600 });
+        }
+      } catch (error) {
+        console.error("Error fetching messages:", error);
+        setMessages([]);
+      }
+    }
+
+    fetchAndSetMessages();
   }, [chatId]);
 
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useChat } from "../../../contexts/ChatContext";
 import { addMessage, saveChatMessage } from "../../../utils/chatUtils";
@@ -18,7 +18,6 @@ const ChatInput = () => {
     useChat();
 
   const router = useRouter();
-  const pathname = usePathname();
 
   const adjustTextareaHeight = () => {
     if (textareaRef.current) {
@@ -56,9 +55,7 @@ const ChatInput = () => {
   };
 
   const handleSendMessage = async () => {
-    if (pathname === "/chat") {
-      router.push(`/request?message=${message.trim()}`);
-    } else {
+    if (chatId) {
       setMessage("");
       try {
         const { generatedText, tempMessageId } = await addMessage(
@@ -78,6 +75,8 @@ const ChatInput = () => {
       } catch (error) {
         console.error(error);
       }
+    } else {
+      router.push(`/request?message=${message.trim()}`);
     }
   };
 
