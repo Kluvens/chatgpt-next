@@ -30,7 +30,7 @@ export async function GET(req: NextRequest) {
       messages: [
         {
           role: "system",
-          content: "Answer questions as concisely as possible",
+          content: "talk logically",
         },
         { role: "user", content: message },
       ],
