@@ -64,7 +64,10 @@ Now this project has integrated robust CI/CD, insightful web analytics and speed
 1. Prisma with GraphQL
 2. Beatiful markdown file interpreter
 3. Responsive sidebar in mobile devices
-4. Implementation for better performance
+4. Use IndexedDB to cache fetched list of items instead of VercelKV as this will reduce the cost
+5. On the server-side, convert from Vercel KV to Amazon DynamoDB
+6. For the database, convert from Vercel storage to Amazon RDS
+7. Convert to Amazon S3 for blob storage
 
 ## Author
 

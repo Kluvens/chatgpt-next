@@ -13,11 +13,11 @@ import { CollapseIcon, NewChatIcon } from "../icons/Icons";
 const Sidebar = () => {
   const router = useRouter();
   const {
+    chatId,
     isSidebarOpen,
     sidebarChats,
     setSidebarChats,
     toggleSidebar,
-    chatId,
   } = useChat();
 
   useEffect(() => {

@@ -20,9 +20,11 @@ const Home: React.FC = () => {
   }, [pathname]);
 
   useEffect(() => {
-    async function fetchAndSetMessages() {
-      setChatId(chatId);
+    setChatId(chatId);
+  }, []);
 
+  useEffect(() => {
+    async function fetchAndSetMessages() {
       try {
         const cachedMessages = await kv.get<Message[]>(chatId);
         if (cachedMessages) {
